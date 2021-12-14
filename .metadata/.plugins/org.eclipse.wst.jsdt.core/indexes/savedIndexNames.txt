@@ -1,0 +1,6 @@
+INDEX VERSION 1.4+D:\Java Emp Class Lecture 2021-08-02\Project\EZEN_PROJECT\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3642134042.index
+245860505.index
+2698132204.index
+2333058152.index
+2794707368.index
