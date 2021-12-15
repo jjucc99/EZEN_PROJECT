@@ -1,0 +1,6 @@
+package kr.co.ezenac.pay.model.vo.service;
+
+
+public class PayService {
+
+}
