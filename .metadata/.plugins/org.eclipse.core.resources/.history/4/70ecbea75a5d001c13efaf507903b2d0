@@ -1,8 +1,0 @@
-package kr.co.ezenac.pay.model.service;
-
-import org.springframework.stereotype.Service;
-
-@Service("PayService")
-public class PayserviceImp {
-
-}
