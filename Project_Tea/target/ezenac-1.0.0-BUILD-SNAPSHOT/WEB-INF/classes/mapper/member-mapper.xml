@@ -2,15 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="memberMapper">
 
-<select id="login" resultMap="mem_resultMap"> <!-- parameterMap,Type은 지정해주지 않아 오류발생할 때만 -->
-<!-- resultMap= 리절트맵 아이디 -->
-<!-- 쿼리문 -->
-</select>
+    <!-- parameterMap,Type은 지정해주지 않아 오류발생할 때만 -->
+    <!-- resultMap= 리절트맵 아이디 -->
+    <!-- 쿼리문 -->
+    <select id="insertMember">
+        INSERT INTO MEMBERS
+        VALUES (#{mem_id},#{mem_pwd},#{mem_name},#{mem_addr1},#{mem_addr2},#{mem_addr3},#{mem_phone},#{mem_email},#{mem_check},#{mem_delete},#{mem_admin})
+    </select>
 
-<resultMap type="Member" id="mem_resultMap">
-<!-- type: mybatis typeAliases의 aliase-->
-<result column="" property=""/>
-<!-- column:DB칼럼명 property:VO변수명 -->
-</resultMap>
+    <resultMap type="Member" id="mem_resultMap">
+        <!-- type: mybatis typeAliases의 aliase-->
+        <result column="" property=""/>
+        <!-- column:DB칼럼명 property:VO변수명 -->
+    </resultMap>
 
 </mapper>

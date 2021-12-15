@@ -16,16 +16,14 @@
 
 <!-- 개별매퍼 : 현재 사용하는 것만 남김 -->
 	<mappers>
-		<mapper resource="mapper/pay-mapper.xml" />
-		<!-- 
-		<mapper resource="mapper/admin-mapper.xml" />
 		<mapper resource="mapper/member-mapper.xml" />
-		<mapper resource="mapper/item-mapper.xml"/>
-		
-		<mapper resource="mapper/board-mapper.xml"/>
-		<mapper resource="mapper/review-mapper.xml" />
-		<mapper resource="mapper/mypage-mapper.xml" />
-		<mapper resource="mapper/images-mapper.xml" /> -->
+<!--		<mapper resource="mapper/pay-mapper.xml" />-->
+<!--		<mapper resource="mapper/admin-mapper.xml" />-->
+<!--		<mapper resource="mapper/item-mapper.xml"/>-->
+<!--		<mapper resource="mapper/board-mapper.xml"/>-->
+<!--		<mapper resource="mapper/review-mapper.xml" />-->
+<!--		<mapper resource="mapper/mypage-mapper.xml" />-->
+<!--		<mapper resource="mapper/images-mapper.xml" />-->
 
 	</mappers>
 </configuration>
