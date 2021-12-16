@@ -1,0 +1,25 @@
+package kr.co.ezenac.pay.model.vo;
+
+import java.util.Date;
+
+public class PayVO {
+	private int pay_no;
+	private String pay_method;
+	private Date pay_date;
+	
+	public int getPay_no() {
+		return pay_no;
+	}
+	public void setPay_no(int pay_no) {
+		this.pay_no = pay_no;
+	}
+	public String getPay_method() {
+		return pay_method;
+	}
+	public void setPay_method(String pay_method) {
+		this.pay_method = pay_method;
+	}
+
+	
+	
+}

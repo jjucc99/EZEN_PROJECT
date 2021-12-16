@@ -1,0 +1,10 @@
+package kr.co.ezenac.pay.model.service;
+
+
+import kr.co.ezenac.pay.model.dao.PayDAO;
+import kr.co.ezenac.pay.model.vo.PayVO;
+
+public interface PayService {
+	
+	public void insertPay(PayVO pvo) throws Exception;
+}

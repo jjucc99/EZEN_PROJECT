@@ -1,0 +1,27 @@
+package kr.co.ezenac.pay.model.service;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.co.ezenac.pay.model.dao.PayDAO;
+import kr.co.ezenac.pay.model.vo.PayVO;
+
+@Service("PayService")
+public class PayServiceImp implements PayService{
+ @Autowired
+ private SqlSessionTemplate sqlSession;
+ 
+ @Autowired
+ private PayDAO pDAO;
+ 
+ @Override
+ public int insertPay(PayVO pvo){
+	return pDAO.insertPay(sqlSession,pvo);
+ }
+ 
+ @Override
+ public List<PayVO> payList() {
+	 return pDAO.payList();
+ }
+}

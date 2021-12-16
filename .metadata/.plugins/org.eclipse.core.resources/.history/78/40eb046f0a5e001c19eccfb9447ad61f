@@ -1,0 +1,17 @@
+package kr.co.ezenac.pay.model.dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import kr.co.ezenac.pay.model.vo.PayVO;
+
+@Repository("pDAO")
+//implement와 연결할 아이디
+public class PayDAO {
+
+public int insertPay(SqlSessionTemplate sqlSession, PayVO pvo) {
+	return sqlSession.insert("payMapper.insertPay",pvo);
+}
+}

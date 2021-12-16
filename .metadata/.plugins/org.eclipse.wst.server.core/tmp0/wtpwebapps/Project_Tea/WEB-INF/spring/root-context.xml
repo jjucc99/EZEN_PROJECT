@@ -14,7 +14,8 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml"/>
-	</bean>
+		<!-- <property name="mapperLocations" value="classpath*:/mapper/**/*.xml"/>
+-->	 </bean>
 
 	<!-- <constructor-arg> -->
 	<!-- sqlSession bean에 sqlSessionFactory 객체 주입-->
