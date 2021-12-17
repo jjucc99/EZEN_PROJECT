@@ -1,10 +1,5 @@
 package kr.co.ezenac.image.model.vo;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class ImagesVO {
 	private int ord_item_no;
 	private String img_name;
