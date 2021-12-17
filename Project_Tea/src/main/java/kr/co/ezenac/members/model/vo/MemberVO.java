@@ -17,32 +17,6 @@ public class MemberVO {
 	private char mem_admin;
 
 
-
-
-	public void setMemberVO(String mem_id,
-							String mem_pwd,
-							String mem_name,
-							String mem_addr1,
-							String mem_addr2,
-							String mem_addr3,
-							String mem_phone,
-							String mem_email,
-							char mem_check,
-							char mem_delete,
-							char mem_admin) {
-		this.mem_id = mem_id;
-		this.mem_pwd = mem_pwd;
-		this.mem_name = mem_name;
-		this.mem_addr1 = mem_addr1;
-		this.mem_addr2 = mem_addr2;
-		this.mem_addr3 = mem_addr3;
-		this.mem_phone = mem_phone;
-		this.mem_email = mem_email;
-		this.mem_check = mem_check;
-		this.mem_delete = mem_delete;
-		this.mem_admin = mem_admin;
-	}
-
 	public String getMem_id() {
 		return mem_id;
 	}
@@ -129,5 +103,22 @@ public class MemberVO {
 
 	public void setMem_admin(char mem_admin) {
 		this.mem_admin = mem_admin;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberVO{" +
+				"mem_id='" + mem_id + '\'' +
+				", mem_pwd='" + mem_pwd + '\'' +
+				", mem_name='" + mem_name + '\'' +
+				", mem_addr1='" + mem_addr1 + '\'' +
+				", mem_addr2='" + mem_addr2 + '\'' +
+				", mem_addr3='" + mem_addr3 + '\'' +
+				", mem_phone='" + mem_phone + '\'' +
+				", mem_email='" + mem_email + '\'' +
+				", mem_check=" + mem_check +
+				", mem_delete=" + mem_delete +
+				", mem_admin=" + mem_admin +
+				'}';
 	}
 }

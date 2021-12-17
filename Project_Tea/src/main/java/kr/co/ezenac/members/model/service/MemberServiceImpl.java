@@ -10,14 +10,30 @@ import org.springframework.stereotype.Service;
 public class MemberServiceImpl implements MemberService{
 
     @Autowired
-    private SqlSessionTemplate sqlSessionTemplate;
+    private SqlSessionTemplate sqlSession;
 
     @Autowired
     private MemberDAO mDAO;
 
     @Override
-    public int insertMember(MemberVO member) {
-        System.out.println("MemberServiceImpl.insertMember" + member);
-        return mDAO.insertMember(sqlSessionTemplate, member);
+    public int insertMember(MemberVO Mem_id) {
+        System.out.println("MemberServiceImpl.insertMember" + Mem_id);
+        return mDAO.insertMember(sqlSession, Mem_id);
+    }
+
+    @Override
+    public MemberVO selectMember(String mem_id) {
+     return mDAO.selectMember(sqlSession, mem_id);
+    }
+
+    @Override
+    public int deleteMember(String mem_id) {
+        System.out.println(" MemberServiceImpl 여기 왔음!");
+        return mDAO.deleteMember(sqlSession, mem_id);
+    }
+
+    @Override
+    public int updateMember(MemberVO memberVO) {
+        return mDAO.updateMember(sqlSession, memberVO);
     }
 }
