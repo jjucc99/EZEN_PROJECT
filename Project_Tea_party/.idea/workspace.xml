@@ -10,41 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96de3f62-b30a-49cc-8415-48f5d35e2573" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mainHome.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/delete.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/insert.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/select.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/selectHome.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/update.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/updateHome.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/model/dao/MemberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/model/dao/MemberDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/model/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/model/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/model/service/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/model/service/MemberServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/model/vo/MemberVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/model/vo/MemberVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/member-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/member-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/test.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/test2.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/members/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/members/controller/MemberController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/members/model/dao/MemberDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/members/model/dao/MemberDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/members/model/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/members/model/service/MemberService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/members/model/service/MemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/members/model/service/MemberServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/members/model/vo/MemberVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/members/model/vo/MemberVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/member-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/member-mapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/controller/MemberController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/dao/MemberDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/dao/MemberDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/service/MemberService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/service/MemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/service/MemberServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/vo/MemberVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/vo/MemberVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/member-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/member-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/home.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/members/test.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/members/test2.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
