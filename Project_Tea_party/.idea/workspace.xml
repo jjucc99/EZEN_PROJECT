@@ -10,7 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96de3f62-b30a-49cc-8415-48f5d35e2573" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,6 +179,7 @@
       <workItem from="1639638673447" duration="3929000" />
       <workItem from="1639644373357" duration="640000" />
       <workItem from="1639706801939" duration="1311000" />
+      <workItem from="1639722995310" duration="427000" />
     </task>
     <servers />
   </component>
