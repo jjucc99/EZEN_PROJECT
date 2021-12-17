@@ -1,10 +1,7 @@
 package kr.co.ezenac.pay.model.vo;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+
 public class Order_listVO {
 	private int ord_no;
 	private String ord_date;

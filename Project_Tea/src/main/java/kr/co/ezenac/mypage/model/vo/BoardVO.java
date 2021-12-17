@@ -1,10 +1,7 @@
 package kr.co.ezenac.mypage.model.vo;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+
 public class BoardVO {
 	private int board_no;
 	private String board_sub;
