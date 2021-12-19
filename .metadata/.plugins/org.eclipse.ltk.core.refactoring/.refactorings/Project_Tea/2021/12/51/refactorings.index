@@ -8,3 +8,6 @@
 1639557672337	Encapsulate field 'pay_date'
 1639613854427	Copy compilation unit
 1639615555068	Delete element
+1639706409856	Delete element
+1639717783128	Rename type 'PayController'
+1639717810868	Move 3 resources to 't'

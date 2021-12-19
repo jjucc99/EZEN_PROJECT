@@ -7,6 +7,8 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_Tea_party"/>
+			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_Tea2"/>
 			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_Tea"/>
 			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project"/>
 			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_T"/>
