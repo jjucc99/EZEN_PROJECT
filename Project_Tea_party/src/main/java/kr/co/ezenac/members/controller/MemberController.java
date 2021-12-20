@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class MemberController {
 
@@ -20,8 +22,13 @@ public class MemberController {
         return "home";
     }
 
+    @PostMapping("/members.me")
+    public String homeFrom(){
+        return "home";
+    }
+
     @GetMapping("insert.me")
-    public String insertHome(){
+    public String insertHome() {
         return "insert";
     }
 
@@ -37,12 +44,12 @@ public class MemberController {
 
 
     @GetMapping("select.me")
-    public String selectHome(){
+    public String selectHome() {
         return "select";
     }
 
     @PostMapping("select.me")
-    public String select(MemberVO memberVO, Model model){
+    public String select(MemberVO memberVO, Model model) {
         MemberVO member = memberService.selectMember(memberVO.getMem_id());
         model.addAttribute("member", member);
 
@@ -50,24 +57,24 @@ public class MemberController {
     }
 
     @GetMapping("delete.me")
-    public String deleteHome(){
+    public String deleteHome() {
         return "delete";
     }
 
     @PostMapping("delete.me")
-    public String delete(MemberVO memberVO){
+    public String delete(MemberVO memberVO) {
 
         int result = memberService.deleteMember(memberVO.getMem_id());
         return "home";
     }
 
     @GetMapping("update.me")
-    public String update(){
+    public String update() {
         return "update";
     }
-    
+
     @PostMapping("update_find.me")
-    public String update_find(MemberVO memberVO, Model model){
+    public String update_find(MemberVO memberVO, Model model) {
         MemberVO member = memberService.selectMember(memberVO.getMem_id());
         model.addAttribute("member", member);
 
@@ -75,7 +82,7 @@ public class MemberController {
     }
 
     @PostMapping("update.me")
-    public  String update(MemberVO memberVO){
+    public String update(MemberVO memberVO) {
         memberService.updateMember(memberVO);
         return "home";
     }
