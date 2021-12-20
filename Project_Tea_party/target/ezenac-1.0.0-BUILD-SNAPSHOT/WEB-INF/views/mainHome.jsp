@@ -24,6 +24,7 @@ session  <%=checkLogin%>
     <a href="hello.pay">PAY</a>
     <a href="test.item">ITEM</a>
     <a href="members.me">MEMBER</a>
+    <a href="board.board">BOARD</a>
 <%
 }else{
 %>

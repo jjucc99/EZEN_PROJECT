@@ -5,7 +5,9 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.co.ezenac.admin.model.vo.ImagesVO;
 import kr.co.ezenac.admin.model.vo.ItemVO;
+import kr.co.ezenac.admin.model.vo.Item_mgmVO;
 
 @Repository("aDAO")
 public class AdminDAO {
@@ -32,6 +34,14 @@ public class AdminDAO {
 
 	public void updateItem(SqlSessionTemplate sqlSession, ItemVO ivo) {
 		sqlSession.update("adminMapper.updateItem", ivo);
+	}
+
+	public int insertImage(SqlSessionTemplate sqlSession, ImagesVO imageVO) {
+		return sqlSession.insert("adminMapper.insertImage", imageVO);
+	}
+
+	public int insertItem_mgm(SqlSessionTemplate sqlSession, Item_mgmVO imvo) {
+		return sqlSession.insert("adminMapper.insertItem_mgm", imvo);
 	}
 
 	

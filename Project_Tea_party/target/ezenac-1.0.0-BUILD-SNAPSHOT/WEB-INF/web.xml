@@ -90,7 +90,7 @@
     </servlet-mapping>
     
 	<!-- 게시판 관련 -->
-   <!-- <servlet>
+    <servlet>
         <servlet-name>boardServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
@@ -101,7 +101,7 @@
     <servlet-mapping>
         <servlet-name>boardServlet</servlet-name>
         <url-pattern>*.board</url-pattern>
-    </servlet-mapping> -->
+    </servlet-mapping>
 	
 	<!-- 리뷰 관련 -->
 

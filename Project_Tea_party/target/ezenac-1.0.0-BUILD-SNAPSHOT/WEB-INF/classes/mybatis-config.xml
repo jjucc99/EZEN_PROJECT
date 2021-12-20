@@ -24,9 +24,9 @@
 		<mapper resource="mapper/admin-mapper.xml" />
 		<mapper resource="mapper/member-mapper.xml" />
 		<mapper resource="mapper/item-mapper.xml"/>
-		<!-- 
-		
 		<mapper resource="mapper/board-mapper.xml"/>
+		<!--
+
 		<mapper resource="mapper/review-mapper.xml" />
 		<mapper resource="mapper/mypage-mapper.xml" />
 		<mapper resource="mapper/images-mapper.xml" /> -->
