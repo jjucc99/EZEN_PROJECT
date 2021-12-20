@@ -10,13 +10,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f343b54-8677-4397-b70b-c9690adc315e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.annotation.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.ejb.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.jms.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.persistence.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.resource.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/javax.transaction.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/vo/ImagesVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/controller/BoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/dao/BoardDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/service/BoardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/service/BoardServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/board-mapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/board-context.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_delete.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/members/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/dao/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/dao/AdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/service/AdminServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/service/AdminServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/vo/Item_mgmVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/vo/Item_mgmVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/vo/BoardVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/vo/BoardVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/vo/ReplyVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/vo/ReplyVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/admin-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/admin-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_Item/item_add_admin_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_Item/item_add_admin_form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_update.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_write.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_write.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mainHome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mainHome.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/members/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/service/AdminService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/vo/Item_mgmVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/vo/Item_mgmVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/BoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/BoardVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/ReplyVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/ReplyVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/admin-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/admin-mapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/Item_mgmVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/Item_mgmVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/board/model/vo/BoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/board/model/vo/BoardVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/board/model/vo/ReplyVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/board/model/vo/ReplyVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/admin-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/admin-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_Item/item_add_admin_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_Item/item_add_admin_form.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/board/board_update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/board/board_update.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/board/board_write.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/board/board_write.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +89,18 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -57,15 +117,26 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/dao" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="MTHome" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\webapp\WEB-INF\spring\appServlet" />
+      <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\webapp\WEB-INF\views\board" />
+      <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\resources\mapper" />
+      <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\java\kr\co\ezenac\board\model\vo" />
+      <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\java\kr\co\ezenac\board\model\service" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
@@ -179,6 +250,8 @@
       <workItem from="1639887047549" duration="1025000" />
       <workItem from="1639971487009" duration="75000" />
       <workItem from="1639971781278" duration="7553000" />
+      <workItem from="1639989154411" duration="1061000" />
+      <workItem from="1639990272416" duration="703000" />
     </task>
     <servers />
   </component>
@@ -195,5 +268,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

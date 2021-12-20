@@ -8,6 +8,18 @@
 		VALUES(#{item_code},#{item_name},#{item_price},#{item_information},#{cate_code})
 	</insert>
 	
+	<!-- 상품 이미지 추가 -->
+	<insert id="insertImage">
+		INSERT INTO IMAGES
+		VALUES(#{ord_item_no},#{img_name},#{img_save},#{img_ref},#{img_id})
+	</insert>
+	
+	<!-- 상품 입출고에 상품 추가 -->
+	<insert id="insertItem_mgm">
+		INSERT INTO ITEM_MGM
+		VALUES(#{prod_code},sysdate,#{prod_count},#{item_code})
+	</insert>
+	
 	<!-- 아이템 하나의 정보 -->
 	<select id="selectOneItem" resultMap="item">
 		SELECT * FROM item where
