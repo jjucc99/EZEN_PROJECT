@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" /> <!-- 비어있는 값이 들어오면 null로 사용할 것 -->
+	</settings>
+
+	<typeAliases><!-- type:주소 alias=이름 -->
+		<typeAlias type="kr.co.ezenac.members.model.vo.MemberVO"
+			alias="Member" />
+		<typeAlias type="kr.co.ezenac.item.model.vo.ItemVO"
+			alias="Item" />
+		<typeAlias type="kr.co.ezenac.board.model.vo.BoardVO"
+			alias="Board" />
+		<typeAlias type="kr.co.ezenac.pay.model.vo.PayVO"
+			alias="Pay"/>
+		<typeAlias type="kr.co.ezenac.admin.model.vo.ItemVO"
+            alias="admin_item" />
+	</typeAliases>
+
+<!-- 개별매퍼 : 현재 사용하는 것만 남김 -->
+	<mappers>
+		<mapper resource="mapper/pay-mapper.xml" />
+		<mapper resource="mapper/admin-mapper.xml" />
+		<mapper resource="mapper/member-mapper.xml" />
+		<mapper resource="mapper/item-mapper.xml"/>
+		<mapper resource="mapper/board-mapper.xml"/>
+		<!--
+
+		<mapper resource="mapper/review-mapper.xml" />
+		<mapper resource="mapper/mypage-mapper.xml" />
+		<mapper resource="mapper/images-mapper.xml" /> -->
+
+	</mappers>
+</configuration>

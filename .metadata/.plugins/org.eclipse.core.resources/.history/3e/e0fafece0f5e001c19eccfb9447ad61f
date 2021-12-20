@@ -1,9 +1,0 @@
-package kr.co.ezenac.pay.model.service;
-
-
-import kr.co.ezenac.pay.model.vo.PayVO;
-
-public interface PayService {
-	
-	int insertPay(PayVO pvo);
-}

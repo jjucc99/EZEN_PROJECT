@@ -41,10 +41,15 @@ public class ItemController {
 		return "item_Delete";
 	}
 
+	// 아이템 수정
+	@RequestMapping(value = "updateForm.item")
+	public String updateItemform() {
+		return "item_Update";
+	}
 
 	// item 추가
 	@RequestMapping(value = "add.item", method = RequestMethod.POST)
-	public String insertItem(@ModelAttribute ItemVO ivo) { //@ModelAttribute 자동저장
+	public String insertItem(@ModelAttribute ItemVO ivo) {
 		itemService.insertItem(ivo);
 		return "item";
 	}
@@ -57,9 +62,8 @@ public class ItemController {
 	}
 
 	// item 수정
-	@RequestMapping(value = "update.item", method = RequestMethod.GET)
-	public String updateItem(@ModelAttribute ItemVO ivo) {
-		System.out.println(ivo.getItem_code());
+	@RequestMapping(value = "update.item", method = RequestMethod.POST)
+	public String update(@ModelAttribute ItemVO ivo) {
 		itemService.update(ivo);
 		return "item";
 	}
@@ -77,18 +81,17 @@ public class ItemController {
 	}
 	
 	//info
-		@GetMapping("info.item/{item_code}")
-	/* @RequestMapping(value ="info.item/{item_code}",method = RequestMethod.GET) */
+		//@GetMapping("info.item/{item_code}") 
+		@RequestMapping(value = "info.item/{item_code}", method = RequestMethod.GET)
 		public String selectOne(@PathVariable("item_code") String item_code, Model model) {
 			ItemVO ivo=itemService.infoItem(item_code);
 			model.addAttribute("infoItem",ivo);
+			System.out.println(ivo);
+			System.out.println(item_code+"아이템");
 			
 			return "item/item_Info";
-		/* return "item_Info"; */
-			
+		//이 메소드에서만 item-context.xml의 prefix 기능이 안 됨.	
 		}
-		
-		
 	
 	/*
 	 * //info

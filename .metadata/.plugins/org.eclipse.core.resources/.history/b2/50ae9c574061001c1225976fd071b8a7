@@ -1,0 +1,10 @@
+package kr.co.ezenac.pay.model.vo;
+
+
+public class Cart_itemVO {
+	private String check="N";
+	private int cart_item_no;
+	private int cart_amount;
+	private int cart_no;
+	private int item_code;
+}

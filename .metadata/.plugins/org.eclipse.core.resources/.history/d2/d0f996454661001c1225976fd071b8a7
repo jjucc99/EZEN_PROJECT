@@ -1,0 +1,33 @@
+package kr.co.ezenac.pay.controller;
+
+import java.util.Collection;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import kr.co.ezenac.pay.model.service.PayService;
+import kr.co.ezenac.pay.model.vo.Cart_itemVO;
+
+@Controller
+public class ControllerPay {
+	
+	@Autowired
+	private PayService service;
+	
+	//장바구니 주문내역 보기
+	@RequestMapping(value="cart.pay", method=RequestMethod.GET)
+	public String listPay(HttpSession session, Model model) {
+		String mem_id= (String)session.getAttribute("mem_id");
+		
+		List<Cart_itemVO> list=service.cartList(mem_id);
+		model.addAttribute("cartList",list);
+		
+		return "cartList";
+	}
+}

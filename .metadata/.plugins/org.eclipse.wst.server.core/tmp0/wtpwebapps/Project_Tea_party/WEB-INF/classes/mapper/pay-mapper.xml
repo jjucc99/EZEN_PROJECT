@@ -27,4 +27,27 @@ delete from pay where pay_no=#{pay_no}
 <select id="selectOne" resultMap="select_re">
 select * from pay where pay_no=#{pay_no}
 </select>
+
+<!-- 새 코딩 시작 -->
+
+<select id="cartList" resultMap="cart_list">
+select item_name, item_price, cart_amount, cart_item_no, cart_item.cart_no, cart_item.item_code from item
+inner join cart_item
+on cart_item.item_code=item.item_code
+inner join cart
+on cart.cart_no=cart_item.cart_no
+where cart.mem_id=#{mem_id}
+</select>
+<resultMap type="kr.co.ezenac.pay.model.vo.CartListVO" id="cart_list">
+<result column="ITEM_NAME" property="item_name"/>
+<result column="ITEM_PRICE" property="item_price"/>
+<result column="CART_AMOUNT" property="cart_amount"/>
+<result column="CART_ITEM_NO" property="cart_item_no"/>
+<result column="CART_NO" property="cart_no"/>
+<result column="ITEM_CODE" property="item_code"/>
+</resultMap>
+
+<select id="img" resultType="string">
+select img_name from images where img_ref='item' and img_id=#{item_code}
+</select>
 </mapper>

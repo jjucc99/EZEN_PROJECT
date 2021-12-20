@@ -1,0 +1,7 @@
+mainHome.jsp : cart.pay로 주소 변경
+HomeController: HttpSession, setSession 추가로 id 설정
+ControllerPay 생성->정상작동 확인 후 이름 변경 예정
+my-batis: <typeAlias type="kr.co.ezenac.pay.model.vo.Cart_itemVO"
+			alias="Cart_item" />
+			
+cart_itemVO: private String check="N";

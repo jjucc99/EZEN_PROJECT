@@ -1,0 +1,3 @@
+mainHome.jsp : cart.pay로 주소 변경
+HomeController: HttpSession, setSession 추가로 id 설정
+ControllerPay 생성->정상작동 확인 후 삭제 예정

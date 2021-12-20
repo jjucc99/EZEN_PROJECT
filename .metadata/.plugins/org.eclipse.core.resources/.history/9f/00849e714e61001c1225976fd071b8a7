@@ -1,0 +1,5 @@
+package kr.co.ezenac.pay.model.vo;
+
+public class CartListVO {
+
+}

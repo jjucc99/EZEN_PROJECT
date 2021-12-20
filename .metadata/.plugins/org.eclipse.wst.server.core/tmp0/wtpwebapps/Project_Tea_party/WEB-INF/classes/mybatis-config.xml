@@ -12,8 +12,10 @@
 			alias="Item" />
 		<typeAlias type="kr.co.ezenac.board.model.vo.BoardVO"
 			alias="Board" />
-		<typeAlias type="kr.co.ezenac.pay.model.vo.PayVO"
-			alias="Pay"/>
+			<typeAlias type="kr.co.ezenac.pay.model.vo.PayVO"
+			alias="Pay" />
+		<typeAlias type="kr.co.ezenac.pay.model.vo.Cart_itemVO"
+			alias="Cart_item" />
 		<typeAlias type="kr.co.ezenac.admin.model.vo.ItemVO"
             alias="admin_item" />
 	</typeAliases>
@@ -24,9 +26,9 @@
 		<mapper resource="mapper/admin-mapper.xml" />
 		<mapper resource="mapper/member-mapper.xml" />
 		<mapper resource="mapper/item-mapper.xml"/>
-		<!-- 
-		
 		<mapper resource="mapper/board-mapper.xml"/>
+		<!--
+
 		<mapper resource="mapper/review-mapper.xml" />
 		<mapper resource="mapper/mypage-mapper.xml" />
 		<mapper resource="mapper/images-mapper.xml" /> -->

@@ -14,6 +14,8 @@
 <br>
 <a href="deleteForm.item">상품 삭제</a>
 <br>
+<a href="updateForm.item">상품 수정</a>
+<br>
 <a href="list.item">상품 목록</a>
 </body>
 </html>
