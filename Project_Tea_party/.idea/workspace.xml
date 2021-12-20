@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f343b54-8677-4397-b70b-c9690adc315e" name="변경" comment="" />
+    <list default="true" id="8f343b54-8677-4397-b70b-c9690adc315e" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,7 +166,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="96de3f62-b30a-49cc-8415-48f5d35e2573" name="변경" comment="" />
+      <changelist id="8f343b54-8677-4397-b70b-c9690adc315e" name="변경" comment="" />
       <created>1639549662504</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -178,6 +180,7 @@
       <workItem from="1639644373357" duration="640000" />
       <workItem from="1639706801939" duration="1311000" />
       <workItem from="1639722995310" duration="427000" />
+      <workItem from="1639988487197" duration="65000" />
     </task>
     <servers />
   </component>
