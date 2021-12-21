@@ -9,63 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f343b54-8677-4397-b70b-c9690adc315e" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.annotation.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.ejb.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.jms.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.persistence.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.resource.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javax.transaction.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/vo/ImagesVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/controller/BoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/dao/BoardDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/service/BoardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/service/BoardServiceImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/board-mapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/appServlet/board-context.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_delete.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/dao/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/dao/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/service/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/service/AdminServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/service/AdminServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/vo/Item_mgmVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/admin/model/vo/Item_mgmVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/vo/BoardVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/vo/BoardVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/vo/ReplyVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/board/model/vo/ReplyVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/admin-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/admin-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_Item/item_add_admin_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_Item/item_add_admin_form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_update.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_write.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/board/board_write.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mainHome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mainHome.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/service/AdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/vo/Item_mgmVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/vo/Item_mgmVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/BoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/BoardVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/ReplyVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/ReplyVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/admin-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/admin-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/Item_mgmVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/Item_mgmVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/board/model/vo/BoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/board/model/vo/BoardVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/board/model/vo/ReplyVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/board/model/vo/ReplyVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/admin-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/admin-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_Item/item_add_admin_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_Item/item_add_admin_form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/board/board_update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/board/board_update.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/board/board_write.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/board/board_write.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="8f343b54-8677-4397-b70b-c9690adc315e" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
