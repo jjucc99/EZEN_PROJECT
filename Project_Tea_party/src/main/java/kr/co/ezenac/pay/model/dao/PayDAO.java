@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.co.ezenac.pay.model.vo.CartListVO;
+import kr.co.ezenac.pay.model.vo.CartUpdateVO;
 import kr.co.ezenac.pay.model.vo.PayVO;
 
 @Repository("pDAO")
@@ -51,5 +52,13 @@ public String getImg(SqlSessionTemplate sqlSession, int item_code) {
 	String imgName=sqlSession.selectOne("payMapper.img",item_code);
 	
 	return imgName;
+}
+
+public void cartUpdate(SqlSessionTemplate sqlSession, CartUpdateVO cuvo) {
+	sqlSession.update("payMapper.cartUpdate",cuvo);
+}
+
+public void cartDelete(SqlSessionTemplate sqlSession, int cart_item_no) {
+	sqlSession.update("payMapper.cartDelete",cart_item_no);
 }
 }

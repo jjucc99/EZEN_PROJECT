@@ -1,0 +1,6 @@
+function deleteCheck(){
+	var chk=confirm("해당 상품을 삭제하십니까?");
+	
+	document.eachFrm.cart_item_no
+	return true;
+}

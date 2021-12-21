@@ -14,8 +14,6 @@
 			alias="Board" />
 			<typeAlias type="kr.co.ezenac.pay.model.vo.PayVO"
 			alias="Pay" />
-		<typeAlias type="kr.co.ezenac.pay.model.vo.Cart_itemVO"
-			alias="Cart_item" />
 		<typeAlias type="kr.co.ezenac.admin.model.vo.ItemVO"
             alias="admin_item" />
 	</typeAliases>

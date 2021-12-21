@@ -47,6 +47,7 @@ CREATE TABLE ITEM (
 	item_price number NOT NULL,
 	item_information varchar2(500) NOT NULL,
 	cate_code number NOT NULL
+	item_count number	NOT NULL
 );
 
 CREATE TABLE REPLY (
@@ -58,12 +59,6 @@ CREATE TABLE REPLY (
 	board_no number NOT NULL
 );
 
-CREATE TABLE ITEM_MGM (
-	prod_code number NOT NULL,
-	inout_date date default sysdate NOT NULL,
-	prod_count number	NOT NULL,
-	item_code number	NOT NULL
-);
 
 CREATE TABLE PAY (
 	pay_no number NOT NULL,
@@ -106,6 +101,8 @@ CREATE TABLE ReviewBOARD (
 	item_code number NOT NULL
 );
 
+-----------------PK
+
 ALTER TABLE BOARD ADD CONSTRAINT PK_BOARD PRIMARY KEY (
 	board_no
 );
@@ -134,9 +131,6 @@ ALTER TABLE REPLY ADD CONSTRAINT PK_REPLY PRIMARY KEY (
 	reply_no
 );
 
-ALTER TABLE ITEM_MGM ADD CONSTRAINT PK_ITEM_MGM PRIMARY KEY (
-	prod_code
-);
 
 ALTER TABLE PAY ADD CONSTRAINT PK_PAY PRIMARY KEY (
 	pay_no
@@ -157,6 +151,9 @@ ALTER TABLE CART ADD CONSTRAINT PK_CART PRIMARY KEY (
 ALTER TABLE ReviewBOARD ADD CONSTRAINT PK_REVIEWBOARD PRIMARY KEY (
 	r_board_no
 );
+
+
+-------------------외래키
 
 ALTER TABLE BOARD ADD CONSTRAINT FK_MEMBER_TO_BOARD_1 FOREIGN KEY (
 	mem_id
@@ -193,9 +190,6 @@ REFERENCES BOARD (
 	board_no
 );
 
-ALTER TABLE ITEM_MGM ADD CONSTRAINT FK_ITEM_TO_ITEM_MGM_1 FOREIGN KEY (
-	item_code
-)
 REFERENCES ITEM (
 	item_code
 );
@@ -250,6 +244,7 @@ REFERENCES ITEM (
 );
 
 
+---------시퀀스
 create sequence board_no_seq;
 create sequence reply_no_seq;
 create sequence pay_no_seq;
@@ -259,4 +254,11 @@ create sequence ord_no_seq;
 create sequence item_code_seq;
 create sequence R_board_no_seq;
 create sequence ord_item_no_seq;
-create sequence prod_code_seq;
+
+
+---------카테고리
+insert into categorys VALUES(1,'홍차');
+insert into categorys VALUES(2,'허브차');
+insert into categorys VALUES(3,'커피');
+insert into categorys VALUES(4,'과일청');
+insert into categorys VALUES(5,'티웨어');

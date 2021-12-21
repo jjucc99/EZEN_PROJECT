@@ -1,11 +1,18 @@
 mainHome.jsp : cart.pay로 주소 변경
-HomeController: HttpSession, setSession 추가로 id 설정
-ControllerPay 생성->정상작동 확인 후 이름 변경 예정
-my-batis: <typeAlias type="kr.co.ezenac.pay.model.vo.Cart_itemVO"
+ControllerPay 생성->나머지 주석처리함
+my-batis: 추가
+<typeAlias type="kr.co.ezenac.pay.model.vo.Cart_itemVO"
 			alias="Cart_item" />
 			
-cartListVO 추가
+cartListVO 생성
 
 servlet-context.xml: <resources mapping="/image/**" location="file:///" /> 추가
 
-*cartList.jsp: a 링크 item 담당과 합의
+pay-mapper : 수정
+
+cartList.jsp 생성
+----------------------------
+mapper
+cartList.jsp 수정
+controllerPay 수정
+webapp>resources 폴더 생성
