@@ -2,20 +2,31 @@ package kr.co.ezenac.admin.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
 import kr.co.ezenac.admin.model.service.AdminService;
+import kr.co.ezenac.admin.model.vo.ImagesVO;
 import kr.co.ezenac.admin.model.vo.ItemVO;
+
 
 @Controller
 public class AdminController {
 	@Autowired
 	private AdminService adService;
+	
+	@Resource(name="uploadPath")
+	String uploadPath;
 
 	// 어드민 홈
 	@RequestMapping(value = "admin.ad", method = RequestMethod.GET)
@@ -40,11 +51,36 @@ public class AdminController {
 	public String iteminfoform() {
 		return "admin_Item/item_info_form";
 	}
-	
+
 	// 아이템 추가 로직
 	@RequestMapping(value = "addItem.ad", method = RequestMethod.POST)
-	public String insertItem(@ModelAttribute ItemVO ivo) {
+	public String insertItem(@ModelAttribute ItemVO ivo, MultipartFile image) {
+		ImagesVO imageVO=new ImagesVO();
+		
+		String image_name = image.getOriginalFilename();
+		
+		File target = new File(uploadPath+"/items", image_name);
+
+		// 경로 생성
+		if (!new File(uploadPath+"/items").exists()) {
+			new File(uploadPath+"/items").mkdirs();
+		}
+		//파일 복사
+        try {
+            FileCopyUtils.copy(image.getBytes(), target);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        
+        imageVO.setOrd_item_no(ivo.getItem_code()+1);// 시퀀스 대신 임시로 넣어주는 코드
+        imageVO.setImg_name(image_name);
+        imageVO.setImg_save(uploadPath+"/items");
+        imageVO.setImg_ref("item");
+        imageVO.setImg_id(ivo.getItem_code());
+        
 		adService.insertItem(ivo);
+		int result=adService.insertImage(imageVO);
+		System.out.println("데이터 추가 성공 : "+result);
 		return "admin_Item/admin_item";
 	}
 

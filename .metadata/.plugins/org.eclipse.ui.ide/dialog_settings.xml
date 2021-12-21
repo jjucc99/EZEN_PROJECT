@@ -15,9 +15,11 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party_12_21"/>
+			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party"/>
+			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party_me"/>
 			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_jb1"/>
 			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_jb"/>
-			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party"/>
 			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea2"/>
 			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_2"/>
 			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea"/>
@@ -25,6 +27,7 @@
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
+			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party"/>
 		</list>
 	</section>
 	<section name="SmartImportWizard">
@@ -36,5 +39,12 @@
 			<item value="C:\Users\82108\Documents\GitHub\Project"/>
 			<item value="C:\Users\82108\git\EZEN_PROJECT"/>
 		</list>
+	</section>
+	<section name="CleanDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="627"/>
+		<item key="DIALOG_Y_ORIGIN" value="189"/>
+		<item key="DIALOG_WIDTH" value="666"/>
+		<item key="DIALOG_HEIGHT" value="482"/>
+		<item key="TOGGLE_SELECTED" value="false"/>
 	</section>
 </section>

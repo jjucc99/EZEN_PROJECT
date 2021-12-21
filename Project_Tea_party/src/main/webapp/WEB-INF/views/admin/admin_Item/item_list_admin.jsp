@@ -22,9 +22,11 @@
 				<td><a href="itemInfo.ad?item_code=${item.item_code}">${item.item_name}</td>
 				<td><a href="itemInfo.ad?item_code=${item.item_code}">${item.item_price}</td>
 				<td><a href="itemInfo.ad?item_code=${item.item_code}">${item.item_information}</td>
-				<td><a href="itemInfo.ad?item_code=${item.item_code}">${item.cate_code}</td>
+				<td><a href="itemInfo.ad?item_code=${item.item_code}">${item.cate_name}</td>
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="addItemForm.ad">아이템 추가</a><br>
+	<a href="itemDeleteForm.ad">아이템 삭제</a><br>
 </body>
 </html>

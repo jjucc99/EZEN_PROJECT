@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.ezenac.admin.model.dao.AdminDAO;
+import kr.co.ezenac.admin.model.vo.ImagesVO;
 import kr.co.ezenac.admin.model.vo.ItemVO;
 
 @Service("AdminService")
@@ -19,7 +20,6 @@ public class AdminServiceImp implements AdminService {
 
 	@Override
 	public int insertItem(ItemVO item) {
-
 		return aDAO.insertItem(sqlSession, item);
 	}
 
@@ -35,7 +35,6 @@ public class AdminServiceImp implements AdminService {
 
 	@Override
 	public int deleteItem(String item_name) {
-
 		return aDAO.deleteItem(sqlSession, item_name);
 	}
 
@@ -43,6 +42,17 @@ public class AdminServiceImp implements AdminService {
 	public void updateItem(ItemVO ivo) {
 		aDAO.updateItem(sqlSession, ivo);
 	}
+
+	@Override
+	public int insertImage(ImagesVO imageVO) {
+		return aDAO.insertImage(sqlSession, imageVO);
+	}
+
+	@Override
+	public String getImg(int item_code) {
+		 return aDAO.getImg(sqlSession, item_code);
+	}
 	
 	
 }
+

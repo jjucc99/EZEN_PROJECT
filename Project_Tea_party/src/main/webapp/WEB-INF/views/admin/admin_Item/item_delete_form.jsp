@@ -8,8 +8,9 @@
 </head>
 <body>
 	<form action="itemDelete.ad" method="post">
-		<input type="text" name="item_name">
+		삭제할 상품 이름 기입<input type="text" name="item_name"><br>
 		<input type="submit">
 	</form>
+	<button onclick="location.href='itemList.ad'">상품 리스트로 이동</button>
 </body>
 </html>
