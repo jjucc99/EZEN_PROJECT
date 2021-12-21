@@ -1,10 +1,5 @@
 package kr.co.ezenac.members.model.vo;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class MemberVO {
 	private String mem_id;
 	private String mem_pwd;
