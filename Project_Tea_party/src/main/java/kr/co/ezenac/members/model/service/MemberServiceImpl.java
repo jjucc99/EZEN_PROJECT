@@ -17,7 +17,6 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public int insertMember(MemberVO Mem_id) {
-        System.out.println("MemberServiceImpl.insertMember" + Mem_id);
         return mDAO.insertMember(sqlSession, Mem_id);
     }
 
@@ -28,7 +27,6 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public int deleteMember(String mem_id) {
-        System.out.println(" MemberServiceImpl 여기 왔음!");
         return mDAO.deleteMember(sqlSession, mem_id);
     }
 
