@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="adminMapper">
+
+	<!-- 아이템 추가 -->
+	<insert id="insertItem">
+		INSERT INTO ITEM
+		VALUES(#{item_code},#{item_name},#{item_price},#{item_information},#{cate_code},default)
+	</insert>
+	
+	<!-- 상품 이미지 추가 -->
+	<insert id="insertImage">
+		INSERT INTO IMAGES
+		VALUES(test_item.nextval,#{img_name},#{img_save},#{img_ref},#{img_id})
+	</insert>
+	
+	<!-- 아이템 하나의 정보 -->
+	<select id="selectOneItem" resultMap="item">
+		SELECT * FROM item i
+        JOIN CATEGORYS c ON c.cate_code=i.cate_code
+		WHERE item_code=#{item_code}
+	</select>
+	<resultMap type="admin_item" id="item">
+		<result column="ITEM_CODE" property="item_code" />
+		<result column="ITEM_NAME" property="item_name" />
+		<result column="ITEM_PRICE" property="item_price" />
+		<result column="ITEM_INFORMATION" property="item_information" />
+		<result column="CATE_CODE" property="cate_code" />
+		<result column="ITEM_COUNT" property="item_count" />
+	</resultMap>
+	
+	<!-- 아이템 리스트 -->
+	<select id="selectItemList" resultMap="itemList">
+		SELECT * FROM CATEGORYS c 
+		JOIN Item i ON c.cate_code=i.cate_code
+    	WHERE c.cate_code = i.cate_code order by item_code
+	</select>
+	<resultMap type="admin_item" id="itemList">
+		<result column="ITEM_CODE" property="item_code" />
+		<result column="ITEM_NAME" property="item_name" />
+		<result column="ITEM_PRICE" property="item_price" />
+		<result column="ITEM_INFORMATION" property="item_information" />
+		<result column="ITEM_COUNT" property="item_count" />
+		<result column="CATE_CODE" property="cate_code" />
+		<result column="CATE_NAME" property="cate_name" />
+	</resultMap>
+	<!-- 아이템 삭제 -->
+	<delete id="deleteItem">
+		DELETE FROM item where item_code=#{item_code}
+	</delete>
+	<update id="updateItem">
+    	UPDATE ITEM SET ITEM_NAME = #{item_name}, ITEM_PRICE = #{item_price}, ITEM_INFORMATION = #{item_information}, CATE_CODE = #{cate_code},ITEM_COUNT = #{item_count} where ITEM_CODE = (#{item_code})
+	</update>
+	<select id="selectOneItemImage" resultType="string">
+		select img_name from images where img_ref='item' and img_id=#{item_code}
+	</select>
+</mapper>
