@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.ezenac.pay.model.dao.PayDAO;
+import kr.co.ezenac.pay.model.vo.CartListVO;
 import kr.co.ezenac.pay.model.vo.PayVO;
 
 @Service("PayService")
@@ -17,7 +18,7 @@ public class PayServiceImp implements PayService{
  @Autowired
  private PayDAO pDAO;
  
- @Override
+ /*@Override
  public int insertPay(PayVO pvo){
 	return pDAO.insertPay(sqlSession,pvo);
  }
@@ -40,5 +41,17 @@ public class PayServiceImp implements PayService{
  @Override
  public PayVO selectOne(int pay_no) {
 	 return pDAO.selectOne(sqlSession, pay_no);
+ }*/
+ 
+ ///////////////
+ 
+ @Override
+ public List<CartListVO> cartList(String mem_id){
+	 return pDAO.cartList(sqlSession, mem_id);
+ }
+ 
+ @Override
+ public String getImg(int item_code) {
+	 return pDAO.getImg(sqlSession, item_code);
  }
 }

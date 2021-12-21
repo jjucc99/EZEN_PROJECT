@@ -21,7 +21,7 @@ session  <%=checkLogin%>
 %>
     <a href="/logout">로그아웃</a>
     <a href="admin.ad">ADMIN</a>
-    <a href="hello.pay">PAY</a>
+    <a href="cart.pay">PAY</a>
     <a href="test.item">ITEM</a>
     <a href="members.me">MEMBER</a>
     <a href="board.board">BOARD</a>
