@@ -17,8 +17,6 @@
     <label for="mem_id">아이디</label>
     <input type="text" name="mem_id" id="mem_id">
     <input type="button" value="아이디 중복체크" id="check_id"><br/>
-    <span class="id_input_re_1">사용 가능한 아이디입니다.</span>
-    <span class="id_input_re_2">아이디가 이미 존재합니다.</span>
 
     <label for="mem_pwd">비밀번호</label>
     <input type="password" name="mem_pwd" id="mem_pwd"><br/>
