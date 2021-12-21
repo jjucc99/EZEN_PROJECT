@@ -9,9 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f343b54-8677-4397-b70b-c9690adc315e" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/join.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/join.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="8f343b54-8677-4397-b70b-c9690adc315e" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -205,7 +203,7 @@
       <workItem from="1640047267728" duration="7857000" />
       <workItem from="1640056889956" duration="623000" />
       <workItem from="1640057570804" duration="266000" />
-      <workItem from="1640063215624" duration="9444000" />
+      <workItem from="1640063215624" duration="9461000" />
     </task>
     <servers />
   </component>
