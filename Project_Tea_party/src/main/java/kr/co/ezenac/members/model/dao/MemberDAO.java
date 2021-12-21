@@ -8,14 +8,11 @@ import org.springframework.stereotype.Repository;
 public class MemberDAO {
 
     public int insertMember(SqlSessionTemplate sqlSession, MemberVO memberVO) {
-        System.out.println("MemberDAO.insertMember" + memberVO);
         return sqlSession.insert("memberMapper.insertMember", memberVO);
     }
 
     public MemberVO selectMember(SqlSessionTemplate sqlSession, String mem_id) {
         MemberVO memberVO = sqlSession.selectOne("memberMapper.selectOneMembers", mem_id);
-        System.out.println("MemberDAO " + mem_id);
-        System.out.println("MemberVO " +  memberVO);
         return memberVO;
     }
 
