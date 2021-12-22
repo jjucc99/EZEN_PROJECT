@@ -10,11 +10,10 @@ public interface AdminService {
 	int insertItem(ItemVO item);
 	ItemVO selectOneItem(int item_code);
 	List<ItemVO> ItemList();
-	int deleteItem(String item_name);
+	int deleteItem(int item_code);
 	void updateItem(ItemVO ivo);
 	int insertImage(ImagesVO imageVO);
 	String getImg(int item_code);
 	
 	
 }
-

@@ -26,9 +26,9 @@ public class AdminDAO {
 		return sqlSession.selectList("adminMapper.selectItemList");
 	}
 
-	public int deleteItem(SqlSessionTemplate sqlSession, String item_name) {
+	public int deleteItem(SqlSessionTemplate sqlSession, int item_code) {
 		
-		return sqlSession.delete("adminMapper.deleteItem", item_name);
+		return sqlSession.delete("adminMapper.deleteItem", item_code);
 	}
 
 	public void updateItem(SqlSessionTemplate sqlSession, ItemVO ivo) {
@@ -48,4 +48,3 @@ public class AdminDAO {
 	
 	
 }
-

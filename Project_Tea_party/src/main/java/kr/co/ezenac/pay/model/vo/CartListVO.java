@@ -1,22 +1,14 @@
 package kr.co.ezenac.pay.model.vo;
 
 public class CartListVO {
-	private char check='N';
 	private String imgPath=null;
 	private String item_name;
 	private int item_price;
 	private int cart_amount;
 	private int sum=0;
 	private int cart_item_no;
-	private int cart_no;
 	private int item_code;
 	
-	public char getCheck() {
-		return check;
-	}
-	public void setCheck(char check) {
-		this.check = check;
-	}
 	public String getImgPath() {
 		return imgPath;
 	}
@@ -47,18 +39,7 @@ public class CartListVO {
 	public void setCart_item_no(int cart_item_no) {
 		this.cart_item_no = cart_item_no;
 	}
-	public int getCart_code() {
-		return cart_no;
-	}
-	public void setCart_code(int cart_no) {
-		this.cart_no = cart_no;
-	}
-	public int getCart_no() {
-		return cart_no;
-	}
-	public void setCart_no(int cart_no) {
-		this.cart_no = cart_no;
-	}
+
 	public int getItem_code() {
 		return item_code;
 	}

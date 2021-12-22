@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.ezenac.pay.model.service.PayService;
 import kr.co.ezenac.pay.model.vo.CartListVO;
+import kr.co.ezenac.pay.model.vo.CartUpdateVO;
 
 @Controller
 public class ControllerPay {
@@ -26,9 +28,8 @@ public class ControllerPay {
 	//이미지 경로 가져오기
 	public String getimage(int item_code) {
 		String fileName=service.getImg(item_code);
-		System.out.println(item_code);
 		return uploadPath+"/items/"+fileName;
-		}
+		}// C:\images /items/ sos.jpg
 	
 	//장바구니 주문내역 보기
 	@RequestMapping(value="cart.pay", method=RequestMethod.GET)
@@ -55,5 +56,21 @@ public class ControllerPay {
 		return "cartList";
 	}
 	
+	//장바구니 수량 수정
+	@RequestMapping(value="cartUpdate.pay", method =RequestMethod.POST)
+	public String cartUpdate(@RequestParam int cart_amount ,@RequestParam int cart_item_no){
+
+		CartUpdateVO cuvo=new CartUpdateVO();
+		cuvo.setCart_amount(cart_amount);
+		cuvo.setCart_item_no(cart_item_no);
+
+		service.cartUpdate(cuvo);
+		return "redirect:/cart.pay";
+	}
 	
+	@RequestMapping(value="cartDelete.pay", method=RequestMethod.POST)
+	public String cartDelete(@RequestParam int cart_item_no) {
+		service.cartDelete(cart_item_no);
+		return "redirect:/cart.pay";
+	}
 }

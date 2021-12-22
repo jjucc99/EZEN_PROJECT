@@ -33,7 +33,7 @@
     <result column="ITEM_NAME" property="item_name" />
    	<result column="ITEM_PRICE" property="item_price" />
     <result column="ITEM_INFORMATION" property="item_information" />
-    <result column="CATE_CODE" property="cate_code" />
+    <result column="CATE_CODE" property="cate_code"/>
 </resultMap>
 
 <select id="CateInfo"  resultMap="cateitem"> <!-- parameterType="String" -->
@@ -54,4 +54,5 @@
 <select id="img" resultType="String">
 SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='item' AND IMG_ID=#{item_code}
 </select>
+
 </mapper>

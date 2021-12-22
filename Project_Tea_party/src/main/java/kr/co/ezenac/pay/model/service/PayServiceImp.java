@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.ezenac.pay.model.dao.PayDAO;
 import kr.co.ezenac.pay.model.vo.CartListVO;
+import kr.co.ezenac.pay.model.vo.CartUpdateVO;
 import kr.co.ezenac.pay.model.vo.PayVO;
 
 @Service("PayService")
@@ -53,5 +54,15 @@ public class PayServiceImp implements PayService{
  @Override
  public String getImg(int item_code) {
 	 return pDAO.getImg(sqlSession, item_code);
+ }
+ 
+ @Override
+ public void cartUpdate(CartUpdateVO cuvo) {
+	 pDAO.cartUpdate(sqlSession, cuvo);
+ }
+ 
+ @Override
+ public void cartDelete(int cart_item_no) {
+	 pDAO.cartDelete(sqlSession, cart_item_no);
  }
 }

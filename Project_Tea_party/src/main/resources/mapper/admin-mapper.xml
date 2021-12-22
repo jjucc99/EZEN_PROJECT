@@ -46,7 +46,7 @@
 	</resultMap>
 	<!-- 아이템 삭제 -->
 	<delete id="deleteItem">
-		DELETE FROM item where item_name=#{item_name}
+		DELETE FROM item where item_code=#{item_code}
 	</delete>
 	<update id="updateItem">
     	UPDATE ITEM SET ITEM_NAME = #{item_name}, ITEM_PRICE = #{item_price}, ITEM_INFORMATION = #{item_information}, CATE_CODE = #{cate_code},ITEM_COUNT = #{item_count} where ITEM_CODE = (#{item_code})

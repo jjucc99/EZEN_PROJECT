@@ -38,5 +38,4 @@ public class ImagesVO {
 		this.img_id = img_id;
 	}
 	
-	
 }

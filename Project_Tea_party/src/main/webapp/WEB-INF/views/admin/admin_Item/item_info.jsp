@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 </head>
 <body>
 	<form action="itemUpdate.ad" method="post">
-		<img src="<spring:url value='/image/${img.imgPath}'/>" alt="없음">
+		<img src="<spring:url value='/image/${item.img_path}'/>" alt="없음"><br>
 		상품코드 ${item.item_code}<br>
 		상품명<input type="text" name="item_name" value="${item.item_name}"><br>
 		상품가격<input type="text" name="item_price" value="${item.item_price}"><br>
@@ -20,6 +21,7 @@
 		<input type="submit" value="수정">
 		<input type="button" value="상품 리스트로 이동" onclick="location.href='itemList.ad'">
 	</form>
+	<button onclick="location.href='itemDelete.ad?item_code=${item.item_code}'">DELETE</button>
 카테고리 번호
 1=홍차
 2=허브차

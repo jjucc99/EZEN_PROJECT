@@ -19,18 +19,29 @@ import kr.co.ezenac.admin.model.service.AdminService;
 import kr.co.ezenac.admin.model.vo.ImagesVO;
 import kr.co.ezenac.admin.model.vo.ItemVO;
 
-
 @Controller
 public class AdminController {
 	@Autowired
 	private AdminService adService;
-	
-	@Resource(name="uploadPath")
+
+	@Resource(name = "uploadPath")
 	String uploadPath;
 
-	// 어드민 홈
+	// 관리자 전체 홈
 	@RequestMapping(value = "admin.ad", method = RequestMethod.GET)
-	public String text() {
+	public String home() {
+		return "admin_home";
+	}
+	// ------------------------------------------상품-----------------------
+	// 이미지 경로 가져오기
+	public String getItemImage(int item_code) {
+		String fileName = adService.getImg(item_code);
+		return uploadPath + "/items/" + fileName;
+	}
+
+	// 관리자 상품 홈
+	@RequestMapping(value = "adminItem.ad", method = RequestMethod.GET)
+	public String itemHome() {
 		return "admin_Item/admin_item";
 	}
 
@@ -40,48 +51,36 @@ public class AdminController {
 		return "admin_Item/item_add_admin_form";
 	}
 
-	// 아이템 삭제
-	@RequestMapping(value = "itemDeleteForm.ad", method = RequestMethod.GET)
-	public String itemdeleteform() {
-		return "admin_Item/item_delete_form";
-	}
-
-	// 아이템 정보
-	@RequestMapping(value = "itemInfoForm.ad", method = RequestMethod.GET)
-	public String iteminfoform() {
-		return "admin_Item/item_info_form";
-	}
-
 	// 아이템 추가 로직
 	@RequestMapping(value = "addItem.ad", method = RequestMethod.POST)
 	public String insertItem(@ModelAttribute ItemVO ivo, MultipartFile image) {
-		ImagesVO imageVO=new ImagesVO();
-		
+		ImagesVO imageVO = new ImagesVO();
+
 		String image_name = image.getOriginalFilename();
-		
-		File target = new File(uploadPath+"/items", image_name);
+
+		File target = new File(uploadPath + "/items", image_name);
 
 		// 경로 생성
-		if (!new File(uploadPath+"/items").exists()) {
-			new File(uploadPath+"/items").mkdirs();
+		if (!new File(uploadPath + "/items").exists()) {
+			new File(uploadPath + "/items").mkdirs();
 		}
-		//파일 복사
-        try {
-            FileCopyUtils.copy(image.getBytes(), target);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        
-        imageVO.setOrd_item_no(ivo.getItem_code()+1);// 시퀀스 대신 임시로 넣어주는 코드
-        imageVO.setImg_name(image_name);
-        imageVO.setImg_save(uploadPath+"/items");
-        imageVO.setImg_ref("item");
-        imageVO.setImg_id(ivo.getItem_code());
-        
+		// 파일 복사
+		try {
+			FileCopyUtils.copy(image.getBytes(), target);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		imageVO.setOrd_item_no(1);
+		imageVO.setImg_name(image_name);
+		imageVO.setImg_save(uploadPath + "/items");
+		imageVO.setImg_ref("item");
+		imageVO.setImg_id(ivo.getItem_code());
+
 		adService.insertItem(ivo);
-		int result=adService.insertImage(imageVO);
-		System.out.println("데이터 추가 성공 : "+result);
-		return "admin_Item/admin_item";
+		int result = adService.insertImage(imageVO);
+		System.out.println("데이터 추가 성공 : " + result);
+		return "redirect:itemList.ad";
 	}
 
 	// 아이템 정보 로직
@@ -89,7 +88,11 @@ public class AdminController {
 	public ModelAndView selectOne(int item_code) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin_Item/item_info");
-		mv.addObject("item", adService.selectOneItem(item_code));
+		ItemVO ivo=adService.selectOneItem(item_code);
+		String img_path=getItemImage(item_code);
+		ivo.setImg_path(img_path);
+		mv.addObject("item",ivo);
+		
 		return mv;
 	}
 
@@ -104,11 +107,11 @@ public class AdminController {
 	}
 
 	// 아이템 삭제 로직
-	@RequestMapping(value = "itemDelete.ad", method = RequestMethod.POST)
-	public String deleteItem(String item_name) {
-		int result = adService.deleteItem(item_name);
+	@RequestMapping(value = "itemDelete.ad", method = RequestMethod.GET)
+	public String deleteItem(int item_code) {
+		int result = adService.deleteItem(item_code);
 		System.out.println("삭제 결과" + result);
-		return "admin_Item/delete_result";
+		return "redirect:itemList.ad";
 	}
 
 	// 아이템 업데이트 로직
@@ -118,7 +121,8 @@ public class AdminController {
 		System.out.println(ivo.getItem_name());
 		adService.updateItem(ivo);
 
-		return "admin_Item/admin_item";
+		return "redirect:itemList.ad";
 	}
+	// --------------------------------------------------상품끝-----------------------------------------------
 
 }

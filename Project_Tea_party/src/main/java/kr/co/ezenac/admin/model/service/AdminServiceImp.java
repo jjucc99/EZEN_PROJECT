@@ -34,8 +34,8 @@ public class AdminServiceImp implements AdminService {
 	}
 
 	@Override
-	public int deleteItem(String item_name) {
-		return aDAO.deleteItem(sqlSession, item_name);
+	public int deleteItem(int item_code) {
+		return aDAO.deleteItem(sqlSession, item_code);
 	}
 
 	@Override
@@ -55,4 +55,3 @@ public class AdminServiceImp implements AdminService {
 	
 	
 }
-
