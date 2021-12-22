@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="adminMapper">
+
+	<!-- 아이템 추가 -->
+	<insert id="insertItem">
+		INSERT INTO ITEM
+		VALUES(#{item_code},#{item_name},#{item_price},#{item_information},#{cate_code})
+	</insert>
+	
+	<!-- 상품 이미지 추가 -->
+	<insert id="insertImage">
+		INSERT INTO IMAGES
+		VALUES(#{ord_item_no},#{img_name},#{img_save},#{img_ref},#{img_id})
+	</insert>
+	
+	<!-- 상품 입출고에 상품 추가 -->
+	<insert id="insertItem_mgm">
+		INSERT INTO ITEM_MGM
+		VALUES(#{prod_code},sysdate,#{prod_count},#{item_code})
+	</insert>
+	
+	<!-- 아이템 하나의 정보 -->
+	<select id="selectOneItem" resultMap="item">
+		SELECT * FROM item where
+		item_code=#{item_code}
+	</select>
+	<resultMap type="admin_item" id="item">
+		<result column="ITEM_CODE" property="item_code" />
+		<result column="ITEM_NAME" property="item_name" />
+		<result column="ITEM_PRICE" property="item_price" />
+		<result column="ITEM_INFORMATION" property="item_information" />
+		<result column="CATE_CODE" property="cate_code" />
+	</resultMap>
+	
+	<!-- 아이템 리스트 -->
+	<select id="selectItemList" resultMap="itemList">
+		SELECT * FROM item order by item_code
+	</select>
+	<resultMap type="admin_item" id="itemList">
+		<result column="ITEM_CODE" property="item_code" />
+		<result column="ITEM_NAME" property="item_name" />
+		<result column="ITEM_PRICE" property="item_price" />
+		<result column="ITEM_INFORMATION" property="item_information" />
+		<result column="CATE_CODE" property="cate_code" />
+	</resultMap>
+	<!-- 아이템 삭제 -->
+	<delete id="deleteItem">
+		DELETE FROM item where item_name=#{item_name}
+	</delete>
+	<update id="updateItem">
+    UPDATE ITEM SET ITEM_NAME = #{item_name}, ITEM_PRICE = #{item_price}, ITEM_INFORMATION = #{item_information}, CATE_CODE = #{cate_code} where ITEM_CODE = (#{item_code})
+</update>
+	
+	
+</mapper>

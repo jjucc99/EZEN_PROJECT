@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<a href="adminItem.ad">회원 관리</a><br>
+<a href="itemList.ad">상품 관리</a><br>
+<a href="adminItem.ad">주문내역 관리</a><br>
+<a href="adminItem.ad">리뷰 관리</a><br>
+<%
+		String checkLogin = (String) session.getAttribute("checkLogin");
+		%>
+        session   <%=checkLogin%>
+        <%
+		if (checkLogin == "success"){
+
+	    %>
+            <a href="/insert.me">INSERT.ME</a>
+            <a href="/select.me">SELECT.ME</a>
+            <a href="/update.me">UPDATE.ME</a>
+            <a href="/delete.me">DELETE.ME</a>
+            <a href="/login.me">LOGIN.ME</a>
+        <%
+            }else{
+        %>
+            <a href="/">로그인을 하세요! </a>
+        <%
+            }
+        %>
+</body>
+</html>
