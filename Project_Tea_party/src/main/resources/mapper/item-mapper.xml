@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="itemMapper">
+<insert id="insertItem">
+	INSERT INTO ITEM VALUES(#{item_code},#{item_name},#{item_price},#{item_information},#{cate_code},#{item_count})
+</insert>
+
+<delete id="deleteItem">
+	DELETE FROM ITEM where ITEM_CODE = (#{item_code})
+</delete>
+
+<update id="updateItem">
+	UPDATE ITEM SET ITEM_NAME = #{item_name}, ITEM_PRICE = #{item_price}, ITEM_INFORMATION = #{item_information}, CATE_CODE = #{cate_code}, ITEM_COUNT = #{item_count} where ITEM_CODE = (#{item_code})
+</update>
+
+
+<select id="selectList" resultMap="itemList">
+	SELECT * FROM item
+</select>
+<resultMap type="Item" id="itemList">
+	<result column="ITEM_CODE" property="item_code" />
+    <result column="ITEM_NAME" property="item_name" />
+   	<result column="ITEM_PRICE" property="item_price" />
+    <result column="ITEM_INFORMATION" property="item_information" />
+    <result column="CATE_CODE" property="cate_code" />
+</resultMap>
+
+<select id="infoItem" resultMap="infoItems">
+	SELECT * FROM item where ITEM_CODE = #{item_code}
+</select>
+<resultMap type="Item" id="infoItems">
+	<result column="ITEM_CODE" property="item_code" />
+    <result column="ITEM_NAME" property="item_name" />
+   	<result column="ITEM_PRICE" property="item_price" />
+    <result column="ITEM_INFORMATION" property="item_information" />
+    <result column="CATE_CODE" property="cate_code"/>
+</resultMap>
+
+<select id="CateInfo"  resultMap="cateitem"> <!-- parameterType="String" -->
+	SELECT
+	ITEM_CODE,ITEM_NAME,ITEM_INFORMATION,ITEM_PRICE
+	FROM CATEGORYS c JOIN Item i
+	ON c.cate_code=i.cate_code
+	WHERE c.cate_code = #{categoryId} order by item_name
+</select>
+
+<resultMap type="CateList" id="cateitem">
+	<result column="ITEM_CODE" property="item_code"/>
+    <result column="ITEM_NAME" property="item_name" />
+   	<result column="ITEM_PRICE" property="item_price" />
+    <result column="ITEM_INFORMATION" property="item_information" />
+</resultMap>
+
+<select id="img" resultType="String">
+SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='item' AND IMG_ID=#{item_code}
+</select>
+
+</mapper>
