@@ -7,6 +7,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_Tea_party_12_22"/>
 			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_Tea_party_12_21"/>
 			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_Tea_party"/>
 			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_Tea_fullparty"/>
@@ -16,8 +17,8 @@
 			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_T"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
-			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_Tea_fullparty"/>
 			<item value=""/>
+			<item value="D:\ProjectWorkspace\EZEN_PROJECT\Project_Tea_fullparty"/>
 		</list>
 	</section>
 	<section name="ChooseWorkspaceDialogSettings">
