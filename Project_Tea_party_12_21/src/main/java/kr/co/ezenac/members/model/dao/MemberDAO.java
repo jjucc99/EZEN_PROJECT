@@ -8,14 +8,22 @@ import org.springframework.stereotype.Repository;
 public class MemberDAO {
 
     public int insertMember(SqlSessionTemplate sqlSession, MemberVO memberVO) {
-        System.out.println("MemberDAO.insertMember" + memberVO);
-        return sqlSession.insert("memberMapper.insertMember", memberVO);
+        String mem_id = memberVO.getMem_id();
+        int check = 0;
+
+
+        int insertMember = sqlSession.insert("memberMapper.insertMember", memberVO);
+        int insertMemberCart = sqlSession.insert("memberMapper.insertMemberCart", mem_id);
+        if(insertMemberCart + insertMember == 2) {
+            check = 1;
+        }else {
+            check = 0;
+        }
+        return check;
     }
 
     public MemberVO selectMember(SqlSessionTemplate sqlSession, String mem_id) {
         MemberVO memberVO = sqlSession.selectOne("memberMapper.selectOneMembers", mem_id);
-        System.out.println("MemberDAO " + mem_id);
-        System.out.println("MemberVO " +  memberVO);
         return memberVO;
     }
 

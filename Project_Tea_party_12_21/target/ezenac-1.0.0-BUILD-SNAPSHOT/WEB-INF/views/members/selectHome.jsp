@@ -7,6 +7,7 @@
     <title>Insert title here</title>
 </head>
 <body>
+<a href="/">홈</a>
     ${member.mem_id}
     ${member.mem_pwd}
     ${member.mem_name}

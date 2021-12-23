@@ -11,6 +11,12 @@
                 #{mem_email}, #{mem_check}, #{mem_delete}, #{mem_admin})
     </insert>
 
+    <insert id="insertMemberCart">
+        INSERT INTO CART
+        VALUES (test_seq.nextval, #{mem_id})
+    </insert>
+
+
     <!-- type: mybatis typeAlias의  alias    -->
     <!-- column:DB칼럼명   -->
     <!-- property:VO변수명   -->

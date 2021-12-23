@@ -1,4 +1,4 @@
-<%--
+<%@ page import="oracle.sql.CHAR" %><%--
   Created by IntelliJ IDEA.
   User: jjucc
   Date: 2021-12-17
@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Title</title>
@@ -14,14 +14,25 @@
 <body>
 <%
     String checkLogin = (String) session.getAttribute("checkLogin");
+    Character checkAdmin = (Character) session.getAttribute("checkAdmin");
+    Character checkMember = (Character) session.getAttribute("checkMember");
 %>
-session  <%=checkLogin%>
+<div>checkLogin= <%=checkLogin%> </div>
+<div>checkAdmin= <%=checkAdmin%></div>
+<div>checkMember= <%=checkMember%> </div>
+
 <%
-    if (checkLogin == "success") {
+    if (checkLogin == "success" && checkMember == 'N') {
 
 %>
 <a href="/logout">로그아웃</a>
-<a href="admin.ad">ADMIN</a>
+<%
+    if (checkAdmin != 'N') {
+%>
+    <a href="admin.ad">ADMIN</a>
+<%
+    }
+%>
 <a href="cart.pay">PAY</a>
 <a href="test.item">ITEM</a>
 <a href="members.me">MEMBER</a>

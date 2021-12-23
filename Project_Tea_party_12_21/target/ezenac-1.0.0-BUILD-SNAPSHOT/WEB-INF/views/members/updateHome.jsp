@@ -8,6 +8,7 @@
     <title>Insert title here</title>
 </head>
 <body>
+<a href="/">홈</a>
 <form action="/update.me" method="post">
     mem_id : <input type="text" name="mem_id" value="${member.mem_id}"><br/>
     mem_name : <input type="text" name="mem_name" value="${member.mem_name}"><br/>

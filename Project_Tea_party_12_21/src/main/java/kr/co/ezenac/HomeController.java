@@ -12,6 +12,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -58,12 +60,14 @@ public class HomeController {
             String mem_id = member.getMem_id();
             String mem_pwd = member.getMem_pwd();
             char mem_admin = member.getMem_admin();
+            char mem_delete = member.getMem_delete();
 
             // 로그인이 성공했을 때.
             if (mem_pwd.equals(pw) && mem_id.equals(id)) {
                 session.setAttribute("checkLogin", "success");
                 session.setAttribute("mem_id", mem_id);
                 session.setAttribute("checkAdmin", mem_admin);
+                session.setAttribute("checkMember", mem_delete);
 
                 //유저가 아이디를 저장하기를 원했을 때.
                 Cookie rememberCookie = new Cookie("REMEMBER", loginVO.getId());
@@ -104,31 +108,37 @@ public class HomeController {
     public String join() {
         return "join";
     }
+
+
     /*
         1. 아이디 중복 체크 => 나중에 자바스크립트로 만들기!
         2. 비밀번호 확인 => 자바스크립트로 만들기!
         3. 주소 API를 통한 주소 찾기.
      */
+    // @PostMapping 는 ==  @ResponseBody 와 같은 역할을 한다.
+    /*
+        두개를 동시에 쓰는 이유는 페이지 이동을 안하고 필요한 데이터만 받아야 하는 경우인데요.
+        이런 경우에는 컨트롤러에 @ResponseBody를 붙여 ajax를 이용해 jsp페이지와 model데이터가
+        아닌 필요한 데이터만을 받아오면 됩니다.
+     */
+    // RequestBody => ajax 값 전체
+    // 받는 것에 따라
+    @PostMapping("/checkId")
+    @ResponseBody
+    public String checkId(@RequestBody String id) {
+        MemberVO searchMember = memberService.selectMember(id);
 
-//    @PostMapping("/checkId")
-//    @ResponseBody
-//    public String check_Id(@RequestParam("inputId") String inputId) {
-//        MemberVO member = memberService.selectMember(inputId);
-//        String check = "";
-//
-//        if (!member.getMem_id().equals(null)){
-//            check = member.getMem_id();
-//        }else{
-//            check = "fail";
-//        }
-//
-//        return check;
-//    }
+        String check = "";
+        if (searchMember != null){
+            check = "N";
+        }
 
+        System.out.println(check);
+        return check;
+    }
 
     @PostMapping("/join")
     public String joinForm(MemberVO memberVO) throws Exception {
-        memberVO.setMem_check('N');
         memberVO.setMem_delete('N');
         memberVO.setMem_admin('N');
 

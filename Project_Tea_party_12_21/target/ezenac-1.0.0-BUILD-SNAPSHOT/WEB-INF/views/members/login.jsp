@@ -11,6 +11,7 @@
     <title>LOGIN</title>
 </head>
 <body>
+<a href="/">홈</a>
 <form action="login.me" method="post">
     <label for="id">ID</label>
     <input type="text" name="id" id="id">

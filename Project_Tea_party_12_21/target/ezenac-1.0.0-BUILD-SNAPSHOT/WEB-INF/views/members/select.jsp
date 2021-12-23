@@ -8,6 +8,7 @@
     <title>Insert title here</title>
 </head>
 <body>
+<a href="/">홈</a>
 <form action="/select.me" method="post">
     mem_id : <input type="text" name="mem_id"><br/>
     <input type="submit" value="전송">

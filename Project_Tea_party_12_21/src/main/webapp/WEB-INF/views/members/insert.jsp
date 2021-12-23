@@ -8,6 +8,7 @@
     <title>Insert title here</title>
 </head>
 <body>
+<a href="/">홈</a>
 <form action="/insert.me" method="post">
     mem_id : <input type="text" name="mem_id"><br/>
     mem_pwd : <input type="password" name="mem_pwd"><br/>

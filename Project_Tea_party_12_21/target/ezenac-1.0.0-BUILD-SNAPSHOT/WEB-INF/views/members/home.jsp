@@ -6,6 +6,7 @@
     <title>Home</title>
 </head>
 <body>
+<a href="/">홈</a>
 <h1>
     Hello world!
 </h1>
@@ -24,7 +25,6 @@
             <a href="/select.me">SELECT.ME</a>
             <a href="/update.me">UPDATE.ME</a>
             <a href="/delete.me">DELETE.ME</a>
-            <a href="/login.me">LOGIN.ME</a>
         <%
             }else{
         %>
