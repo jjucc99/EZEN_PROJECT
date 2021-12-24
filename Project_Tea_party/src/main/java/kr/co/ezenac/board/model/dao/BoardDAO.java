@@ -2,10 +2,11 @@ package kr.co.ezenac.board.model.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-
 import kr.co.ezenac.board.model.vo.BoardVO;
+import kr.co.ezenac.board.model.vo.PagingVO;
 
 @Repository("bDAO")
 public class BoardDAO {
@@ -49,21 +50,54 @@ public class BoardDAO {
 			String result=str.substring(0, str.lastIndexOf(" "));
 			board.setBoard_date(result);
 		}
-		
 		return list;
+	
+
+	}
+
+	public List<BoardVO> selectBoard(SqlSessionTemplate sqlSession, PagingVO vo) {
+		return sqlSession.selectList("boardMapper.selectBoard", vo);
+ 
+	}
+
+	public int countBoard(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.countBoard");
 	}
 	
-	
+	//게시글 보기
+	public BoardVO viewDetail(SqlSessionTemplate sqlSession, int board_no) {
+		return sqlSession.selectOne("boardMapper.viewDetail", board_no);
 	}
-
-
-
-
-
-
-
+	
+	// 공지사항 조회
+	public List<BoardVO> selectnoticeBoard(SqlSessionTemplate sqlSession, PagingVO vo) {
+		return sqlSession.selectList("boardMapper.selectnoticeBoard",vo);
+		
+	}
+	
+	//공지 사항 count
+	public int countnoticeBoard(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.countnoticeBoard");
+	}
+	
+	// Q&A 
+	public List<BoardVO> selectqnaBoard(SqlSessionTemplate sqlSession, PagingVO vo) {
+		return sqlSession.selectList("boardMapper.selectqnaBoard", vo);
+	}
+	
+	// Q&A count
+	public int countqnaBoard(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.countqnaBoard");
+				
+	}
+		
+	
+}
 	
 	
+	
+
+
 
 
 

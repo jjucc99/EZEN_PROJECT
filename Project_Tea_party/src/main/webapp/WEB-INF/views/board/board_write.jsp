@@ -37,7 +37,7 @@
 <input type="submit" value="확인">
 <button type="reset">취소</button>
 </div>
-<input type="button" value="목록" onclick="location.href='list.board'">
+<input type="button" value="목록" onclick="location.href='page.board'">
 </form>
 
 </body>

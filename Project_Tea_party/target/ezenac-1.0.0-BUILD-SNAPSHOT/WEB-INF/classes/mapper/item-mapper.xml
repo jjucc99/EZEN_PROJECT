@@ -49,10 +49,71 @@
     <result column="ITEM_NAME" property="item_name" />
    	<result column="ITEM_PRICE" property="item_price" />
     <result column="ITEM_INFORMATION" property="item_information" />
-</resultMap>
 
+</resultMap>
+<!-- 이미지 -->
 <select id="img" resultType="String">
 SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='item' AND IMG_ID=#{item_code}
 </select>
 
+<!-- review이미지 -->
+<select id="reimg" resultType="String">
+SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='item' AND IMG_ID=#{r_board_no}
+</select>
+
+<!-- 총 게시글 갯수 출력 -->
+	<select id="countItem" resultType="int">
+		SELECT COUNT(*) FROM ITEM
+	</select>
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectItem" resultMap="selectTest">
+		SELECT * FROM CATEGORYS c 
+		JOIN Item i ON c.cate_code=i.cate_code
+    	WHERE c.cate_code = i.cate_code order by  item_code desc
+						
+	</select>
+
+	<resultMap type="CateList" id="selectTest">
+		<result column="ITEM_CODE" property="item_code" />
+		<result column="ITEM_NAME" property="item_name" />
+		<result column="ITEM_PRICE" property="item_price" />
+		<result column="ITEM_INFORMATION" property="item_information" />
+		<result column="ITEM_COUNT" property="item_count" />
+		<result column="CATE_CODE" property="cate_code" />
+		<result column="CATE_NAME" property="cate_name" />
+	</resultMap>
+	
+	<!-- 리뷰 -->
+	<!-- 총 게시글 갯수 출력 -->
+	 <select id="countRe" resultType="int">
+		SELECT COUNT(*) FROM REVIEWBOARD
+	</select> 
+	<!-- 게시글 조회 -->
+	<select id="selectRe" resultMap="selectRe">
+		SELECT * 
+			FROM (
+				SELECT ROWNUM RN, A.* 
+					FROM (
+							SELECT i.ITEM_CODE,R_BOARD_NO,R_BOARD_SUB,R_BOARD_CONTENT,R_BOARD_DATE,MEM_ID FROM 
+							REVIEWBOARD r
+							JOIN Item i ON r.item_code=i.item_code
+    						WHERE r.item_code = i.item_code 
+    						order by  item_code desc
+						) A
+				)
+		WHERE RN BETWEEN 1 AND 5
+	</select>
+	<resultMap type="rList" id="selectRe">
+		<result column="R_BOARD_NO" property="r_board_no" />
+		<result column="R_BOARD_SUB" property="r_board_sub" />
+		<result column="R_BOARD_CONTENT" property="r_board_content" />
+		<result column="R_BOARD_DATE" property="r_board_date" />
+		<result column="MEM_ID" property="mem_id" />
+		<result column="ITEM_CODE" property="item_code" />
+	</resultMap>
+	
+	<select id="selectCartNo" resultType="int">
+	SELECT CART_NO FROM CART WHERE MEM_ID=#{mem_id}
+	</select>
+	
 </mapper>

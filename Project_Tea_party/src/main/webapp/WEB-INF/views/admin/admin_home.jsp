@@ -23,7 +23,7 @@
 	<br>
 	<a href="orderList.ad">주문내역 관리</a>
 	<br>
-	<a href="adminItem.ad">리뷰 관리</a>
+	<a href="boardList.ad">게시판 관리</a>
 	<br>
 	<%
             }else{
@@ -32,5 +32,7 @@
 	<%
             }
         %>
+        
+    <a href="/">홈</a>
 </body>
 </html>

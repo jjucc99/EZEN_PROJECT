@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import kr.co.ezenac.admin.model.dao.AdminDAO;
+import kr.co.ezenac.admin.model.vo.BoardVO;
 import kr.co.ezenac.admin.model.vo.ImagesVO;
 import kr.co.ezenac.admin.model.vo.ItemVO;
 import kr.co.ezenac.admin.model.vo.MemberVO;
+import kr.co.ezenac.admin.model.vo.OrderVO;
 import kr.co.ezenac.admin.model.vo.Order_listVO;
 import kr.co.ezenac.admin.model.vo.PagingVO;
 
@@ -94,7 +96,7 @@ public class AdminServiceImp implements AdminService {
 	}
 
 	@Override
-	public List<Order_listVO> selectOrder(PagingVO vo) {
+	public List<OrderVO> selectOrder(PagingVO vo) {
 		return aDAO.selectOrder(sqlSession,vo);
 	}
 
@@ -106,6 +108,36 @@ public class AdminServiceImp implements AdminService {
 	@Override
 	public int updateOrderStatus(int ord_no) {
 		return aDAO.updateOrderStatus(sqlSession,ord_no);
+	}
+
+	@Override
+	public List<String> selectName(int ord_no) {
+		return aDAO.selectName(sqlSession,ord_no);
+	}
+
+	@Override
+	public Order_listVO selectOneOrder(int ord_no) {
+		return aDAO.selectOneOrder(sqlSession,ord_no);
+	}
+
+	@Override
+	public List<OrderVO> selectOrderDetail(int ord_no) {
+		return aDAO.selectOrderDetail(sqlSession,ord_no);
+	}
+
+	@Override
+	public int countNotice() {
+		return aDAO.countNotice(sqlSession);
+	}
+
+	@Override
+	public List<BoardVO> selectNotice(PagingVO vo) {
+		return aDAO.selectNotice(sqlSession, vo);
+	}
+
+	@Override
+	public BoardVO selectOneBoard(int board_no) {
+		return aDAO.selectOneBoard(sqlSession, board_no);
 	}
 	
 	

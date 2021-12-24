@@ -19,10 +19,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import kr.co.ezenac.admin.model.service.AdminService;
+import kr.co.ezenac.admin.model.vo.BoardVO;
 import kr.co.ezenac.admin.model.vo.ImagesVO;
 import kr.co.ezenac.admin.model.vo.ItemVO;
 import kr.co.ezenac.admin.model.vo.MemberVO;
+import kr.co.ezenac.admin.model.vo.OrderVO;
+import kr.co.ezenac.admin.model.vo.Order_listVO;
 import kr.co.ezenac.admin.model.vo.PagingVO;
+import kr.co.ezenac.pay.model.vo.CartListVO;
 
 @Controller
 public class AdminController {
@@ -38,7 +42,7 @@ public class AdminController {
 		return "admin_home";
 	}
 
-	// ------------------------------------------상품-------------------------------------
+	// -----------------------상품----------------------------
 	// 이미지 경로 가져오기
 	public String getItemImage(int item_code) {
 		String fileName = adService.getImg(item_code);
@@ -132,8 +136,7 @@ public class AdminController {
 		return "redirect:itemList.ad";
 	}
 
-	// ---------------------------------------관리자 회원
-	// 관리-------------------------------------
+	// -------관리자 회원 관리----------------
 	// 회원 리스트 페이징
 	@GetMapping("memberList.ad")
 	public String memberList(PagingVO vo, Model model,
@@ -191,7 +194,7 @@ public class AdminController {
 		}
 	}
 
-	// ----------------------------------주문내역---------------------------------------
+	// -------------주문내역----------------------
 	@GetMapping("orderList.ad")
 	public String orderList(PagingVO vo, Model model, @RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
@@ -206,7 +209,21 @@ public class AdminController {
 		}
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		model.addAttribute("paging", vo);
-		model.addAttribute("viewAll", adService.selectOrder(vo));//
+		List<OrderVO> list1 = adService.selectOrder(vo);
+
+		for (OrderVO ordvo : list1) {
+			int ord_no = ordvo.getOrd_no();
+			List<String> list2 = adService.selectName(ord_no);
+			int order_item_count = list2.size() - 1;
+			String item_name = list2.get(0);
+//			System.out.println("order_item_count"+order_item_count);
+//			System.out.println("item_name"+item_name);
+			ordvo.setItem_name(item_name);
+			ordvo.setOrder_item_count(order_item_count);
+		}
+
+		model.addAttribute("viewAll", list1);//
+		System.out.println(vo.getTotal());
 		return "admin_order/order_list";
 	}
 
@@ -223,4 +240,51 @@ public class AdminController {
 		adService.updateOrderStatus(ord_no);
 		return "redirect:orderList.ad";
 	}
+
+	// 주문 디테일
+	@RequestMapping(value = "orderDetail.ad", method = RequestMethod.GET)
+	public String orderDetail(int ord_no, Model m) {
+		Order_listVO olvo = adService.selectOneOrder(ord_no);
+		List<OrderVO> ovo = adService.selectOrderDetail(ord_no);
+		int total = 0;
+		for (OrderVO list : ovo) {
+			total+=list.getItem_price()*list.getOrder_item_count();
+		}
+		m.addAttribute("orderList", olvo);
+		m.addAttribute("orderDetail", ovo);
+		m.addAttribute("total", total);
+		
+		return "admin_order/order_detail";
+	}
+	//----------------------게시판 관리----------------
+	// 운영자 게시판 관리
+	@GetMapping("boardList.ad")
+	public String BoardList(PagingVO vo, Model model, @RequestParam(value = "nowPage", required = false) String nowPage,
+			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
+		int total = adService.countNotice();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "5";
+		}
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", adService.selectNotice(vo));
+		return "admin_board/notice_list";
+	}
+	
+	// 게시판 정보 로직
+		@RequestMapping(value = "boardInfo.ad", method = RequestMethod.GET)
+		public ModelAndView selectOneBoard(int board_no) {
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("admin_board/board_info");
+			BoardVO bvo = adService.selectOneBoard(board_no);
+			System.out.println(bvo.getBoard_content());
+			mv.addObject("board", bvo);
+
+			return mv;
+		}
 }

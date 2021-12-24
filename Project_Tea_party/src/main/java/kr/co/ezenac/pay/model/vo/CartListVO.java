@@ -1,6 +1,5 @@
 package kr.co.ezenac.pay.model.vo;
 
-import java.util.List;
 
 public class CartListVO {
 	private String imgPath;
@@ -10,8 +9,15 @@ public class CartListVO {
 	private int cart_item_no;
 	private int item_code;
 	private int item_count;
+	private int sum;
 	
 	
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
 	public String getImgPath() {
 		return imgPath;
 	}

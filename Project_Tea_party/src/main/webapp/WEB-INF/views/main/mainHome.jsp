@@ -33,6 +33,7 @@
 <%
     }
 %>
+<a href="/checkMember">회원 정보 수정</a>
 <a href="cart.pay">PAY</a>
 <a href="test.item">ITEM</a>
 <a href="members.me">MEMBER</a>

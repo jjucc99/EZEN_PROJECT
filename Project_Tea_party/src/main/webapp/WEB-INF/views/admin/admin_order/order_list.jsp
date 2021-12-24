@@ -59,7 +59,12 @@
 		<c:forEach items="${viewAll}" var="order">
 			<tr>
 				<td>${order.ord_no}</td>
-				<td>주문 내역 외 몇개</td>
+				<td><a href="orderDetail.ad?ord_no=${order.ord_no}">${order.item_name}</a>
+				<c:choose>
+				<c:when test="${order.order_item_count!=0}">
+				외 ${order.order_item_count}개</c:when>
+				<c:otherwise></c:otherwise>
+				</c:choose></td>
 				<td>${order.mem_id}</td>
 				<td>${order.ord_date}</td>
 				<td>${order.delivery_status}</td>

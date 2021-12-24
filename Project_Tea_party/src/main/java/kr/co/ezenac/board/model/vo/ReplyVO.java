@@ -44,6 +44,13 @@ public class ReplyVO {
 	}
 	public void setBoard_no(int board_no) {
 		this.board_no = board_no;
+		
+		
+	}
+	@Override
+	public String toString() {
+		return "ReplyVO [reply_no=" + reply_no + ", reply_sub=" + reply_sub + ", reply_content=" + reply_content
+				+ ", reply_date=" + reply_date + ", reply_board=" + reply_board + ", board_no=" + board_no + "]";
 	}
 	
 }

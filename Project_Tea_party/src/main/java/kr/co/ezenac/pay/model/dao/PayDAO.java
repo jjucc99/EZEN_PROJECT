@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.co.ezenac.members.model.vo.MemberVO;
 import kr.co.ezenac.pay.model.vo.CartListVO;
 import kr.co.ezenac.pay.model.vo.CartUpdateVO;
 import kr.co.ezenac.pay.model.vo.PayVO;
@@ -69,5 +70,16 @@ public List<CartListVO> orderList(SqlSessionTemplate sqlSession, List<Integer> v
 	}
 	
 	return list;
+}
+
+public MemberVO getMember(SqlSessionTemplate sqlSession, String mem_id) {
+	MemberVO mvo=sqlSession.selectOne("payMapper.getMember",mem_id);
+	return mvo;
+}
+
+public int insertOrderList(SqlSessionTemplate sqlSession, PayVO pvo) {
+	sqlSession.insert("payMapper.insertOrderList", pvo);
+	String mem_id=pvo.getMem_id();
+	return sqlSession.selectOne("payMapper.getOrdNo",mem_id);
 }
 }

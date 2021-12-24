@@ -12,8 +12,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -30,7 +28,7 @@ public class HomeController {
             model.addAttribute("rememberedId", rememberedId);
         }
 
-        return "mainHome";
+        return "main/mainHome";
     }
 
     @GetMapping("/logout")
@@ -106,7 +104,7 @@ public class HomeController {
 
     @GetMapping("/join")
     public String join() {
-        return "join";
+        return "main/join";
     }
 
 
@@ -144,6 +142,30 @@ public class HomeController {
 
         memberService.insertMember(memberVO);
 
+        return "redirect:/";
+    }
+
+    @GetMapping("/checkMember")
+    public String checkMemberId(){
+        return "main/checkMember";
+    }
+
+    @PostMapping("/checkMember")
+    public String checkMember(@RequestParam("mem_id") String mem_id, Model model){
+        System.out.println("checkMember" + mem_id);
+        MemberVO member = memberService.selectMember(mem_id);
+        if (member == null){
+            return "main/backToTheHome";
+        }else {
+            model.addAttribute("member", member);
+            return "main/checkUpdate";
+        }
+    }
+
+    @PostMapping("/update")
+    public String updateMember(MemberVO memberVO){
+        //아이디는 리드 온리 해놓고 비밀번호만 2번 쓰게 만들기
+        memberService.updateMember(memberVO);
         return "redirect:/";
     }
 }

@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.ui.Model;
 
+import kr.co.ezenac.admin.model.vo.BoardVO;
 import kr.co.ezenac.admin.model.vo.ImagesVO;
 import kr.co.ezenac.admin.model.vo.ItemVO;
 import kr.co.ezenac.admin.model.vo.MemberVO;
+import kr.co.ezenac.admin.model.vo.OrderVO;
 import kr.co.ezenac.admin.model.vo.Order_listVO;
 import kr.co.ezenac.admin.model.vo.PagingVO;
 
@@ -42,13 +44,28 @@ public interface AdminService {
 	int countOutMember();
 
 	List<MemberVO> selectOutMember(PagingVO vo);
+	
+	//주문 관련
 
 	int countOrder();
 
-	List<Order_listVO> selectOrder(PagingVO vo);
+	List<OrderVO> selectOrder(PagingVO vo);
 
 	int updateDeliveryStatus(int ord_no);
 
 	int updateOrderStatus(int ord_no);
 
+	List<String> selectName(int ord_no);
+
+	Order_listVO selectOneOrder(int ord_no);
+
+	List<OrderVO> selectOrderDetail(int ord_no);
+	
+	// 게시판 관련
+	int countNotice();
+
+	List<BoardVO> selectNotice(PagingVO vo);
+
+	BoardVO selectOneBoard(int board_no);
+	
 }

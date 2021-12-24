@@ -15,12 +15,12 @@
 	</insert>
 	
 	<!-- 아이템 하나의 정보 -->
-	<select id="selectOneItem" resultMap="item">
+	<select id="selectOneItem" resultMap="selectOneItem">
 		SELECT * FROM item i
         JOIN CATEGORYS c ON c.cate_code=i.cate_code
 		WHERE item_code=#{item_code}
 	</select>
-	<resultMap type="admin_item" id="item">
+	<resultMap type="admin_item" id="selectOneItem">
 		<result column="ITEM_CODE" property="item_code" />
 		<result column="ITEM_NAME" property="item_name" />
 		<result column="ITEM_PRICE" property="item_price" />
@@ -85,7 +85,7 @@
 		SELECT COUNT(*) FROM members WHERE mem_delete='Y'
 	</select>
 	<!-- 페이징 처리 후 회원 조회 -->
-	<select id="selectMember" resultMap="selectMemberList">
+	<select id="selectMember" resultMap="selectMember">
 		SELECT * 
 			FROM (
 				SELECT ROWNUM RN, A.* 
@@ -95,7 +95,7 @@
 				)
 		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
-	<resultMap type="admin_member" id="selectMemberList">
+	<resultMap type="admin_member" id="selectMember">
 		<result column="MEM_ID" property="mem_id" />
 		<result column="MEM_PWD" property="mem_pwd" />
 		<result column="MEM_NAME" property="mem_name" />
@@ -110,7 +110,7 @@
 	</resultMap>
 	
 	<!-- 페이징 처리 후 탈퇴 회원 조회 -->
-	<select id="selectOutMember" resultMap="selectOutMemberList">
+	<select id="selectOutMember" resultMap="selectOutMember">
 		SELECT * 
 			FROM (
 				SELECT ROWNUM RN, A.* 
@@ -121,7 +121,7 @@
 		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
 	
-	<resultMap type="admin_member" id="selectOutMemberList">
+	<resultMap type="admin_member" id="selectOutMember">
 		<result column="MEM_ID" property="mem_id" />
 		<result column="MEM_PWD" property="mem_pwd" />
 		<result column="MEM_NAME" property="mem_name" />
@@ -141,17 +141,40 @@
 	</select>
 	
 	<!-- 페이징 처리 후 전체 주문 조회 -->
-	<select id="selectOrder" resultMap="selectOrderList">
+	<select id="selectOrder" resultMap="selectOrder">
 		SELECT * 
 			FROM (
 				SELECT ROWNUM RN, A.* 
 					FROM (
-							SELECT * FROM ORDER_LIST order by ord_no desc
+							select ord_no,mem_id,delivery_status,ord_status,ord_date from order_List order by ord_no desc
 						) A
 				)
 		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
-	<resultMap type="kr.co.ezenac.admin.model.vo.Order_listVO" id="selectOrderList">
+	<resultMap type="kr.co.ezenac.admin.model.vo.OrderVO" id="selectOrder">
+		<result column="ORD_NO" property="ord_no" />
+		<result column="ORD_DATE" property="ord_date" />
+		<result column="DELIVERY_STATUS" property="delivery_status" />
+		<result column="ORD_STATUS" property="ord_status" />
+		<result column="MEM_ID" property="mem_id" />
+	</resultMap>
+	<!-- 배송상태 수정 -->
+	<update id="updateDeliveryStatus">
+    	UPDATE ORDER_LIST SET DELIVERY_STATUS='배송완료' where ord_no=#{ord_no}
+	</update>
+	<!-- 배송상태 수정 -->
+	<update id="updateOrderStatus">
+    	UPDATE ORDER_LIST SET ORD_STATUS='교환/반품' where ord_no=#{ord_no}
+	</update>
+	<!-- 대표 상품용 조회 -->
+	<select id="selectOrderName" resultType="string">
+	select i.item_name from order_item o join item i on o.item_code=i.item_code where ord_no = #{ord_no} order by i.item_code
+	</select>
+	<!-- 주문 하나 정보 조회 -->
+	<select id="selectOneOrder" resultMap="selectOneOrder">
+	select * from order_list where ord_no=#{ord_no}
+	</select>
+	<resultMap type="kr.co.ezenac.admin.model.vo.Order_listVO" id="selectOneOrder">
 		<result column="ORD_NO" property="ord_no" />
 		<result column="ORD_DATE" property="ord_date" />
 		<result column="ORD_RECEIVER" property="ord_receiver" />
@@ -164,12 +187,52 @@
 		<result column="MEM_ID" property="mem_id" />
 		<result column="PAY_NO" property="pay_no" />
 	</resultMap>
-	<!-- 배송상태 수정 -->
-	<update id="updateDeliveryStatus">
-    	UPDATE ORDER_LIST SET DELIVERY_STATUS='배송완료' where ord_no=#{ord_no}
-	</update>
-	<!-- 배송상태 수정 -->
-	<update id="updateOrderStatus">
-    	UPDATE ORDER_LIST SET ORD_STATUS='교환/반품' where ord_no=#{ord_no}
-	</update>
+	<!-- 주문 상품 조회 -->
+	<select id="selectOrderDetail" resultMap="selectOrderDetail">
+	select * from order_item o join item i on o.item_code=i.item_code where ord_no = #{ord_no} order by i.item_code
+	</select>
+	<resultMap type="kr.co.ezenac.admin.model.vo.OrderVO" id="selectOrderDetail">
+		<result column="ITEM_NAME" property="item_name" />
+		<result column="ITEM_PRICE" property="item_price" />
+		<result column="COUNT" property="order_item_count" />
+	</resultMap>
+	
+	<!-- 총 공지 수 출력 -->
+	<select id="countNotice" resultType="int">
+		SELECT COUNT(*) FROM board where board_board='notice'
+	</select>
+	
+	
+	<!-- 페이징 처리 후 공지 조회 -->
+	<select id="selectNotice" resultMap="selectNotice">
+		SELECT * 
+			FROM (
+				SELECT ROWNUM RN, A.* 
+					FROM (
+							SELECT * FROM BOARD where board_board='notice' order by board_no desc
+						) A
+				)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	<resultMap type="kr.co.ezenac.admin.model.vo.BoardVO" id="selectNotice">
+		<result column="BOARD_NO" property="board_no" />
+		<result column="BOARD_SUB" property="board_sub" />
+		<result column="BOARD_CONTENT" property="board_content" />
+		<result column="BOARD_DATE" property="board_date" />
+		<result column="BOARD_BOARD" property="board_board" />
+		<result column="MEM_ID" property="mem_id" />
+	</resultMap>
+	
+	<!-- 게시글 하나의 정보 -->
+	<select id="selectOneBoard" resultMap="selectOneBoard">
+		SELECT * FROM BOARD where board_no=#{board_no}
+	</select>
+	<resultMap type="kr.co.ezenac.admin.model.vo.BoardVO" id="selectOneBoard">
+		<result column="BOARD_NO" property="board_no" />
+		<result column="BOARD_SUB" property="board_sub" />
+		<result column="BOARD_CONTENT" property="board_content" />
+		<result column="BOARD_DATE" property="board_date" />
+		<result column="BOARD_BOARD" property="board_board" />
+		<result column="MEM_ID" property="mem_id" />
+	</resultMap>
 </mapper>

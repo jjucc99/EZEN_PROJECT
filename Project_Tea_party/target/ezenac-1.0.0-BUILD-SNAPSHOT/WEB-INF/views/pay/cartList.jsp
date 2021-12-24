@@ -66,7 +66,7 @@
 <%--재고 있을 때 --%>
 				<c:otherwise>		
 				<form action="cartUpdate.pay" method="post">					
-					<div class="checkbox"><input type="checkbox" name="check" value="${cl.cart_item_no}"></div>
+					<div class="checkbox"><input type="checkbox" name="check" value="${cl.cart_item_no}" onclick="calc()"></div>
 					<div class="img"><a href="cate.item/oneItem.item/${cl.item_code}">
 							<img src="<c:url value='/image/${cl.imgPath}'/>" alt="${cl.imgPath}">
 					</a></div>
@@ -75,7 +75,8 @@
 					<div class="amount"><input type="number" name="cart_amount"
 						value="${cl.cart_amount}"></div>
 					<div class="sum">
-						<fmt:formatNumber pattern="###,###,###" value="${cl.item_price * cl.cart_amount}"/> 원
+						<input type="hidden" name="sum" value="${cl.sum}">
+						<fmt:formatNumber value="${cl.sum}"/> 원
 					</div>
 					<div class="update">
 						<input type="hidden" name="cart_item_no" value="${cl.cart_item_no}">
@@ -94,7 +95,7 @@
 	</c:choose>
 	<br>
 	<div class="box" id="totalPrice">
-		합계금액: <fmt:formatNumber pattern="###,###,###" value="${total}"/> 원</div>
+		합계금액: <span id="total" ></span> 원</div>
 		<br>
 	<input type="button" value="선택상품 결제" onclick="slctOrder()">
 	<input type="button" value="전체상품 결제" onclick="allOrder()">

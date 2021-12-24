@@ -3,6 +3,7 @@ package kr.co.ezenac.pay.model.service;
 
 import java.util.List;
 
+import kr.co.ezenac.members.model.vo.MemberVO;
 import kr.co.ezenac.pay.model.vo.CartListVO;
 import kr.co.ezenac.pay.model.vo.CartUpdateVO;
 import kr.co.ezenac.pay.model.vo.PayVO;
@@ -30,4 +31,8 @@ public interface PayService {
 	public void cartDelete(int cart_item_no);
 	
 	public List<CartListVO> orderList(List<Integer> valueArr);
+	
+	public MemberVO getMember(String mem_id);
+	
+	public int insertOrderList(PayVO pvo);
 }

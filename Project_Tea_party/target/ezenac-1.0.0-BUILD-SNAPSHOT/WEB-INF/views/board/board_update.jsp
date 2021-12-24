@@ -21,7 +21,7 @@
 <input type="reset" value="취소"/>
 </fieldset>
 <br>
-<a href="list.board">게시글 리스트</a>
+<a href="page.board">게시글 리스트</a>
 </form>
 </body>
 </html>

@@ -6,13 +6,11 @@
 INSERT INTO BOARD VALUES(#{board_no},#{board_sub},
 #{board_content},#{board_date},#{board_board},#{mem_id})
 </insert>
-<!-- 게시글 전체 목록 조회 -->
-<select id="selectBoard" resultMap="select">
-SELECT 
-board_no, board_sub, board_content, board_date, board_board, mem_id 
-FROM BOARD ORDER BY board_no desc, board_date desc
+<!-- 게시글 보기 -->
+<select id="viewDetail" resultMap="view">
+SELECT * FROM WHERE BOARD_NO =#{BOARD_NO}
 </select>
-<resultMap type="board" id="select">
+<resultMap type="board" id="view">
 <result column="board_no" property="board_no"/>
 <result column="board_sub" property="board_sub"/>
 <result column="board_content" property="board_content"/>
@@ -36,4 +34,78 @@ WHERE board_no = #{board_no}
 DELETE FROM BOARD
 WHERE board_no = #{board_no}
 </delete>
+<select id="countBoard" resultType="int">
+	SELECT COUNT(*) FROM BOARD
+</select>
+<!-- 페이징 처리 후 게시글 조회 -->
+<select id="selectBoard" resultMap="select">
+	SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM BOARD 
+						ORDER BY BOARD_NO DESC 
+						) A
+				)
+	WHERE RN BETWEEN #{start} AND #{end}
+	
+</select>
+<resultMap type="board" id="select">
+<result column="board_no" property="board_no"/>
+<result column="board_sub" property="board_sub"/>
+<result column="board_content" property="board_content"/>
+<result column="board_date" property="board_date"/>
+<result column="board_board" property="board_board"/>
+<result column="mem_id" property="mem_id"/>
+</resultMap>
+<!-- 공지사항 조회 -->
+<select id="selectnoticeBoard" resultMap="selectnotice">
+SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM BOARD 
+						WHERE BOARD_BOARD='notice'
+						ORDER BY BOARD_NO DESC
+						) A
+				)
+	WHERE RN BETWEEN #{start} AND #{end}
+</select>
+<resultMap type="board" id="selectnotice">
+<result column="board_no" property="board_no"/>
+<result column="board_sub" property="board_sub"/>
+<result column="board_content" property="board_content"/>
+<result column="board_date" property="board_date"/>
+<result column="board_board" property="board_board"/>
+<result column="mem_id" property="mem_id"/>
+</resultMap>
+<select id="countnoticeBoard" resultType="int">
+SELECT COUNT(*) FROM BOARD WHERE BOARD_BOARD='notice'
+</select>
+<select id="selectqnaBoard" resultMap="selectqna">
+SELECT *
+		 FROM(
+				SELECT ROWNUM RN, A.*
+				FROM(
+						SELECT * 
+						FROM BOARD
+						WHERE BOARD_BOARD='QnA'
+						ORDER BY BOARD_NO DESC
+						)A
+)
+			WHERE RN BETWEEN #{start} AND #{end}
+</select>
+<resultMap type="board" id="selectqna">
+<result column="board_no" property="board_no"/>
+<result column="board_sub" property="board_sub"/>
+<result column="board_content" property="board_content"/>
+<result column="board_date" property="board_date"/>
+<result column="board_board" property="board_board"/>
+<result column="mem_id" property="mem_id"/>
+</resultMap>
+<select id="countqnaBoard" resultType="int">
+SELECT COUNT(*) FROM BOARD WHERE BOARD_BOARD='QnA'
+</select>
 </mapper>

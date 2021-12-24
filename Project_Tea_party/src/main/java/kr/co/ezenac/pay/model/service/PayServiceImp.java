@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.ezenac.members.model.vo.MemberVO;
 import kr.co.ezenac.pay.model.dao.PayDAO;
 import kr.co.ezenac.pay.model.vo.CartListVO;
 import kr.co.ezenac.pay.model.vo.CartUpdateVO;
@@ -69,5 +70,15 @@ public class PayServiceImp implements PayService{
  @Override
  public List<CartListVO> orderList(List<Integer> valueArr){
 	 return pDAO.orderList(sqlSession, valueArr);
+ }
+ 
+ @Override
+ public MemberVO getMember(String mem_id) {
+	 return pDAO.getMember(sqlSession, mem_id);
+ }
+ 
+ @Override
+ public int insertOrderList(PayVO pvo) {
+	 return pDAO.insertOrderList(sqlSession, pvo);
  }
 }

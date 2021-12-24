@@ -43,7 +43,9 @@ function allOrder() {
 	var list = $("input[name='check']");
 
 	for (var i = 0; i < list.length; i++) {
-		orderList.push(list[i].value);
+		if(!list[i].disabled){
+			orderList.push(list[i].value);
+		}
 	}
 
 	gofrm.orderList.value = orderList;
@@ -51,6 +53,29 @@ function allOrder() {
 	gofrm.submit();
 	return true;
 }
+
+function calc(){
+	var total=0;
+	var listchk =$("input[name='check']");
+	var listsum=$("input[name='sum']");
+	
+	for(var i=0;i<listchk.length;i++){
+		if(listchk[i].checked){
+			total+=parseInt(listsum[i].value);
+		}
+	}
+	
+	total=AddComma(total);
+	document.getElementById("total").innerHTML=total;
+}
+
+//숫자 3자리 콤마찍기 출처: https://doolyit.tistory.com/127
+function AddComma(num)
+{
+var regexp = /\B(?=(\d{3})+(?!\d))/g;
+return num.toString().replace(regexp, ',');
+}
+
 
 /*
  * $.ajax({ url : "goOorder.pay", //전송 url type : 'POST', //POST방식 traditional

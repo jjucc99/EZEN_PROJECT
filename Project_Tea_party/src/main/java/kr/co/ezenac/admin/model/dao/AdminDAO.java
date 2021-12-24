@@ -6,9 +6,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
+import kr.co.ezenac.admin.model.vo.BoardVO;
 import kr.co.ezenac.admin.model.vo.ImagesVO;
 import kr.co.ezenac.admin.model.vo.ItemVO;
 import kr.co.ezenac.admin.model.vo.MemberVO;
+import kr.co.ezenac.admin.model.vo.OrderVO;
 import kr.co.ezenac.admin.model.vo.Order_listVO;
 import kr.co.ezenac.admin.model.vo.PagingVO;
 
@@ -72,7 +74,7 @@ public class AdminDAO {
 		return sqlSession.selectOne("adminMapper.countOrder");
 	}
 
-	public List<Order_listVO> selectOrder(SqlSessionTemplate sqlSession, PagingVO vo) {
+	public List<OrderVO> selectOrder(SqlSessionTemplate sqlSession, PagingVO vo) {
 		return sqlSession.selectList("adminMapper.selectOrder", vo);
 	}
 
@@ -82,6 +84,30 @@ public class AdminDAO {
 
 	public int updateOrderStatus(SqlSessionTemplate sqlSession, int ord_no) {
 		return sqlSession.update("adminMapper.updateOrderStatus", ord_no);
+	}
+
+	public List<String> selectName(SqlSessionTemplate sqlSession, int ord_no) {
+		return sqlSession.selectList("adminMapper.selectOrderName", ord_no);
+	}
+
+	public Order_listVO selectOneOrder(SqlSessionTemplate sqlSession, int ord_no) {
+		return sqlSession.selectOne("adminMapper.selectOneOrder", ord_no);
+	}
+
+	public List<OrderVO> selectOrderDetail(SqlSessionTemplate sqlSession, int ord_no) {
+		return sqlSession.selectList("adminMapper.selectOrderDetail", ord_no);
+	}
+
+	public int countNotice(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("adminMapper.countNotice");
+	}
+
+	public List<BoardVO> selectNotice(SqlSessionTemplate sqlSession, PagingVO vo) {
+		return sqlSession.selectList("adminMapper.selectNotice", vo);
+	}
+
+	public BoardVO selectOneBoard(SqlSessionTemplate sqlSession, int board_no) {
+		return sqlSession.selectOne("adminMapper.selectOneBoard", board_no);
 	}
 	
 }

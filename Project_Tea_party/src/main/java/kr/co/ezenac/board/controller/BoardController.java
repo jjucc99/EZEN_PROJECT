@@ -2,17 +2,22 @@ package kr.co.ezenac.board.controller;
 
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
 import kr.co.ezenac.board.model.service.BoardService;
+import kr.co.ezenac.board.model.service.ReplyService;
 import kr.co.ezenac.board.model.vo.BoardVO;
+import kr.co.ezenac.board.model.vo.PagingVO;
+import kr.co.ezenac.board.model.vo.ReplyVO;
 
 @Controller
 public class BoardController {
@@ -86,7 +91,88 @@ public class BoardController {
 	System.out.println("삭제 결과" + result);
 	return "board";
 	}	
-}
+	
+	@GetMapping("page.board")
+	public String pageBoard(PagingVO vo, Model model, @RequestParam(value="nowPage", required=false)String nowPage
+, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		
+		int total = bService.countBoard();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", bService.selectBoard(vo));
+		return "board_listpage";
+	}
+	
+	@GetMapping("notice.board")
+	public String noticeBoard(PagingVO vo, Model model, @RequestParam(value="nowPage", required=false)String nowPage
+, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		
+		int total = bService.countnoticeBoard();
+		System.out.println(total);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", bService.selectnoticeBoard(vo));
+		return "board_listpage";
+	
+	}
+	
+	@GetMapping("qna.board")
+	public String qnaBoard(PagingVO vo, Model model, @RequestParam(value="nowPage", required=false)String nowPage
+, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+		
+		int total = bService.countqnaBoard();
+		System.out.println(total);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", bService.selectqnaBoard(vo));
+		return "qna_list";
+	
+	
+
+	}
+	
+	
+	//게시글 보기 전
+	@RequestMapping(value= "detail1.board", method= RequestMethod.GET)
+	public String view() {
+		
+		return "board_detail";
+	}
+	
+	// 게시글 본다음
+	@RequestMapping(value="detail.board", method=RequestMethod.POST)
+	public String viewDetail(Model model,@RequestParam("board_no")int board_no) {
+		model.addAttribute("board", bService.viewDetail(board_no));
+		
+		return "board";
+	}
+	}
+	
+	
 	/*
 	//게시글 조회 전
 			@RequestMapping(value= "select1.board", method= RequestMethod.GET)

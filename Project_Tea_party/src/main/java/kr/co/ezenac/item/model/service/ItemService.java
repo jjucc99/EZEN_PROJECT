@@ -4,6 +4,9 @@ import java.util.List;
 
 import kr.co.ezenac.item.model.vo.CateListVO;
 import kr.co.ezenac.item.model.vo.ItemVO;
+import kr.co.ezenac.item.model.vo.PagingVO;
+import kr.co.ezenac.item.model.vo.ReviewBoardVO;
+
 
 public interface ItemService {
 	
@@ -21,5 +24,16 @@ public interface ItemService {
 
 	String getImg(int item_code);
 	
+	//reviewimg
+	String getReImg(int item_code);
+	
 	ItemVO infoItem(int item_code);
+	
+	int countItem();
+
+	ItemVO infoItem(PagingVO pvo);
+	
+	List<ReviewBoardVO> rList(int item_code);
+	
+	int cartno();
 }
