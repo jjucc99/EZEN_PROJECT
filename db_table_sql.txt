@@ -62,14 +62,13 @@ CREATE TABLE REPLY (
 
 CREATE TABLE PAY (
 	pay_no number NOT NULL,
-	pay_method varchar2(20) NOT NULL,
-	pay_date date default sysdate NOT NULL
+	pay_method varchar2(20) NOT NULL
 );
 
 CREATE TABLE ORDER_LIST (
 	ord_no number NOT NULL,
 	ord_date date default sysdate NOT NULL,
-	ord_reciever varchar2(20) NOT NULL,
+	ord_receiver varchar2(20) NOT NULL,
 	ord_addr1 varchar2(50) NOT NULL,
 	ord_addr2 varchar2(300) NOT NULL,
 	ord_addr3 varchar2(100) NOT NULL,
@@ -262,3 +261,11 @@ insert into categorys VALUES(2,'허브차');
 insert into categorys VALUES(3,'커피');
 insert into categorys VALUES(4,'과일청');
 insert into categorys VALUES(5,'티웨어');
+
+----------pay
+INSERT INTO PAY (PAY_NO, PAY_METHOD) VALUES ('1', '계좌이체');
+INSERT INTO PAY (PAY_NO, PAY_METHOD) VALUES ('2', '카드');
+
+
+---------------일괄 삭제
+SELECT 'DROP TABLE "' || TABLE_NAME || '" CASCADE CONSTRAINTS;' FROM user_tables;
