@@ -15,6 +15,11 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party_12_27"/>
+			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party_12_25"/>
+			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party_12_24"/>
+			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party_12_23"/>
+			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party_12_22"/>
 			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party_12_21"/>
 			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party"/>
 			<item value="C:\Users\82108\Documents\GitHub\EZEN_PROJECT\Project_Tea_party_me"/>
@@ -45,6 +50,6 @@
 		<item key="DIALOG_Y_ORIGIN" value="189"/>
 		<item key="DIALOG_WIDTH" value="666"/>
 		<item key="DIALOG_HEIGHT" value="482"/>
-		<item key="TOGGLE_SELECTED" value="false"/>
+		<item key="TOGGLE_SELECTED" value="true"/>
 	</section>
 </section>

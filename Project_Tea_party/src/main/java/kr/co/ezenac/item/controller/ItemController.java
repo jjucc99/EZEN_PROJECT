@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,13 +13,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import kr.co.ezenac.item.model.service.ItemService;
 import kr.co.ezenac.item.model.vo.CateListVO;
 import kr.co.ezenac.item.model.vo.ItemVO;
+import kr.co.ezenac.item.model.vo.PagingVO;
+import kr.co.ezenac.item.model.vo.ReviewBoardVO;
+
 
 @Controller
 public class ItemController {
@@ -116,10 +123,12 @@ public class ItemController {
 			return uploadPath+"/items/"+fileName;
 		}
 			
-		
+	//카테고리	
 	@GetMapping("cate.item/{categoryId}") 
-		public String category(@PathVariable("categoryId") String categoryId, Model model) { 
-
+		public String category(@PathVariable("categoryId") String categoryId, Model model, PagingVO pvo,  @RequestParam(value = "nowPage", required = false) String nowPage
+				,@RequestParam(value = "cntPerPage", required = false) String cntPerPage) { 
+		
+		
 		List<CateListVO> list= itemService.cateList(categoryId);
 		for(CateListVO cvo : list) {
 			int item_code=cvo.getItem_code();
@@ -128,7 +137,6 @@ public class ItemController {
 		}
 		
 		model.addAttribute("catelist",list);
-		
 		return "item/item_Cate";
 		}
 	
@@ -138,15 +146,52 @@ public class ItemController {
 	 * 
 	 * return uploadPath+"/items/"+fileName; }
 	 */
-	
+	//상품 상세정보
 	@GetMapping("cate.item/oneItem.item/{item_code}")
-	public String selectOneItem(@PathVariable("item_code") int item_code ,Model model) {
-		System.out.println(item_code+"아이템정보");
+	public String selectOneItem(@PathVariable("item_code") int item_code ,Model model,PagingVO vo, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, HttpSession session) {		
+		
+		
 		ItemVO ivo=itemService.infoItem(item_code);
 		String path=getimg(item_code);
 		ivo.setImgPath(path);
-		model.addAttribute("item",ivo);
 		
+		//리뷰
+		
+		List<ReviewBoardVO> rlist=itemService.rList(item_code);
+		for(ReviewBoardVO rvo : rlist) {
+			int reB=rvo.getItem_code();
+			String path1=getimg(reB);
+			rvo.setImgPath(path1);
+		}
+		int total = itemService.countItem();
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+
+		model.addAttribute("catelist",ivo);
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", rlist);
 		return "item/item_Info";
 	}
+	
+	@PostMapping("cartno.item")
+	public String cart(HttpSession session, Model model) {
+		//멤버 아이디 세션에서 가져오기
+		String mem_id= (String)session.getAttribute("mem_id");
+		
+		int cartno=itemService.cartno();
+		
+		System.out.println(cartno);
+		model.addAttribute("cartno",cartno);
+		return "redirect:cate.item/oneItem.item/{item_code}";
+	}
+	
 }

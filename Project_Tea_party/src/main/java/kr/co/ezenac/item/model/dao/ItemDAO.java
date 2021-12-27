@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.ezenac.item.model.vo.CateListVO;
 import kr.co.ezenac.item.model.vo.ItemVO;
+import kr.co.ezenac.item.model.vo.PagingVO;
+import kr.co.ezenac.item.model.vo.ReviewBoardVO;
 
 @Repository("iDAO")
 //implement와 연결할 아이디
@@ -47,8 +49,32 @@ public class ItemDAO {
 		return img_name;
 	}
 	
+	//review이미지
+	public String getReImg(SqlSessionTemplate sqlSession, int item_code) {
+		String img_name = sqlSession.selectOne("itemMapper.reimg",item_code);
+		return img_name;
+	}
+	
 	public ItemVO infoItem(SqlSessionTemplate sqlSession, int item_code) {
-		System.out.println(item_code+"아이템");
+		
 		return sqlSession.selectOne("itemMapper.infoItem",item_code);
+	}
+	
+	public int countItem(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("itemMapper.countItem");
+	}
+
+	public ItemVO infoItem(SqlSessionTemplate sqlSession, PagingVO pvo) {
+		
+		return sqlSession.selectOne("itemMapper.infoItem",pvo);
+	}
+	
+	public List<ReviewBoardVO> rList(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectList("itemMapper.selectRe");
+	}
+	
+	public int cartNo(SqlSessionTemplate sqlSession) {
+		
+		return sqlSession.selectOne("itemMapper.selectCartNo");
 	}
 }

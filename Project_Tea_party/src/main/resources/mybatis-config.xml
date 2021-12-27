@@ -18,6 +18,8 @@
 			alias="admin_item" />
 		<typeAlias type="kr.co.ezenac.item.model.vo.CateListVO"
 			alias="CateList" />
+		<typeAlias type="kr.co.ezenac.item.model.vo.ReviewBoardVO"
+			alias="rList" />
 	</typeAliases>
 
 	<!-- 개별매퍼 : 현재 사용하는 것만 남김 -->

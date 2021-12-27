@@ -3,6 +3,8 @@ package kr.co.ezenac.item.model.service;
 import kr.co.ezenac.item.model.dao.ItemDAO;
 import kr.co.ezenac.item.model.vo.CateListVO;
 import kr.co.ezenac.item.model.vo.ItemVO;
+import kr.co.ezenac.item.model.vo.PagingVO;
+import kr.co.ezenac.item.model.vo.ReviewBoardVO;
 
 import java.util.List;
 
@@ -57,17 +59,47 @@ public class ItemServiceImp implements ItemService{
 	
 		return iDAO.cateList(sqlSession,cate_code);
 	}
-
+	//itemimg
 	@Override
 	public String getImg(int item_code) {
+
+		return iDAO.getImg(sqlSession, item_code);
+	}
+	//reviewimg
+	@Override
+	public String getReImg(int item_code) {
 
 		return iDAO.getImg(sqlSession, item_code);
 	}
 
 	@Override
 	public ItemVO infoItem(int item_code) {
-		System.out.println(item_code);
+	
 		return iDAO.infoItem(sqlSession,item_code);
 	}
+	
+	@Override
+	public int countItem() {
+		return iDAO.countItem(sqlSession);
+	}
+
+	@Override
+	public ItemVO infoItem(PagingVO pvo) {
+		return iDAO.infoItem(sqlSession,pvo);
+	}
+
+	@Override
+	public List<ReviewBoardVO> rList(int item_code) {
+		
+		return iDAO.rList(sqlSession);
+	}
+
+	@Override
+	public int cartno() {
+		
+		return iDAO.cartNo(sqlSession);
+	}
+	
+	
 
 }
