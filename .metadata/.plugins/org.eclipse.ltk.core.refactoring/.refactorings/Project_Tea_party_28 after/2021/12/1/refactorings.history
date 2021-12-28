@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;Project_Tea_party_28 after&apos;&#x0D;&#x0A;- Original project: &apos;Project_Tea_party_28 after&apos;&#x0D;&#x0A;- Original element: &apos;item_List.jsp&apos;" description="Delete element" element1="src/main/webapp/WEB-INF/views/item/item_List.jsp" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1640673276678" subPackages="false" version="1.0"/>
+</session>

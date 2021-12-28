@@ -46,7 +46,7 @@ CREATE TABLE ITEM (
 	item_name varchar2(50) NOT NULL,
 	item_price number NOT NULL,
 	item_information varchar2(500) NOT NULL,
-	cate_code number NOT NULL
+	cate_code number NOT NULL,
 	item_count number	NOT NULL
 );
 
@@ -75,6 +75,7 @@ CREATE TABLE ORDER_LIST (
 	ord_phone varchar2(20) NOT NULL,
 	delivery_status varchar2(20) default '배송중' not null,
 	ord_status varchar2(20) default '준비중' not null,
+	ord_price number not null,
 	mem_id varchar2(20) NOT NULL,
 	pay_no number NOT NULL
 );
@@ -189,9 +190,6 @@ REFERENCES BOARD (
 	board_no
 );
 
-REFERENCES ITEM (
-	item_code
-);
 
 ALTER TABLE ORDER_LIST ADD CONSTRAINT FK_MEMBER_TO_ORDER_LIST_1 FOREIGN KEY (
 	mem_id
@@ -253,13 +251,14 @@ create sequence ord_no_seq;
 create sequence item_code_seq;
 create sequence R_board_no_seq;
 create sequence ord_item_no_seq;
+create sequence img_seq;
 
 
 ---------카테고리
 insert into categorys VALUES(1,'홍차');
 insert into categorys VALUES(2,'허브차');
-insert into categorys VALUES(3,'커피');
-insert into categorys VALUES(4,'과일청');
+insert into categorys VALUES(3,'전통차');
+insert into categorys VALUES(4,'커피');
 insert into categorys VALUES(5,'티웨어');
 
 ----------pay
