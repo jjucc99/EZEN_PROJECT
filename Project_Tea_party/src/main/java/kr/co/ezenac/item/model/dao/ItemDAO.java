@@ -5,7 +5,9 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.co.ezenac.item.model.vo.Cart_itemVO;
 import kr.co.ezenac.item.model.vo.CateListVO;
+import kr.co.ezenac.item.model.vo.ImagesVO;
 import kr.co.ezenac.item.model.vo.ItemVO;
 import kr.co.ezenac.item.model.vo.PagingVO;
 import kr.co.ezenac.item.model.vo.ReviewBoardVO;
@@ -50,8 +52,9 @@ public class ItemDAO {
 	}
 	
 	//review이미지
-	public String getReImg(SqlSessionTemplate sqlSession, int item_code) {
-		String img_name = sqlSession.selectOne("itemMapper.reimg",item_code);
+	public String getReImg(SqlSessionTemplate sqlSession, int r_board_no) {
+		String img_name = sqlSession.selectOne("itemMapper.reimg",r_board_no);
+		
 		return img_name;
 	}
 	
@@ -60,8 +63,8 @@ public class ItemDAO {
 		return sqlSession.selectOne("itemMapper.infoItem",item_code);
 	}
 	
-	public int countItem(SqlSessionTemplate sqlSession) {
-		return sqlSession.selectOne("itemMapper.countItem");
+	public int countReview(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("itemMapper.countRe");
 	}
 
 	public ItemVO infoItem(SqlSessionTemplate sqlSession, PagingVO pvo) {
@@ -73,8 +76,23 @@ public class ItemDAO {
 		return sqlSession.selectList("itemMapper.selectRe");
 	}
 	
-	public int cartNo(SqlSessionTemplate sqlSession) {
-		
-		return sqlSession.selectOne("itemMapper.selectCartNo");
+	public int cartNo(SqlSessionTemplate sqlSession,String mem_id) {
+		return sqlSession.selectOne("itemMapper.selectCartNo",mem_id);
+	}
+	
+	public int insertCart(SqlSessionTemplate sqlSession, Cart_itemVO cvo) {
+		return sqlSession.insert("itemMapper.insertCart",cvo);
+	}
+
+	public int reviewImg(SqlSessionTemplate sqlSession, ImagesVO imageVO) {
+		return sqlSession.insert("itemMapper.insertReviewImg",imageVO);
+	}
+
+	public int reviewInsert(SqlSessionTemplate sqlSession, ReviewBoardVO rvo) {
+		return sqlSession.insert("itemMapper.reviewInsert",rvo);
+	}
+
+	public int selectSeq(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("itemMapper.selectSeq");
 	}
 }

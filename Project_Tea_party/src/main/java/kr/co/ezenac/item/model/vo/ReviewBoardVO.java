@@ -8,8 +8,10 @@ public class ReviewBoardVO {
 	private String r_board_date;
 	private String mem_id;
 	private int item_code;
+	private int img_id;
 	
 
+	
 	public String getImgPath() {
 		return imgPath;
 	}
@@ -52,12 +54,18 @@ public class ReviewBoardVO {
 	public void setItem_code(int item_code) {
 		this.item_code = item_code;
 	}
+	public int getImg_id() {
+		return img_id;
+	}
+	public void setImg_id(int img_id) {
+		this.img_id = img_id;
+	}
+	
 	@Override
 	public String toString() {
 		return "ReviewBoardVO [imgPath=" + imgPath + ", r_board_no=" + r_board_no + ", r_board_sub=" + r_board_sub
 				+ ", r_board_content=" + r_board_content + ", r_board_date=" + r_board_date + ", mem_id=" + mem_id
-				+ ", item_code=" + item_code + "]";
+				+ ", item_code=" + item_code + ", img_id=" + img_id + "]";
 	}
-	
-	
+
 }

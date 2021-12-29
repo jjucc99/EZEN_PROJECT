@@ -9,6 +9,9 @@ public class PayVO {
 	private String ord_addr2;
 	private String ord_addr3;
 	private String mem_id;
+	private int ord_price;
+	private String pay_method;
+	private String  ord_status;
 	
 	public int getPay_no() {
 		return pay_no;
@@ -52,6 +55,23 @@ public class PayVO {
 	}
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
+	}
+	public int getOrd_price() {
+		return ord_price;
+	}
+	public void setOrd_price(int ord_price) {
+		this.ord_price = ord_price;
+	}
+	public String getPay_method() {
+		return pay_method;
+	}
+	public void setPay_method(String pay_method) {
+		this.pay_method = pay_method;
+	}
+	public String getOrd_status() {
+		return ord_status;
+	}
+	public void setOrd_status(String ord_status) {
+		this.ord_status = ord_status;
 	}	
-	
 }

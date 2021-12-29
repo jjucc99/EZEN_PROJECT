@@ -1,6 +1,7 @@
 package kr.co.ezenac.pay.model.dao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -9,39 +10,16 @@ import org.springframework.stereotype.Repository;
 import kr.co.ezenac.members.model.vo.MemberVO;
 import kr.co.ezenac.pay.model.vo.CartListVO;
 import kr.co.ezenac.pay.model.vo.CartUpdateVO;
+import kr.co.ezenac.pay.model.vo.Order_itemVO;
+import kr.co.ezenac.pay.model.vo.Order_listVO;
+import kr.co.ezenac.pay.model.vo.PagingVO;
 import kr.co.ezenac.pay.model.vo.PayVO;
+import kr.co.ezenac.pay.model.vo.SubOrderVO;
 
 @Repository("pDAO")
 //implement와 연결할 아이디
 public class PayDAO {
 
-	/*
-	 * public int insertPay(SqlSessionTemplate sqlSession, PayVO pvo) { return
-	 * sqlSession.insert("payMapper.insertPay",pvo); }
-	 * 
-	 * public List<PayVO> payList(SqlSessionTemplate sqlSession) { List<PayVO>
-	 * list=sqlSession.selectList("payMapper.selectPay");
-	 * 
-	 * for(PayVO pvo: list) { String str=pvo.getPay_date(); String
-	 * result=str.substring(0, str.lastIndexOf(" ")); pvo.setPay_date(result); }
-	 * return list; }
-	 * 
-	 * public void updatePay(SqlSessionTemplate sqlSession, PayVO pvo) {
-	 * sqlSession.update("payMapper.updatePay",pvo); }
-	 * 
-	 * public void deletePay(SqlSessionTemplate sqlSession, int pay_no) {
-	 * sqlSession.update("payMapper.deletePay", pay_no); }
-	 * 
-	 * public PayVO selectOne(SqlSessionTemplate sqlSession, int pay_no) { PayVO
-	 * pvo=sqlSession.selectOne("payMapper.selectOne", pay_no);
-	 * 
-	 * String str=pvo.getPay_date(); String result=str.substring(0,
-	 * str.lastIndexOf(" ")); pvo.setPay_date(result);
-	 * 
-	 * return pvo; }
-	 */
-
-//////////////
 public List<CartListVO> cartList(SqlSessionTemplate sqlSession, String mem_id){
 	List<CartListVO> list=sqlSession.selectList("payMapper.cartList", mem_id);
 	
@@ -81,5 +59,76 @@ public int insertOrderList(SqlSessionTemplate sqlSession, PayVO pvo) {
 	sqlSession.insert("payMapper.insertOrderList", pvo);
 	String mem_id=pvo.getMem_id();
 	return sqlSession.selectOne("payMapper.getOrdNo",mem_id);
+}
+
+public int insertOrderItem(SqlSessionTemplate sqlSession, List<Integer> payList,int ord_no) {
+	
+	List<Order_itemVO> ordItemList=new ArrayList<Order_itemVO>();
+	
+	//cart_item에서 payList의 cart_item_no을 이용해 상품코드와 수량 가져오기
+	for(int i : payList) {
+		ordItemList.add(sqlSession.selectOne("payMapper.getCartItem",i));
+	}
+	
+	int Ok=0;
+	
+	//ord_no 입력 후 Order_item 테이블에 데이터 저장, cart_item은 삭제, 재고 삭제
+	for(Order_itemVO vo : ordItemList) {
+		vo.setOrd_no(ord_no);
+		int a=sqlSession.insert("payMapper.insertOrderItem", vo);
+		int b=sqlSession.update("payMapper.deleteItemCount",vo);
+		int c=sqlSession.update("payMapper.deleteCartItem", vo.getCart_item_no());
+		
+		if(a+b+c ==3) {
+			Ok=1;
+		}
+	}
+	return Ok;
+}
+
+public int countOrder(SqlSessionTemplate sqlSession, String mem_id) {
+	return sqlSession.selectOne("payMapper.countOrder",mem_id);
+}
+
+public List<Order_listVO> selectOrder(SqlSessionTemplate sqlSession, PagingVO pgvo){
+	//구매내역 가져오기
+	List<Order_listVO> orderList=new ArrayList<Order_listVO>();
+	orderList=sqlSession.selectList("payMapper.selectOrder", pgvo);
+	
+	for(Order_listVO ordvo : orderList) {
+		//대표 상품, 종류 개수, 이미지를 위한 아이템코드 가져오기
+		int ord_no=ordvo.getOrd_no();
+		
+		List<SubOrderVO> subList=sqlSession.selectList("payMapper.selectRep",ord_no);
+		
+		SubOrderVO subvo=subList.get(0);
+		
+		ordvo.setRep_name(subvo.getStr());
+		ordvo.setOrd_count(subList.size()-1);
+		ordvo.setImgPath(String.valueOf(subvo.getNumber()));//아이템코드
+		
+		//날짜 저장
+			/*
+			 * String date=ordvo.getOrd_date(); String ord_date=date.substring(0,
+			 * date.lastIndexOf(" ")); ordvo.setOrd_date(ord_date);
+			 */
+	}
+	return orderList;
+}
+
+public void changeStatus(SqlSessionTemplate sqlSession, Order_listVO ovo) {
+	sqlSession.update("payMapper.changeStatus", ovo);
+}
+
+public List<CartListVO> orderItemList(SqlSessionTemplate sqlSession, int ord_no) {
+	return sqlSession.selectList("payMapper.orderItemList",ord_no);
+}
+
+public PayVO getOrdInfo(SqlSessionTemplate sqlSession, int ord_no) {
+	return sqlSession.selectOne("payMapper.getOrdInfo", ord_no);
+}
+
+public int checkReview(SqlSessionTemplate sqlSession, SubOrderVO subvo) {
+	return sqlSession.selectOne("payMapper.checkReview", subvo);
 }
 }

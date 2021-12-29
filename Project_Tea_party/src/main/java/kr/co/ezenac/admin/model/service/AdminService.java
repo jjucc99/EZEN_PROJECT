@@ -67,5 +67,11 @@ public interface AdminService {
 	List<BoardVO> selectNotice(PagingVO vo);
 
 	BoardVO selectOneBoard(int board_no);
+
+	int deleteBoard(int board_no);
+
+	void updateBoard(BoardVO bvo);
+
+	void insertBoard(BoardVO bvo);
 	
 }

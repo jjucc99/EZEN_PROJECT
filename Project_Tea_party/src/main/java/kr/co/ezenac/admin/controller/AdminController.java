@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
 import kr.co.ezenac.admin.model.service.AdminService;
@@ -74,14 +75,11 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		imageVO.setOrd_item_no(1);
+		int resultItem=adService.insertItem(ivo);
 		imageVO.setImg_name(image_name);
 		imageVO.setImg_save(uploadPath + "/items");
 		imageVO.setImg_ref("item");
 		imageVO.setImg_id(ivo.getItem_code());
-
-		adService.insertItem(ivo);
 		int result = adService.insertImage(imageVO);
 		return "redirect:itemList.ad";
 	}
@@ -122,7 +120,6 @@ public class AdminController {
 	@RequestMapping(value = "itemDelete.ad", method = RequestMethod.GET)
 	public String deleteItem(int item_code) {
 		int result = adService.deleteItem(item_code);
-		System.out.println("삭제 결과" + result);
 		return "redirect:itemList.ad";
 	}
 
@@ -223,7 +220,6 @@ public class AdminController {
 		}
 
 		model.addAttribute("viewAll", list1);//
-		System.out.println(vo.getTotal());
 		return "admin_order/order_list";
 	}
 
@@ -248,15 +244,16 @@ public class AdminController {
 		List<OrderVO> ovo = adService.selectOrderDetail(ord_no);
 		int total = 0;
 		for (OrderVO list : ovo) {
-			total+=list.getItem_price()*list.getOrder_item_count();
+			total += list.getItem_price() * list.getOrder_item_count();
 		}
 		m.addAttribute("orderList", olvo);
 		m.addAttribute("orderDetail", ovo);
 		m.addAttribute("total", total);
-		
+
 		return "admin_order/order_detail";
 	}
-	//----------------------게시판 관리----------------
+
+	// ----------------------게시판 관리----------------
 	// 운영자 게시판 관리
 	@GetMapping("boardList.ad")
 	public String BoardList(PagingVO vo, Model model, @RequestParam(value = "nowPage", required = false) String nowPage,
@@ -275,16 +272,42 @@ public class AdminController {
 		model.addAttribute("viewAll", adService.selectNotice(vo));
 		return "admin_board/notice_list";
 	}
-	
-	// 게시판 정보 로직
-		@RequestMapping(value = "boardInfo.ad", method = RequestMethod.GET)
-		public ModelAndView selectOneBoard(int board_no) {
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("admin_board/board_info");
-			BoardVO bvo = adService.selectOneBoard(board_no);
-			System.out.println(bvo.getBoard_content());
-			mv.addObject("board", bvo);
 
-			return mv;
-		}
+	// 게시판 정보 로직
+	@RequestMapping(value = "boardInfo.ad", method = RequestMethod.GET)
+	public ModelAndView selectOneBoard(int board_no) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("admin_board/board_info");
+		BoardVO bvo = adService.selectOneBoard(board_no);
+		mv.addObject("board", bvo);
+
+		return mv;
+	}
+
+	// 게시글 삭제 로직
+	@RequestMapping(value = "boardDelete.ad", method = RequestMethod.POST)
+	public String deleteBoard(int board_no) {
+		int result = adService.deleteBoard(board_no);
+		return "redirect:boardList.ad";
+	}
+
+	// 게시글 업데이트 로직
+	@RequestMapping(value = "boardUpdate.ad", method = RequestMethod.POST)
+	public String updateBoard(@ModelAttribute BoardVO bvo) {
+		adService.updateBoard(bvo);
+		return "redirect:boardList.ad";
+	}
+
+	// 공지추가
+	@RequestMapping(value = "addBoardForm.ad", method = RequestMethod.GET)
+	public String addBoardform() {
+		return "admin_board/board_insert";
+	}
+
+	// 게시글(공지) 추가 로직
+	@RequestMapping(value = "boardInsert.ad", method = RequestMethod.POST)
+	public String insertBoard(@ModelAttribute BoardVO bvo) {
+		adService.insertBoard(bvo);
+		return "redirect:boardList.ad";
+	}
 }

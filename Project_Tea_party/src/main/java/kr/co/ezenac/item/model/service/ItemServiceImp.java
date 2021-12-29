@@ -1,7 +1,9 @@
 package kr.co.ezenac.item.model.service;
 
 import kr.co.ezenac.item.model.dao.ItemDAO;
+import kr.co.ezenac.item.model.vo.Cart_itemVO;
 import kr.co.ezenac.item.model.vo.CateListVO;
+import kr.co.ezenac.item.model.vo.ImagesVO;
 import kr.co.ezenac.item.model.vo.ItemVO;
 import kr.co.ezenac.item.model.vo.PagingVO;
 import kr.co.ezenac.item.model.vo.ReviewBoardVO;
@@ -67,9 +69,9 @@ public class ItemServiceImp implements ItemService{
 	}
 	//reviewimg
 	@Override
-	public String getReImg(int item_code) {
-
-		return iDAO.getImg(sqlSession, item_code);
+	public String getReImg(int r_board_no) {
+		
+		return iDAO.getReImg(sqlSession, r_board_no);
 	}
 
 	@Override
@@ -79,8 +81,8 @@ public class ItemServiceImp implements ItemService{
 	}
 	
 	@Override
-	public int countItem() {
-		return iDAO.countItem(sqlSession);
+	public int countReview() {
+		return iDAO.countReview(sqlSession);
 	}
 
 	@Override
@@ -95,9 +97,29 @@ public class ItemServiceImp implements ItemService{
 	}
 
 	@Override
-	public int cartno() {
+	public int cartno(String mem_id) {
 		
-		return iDAO.cartNo(sqlSession);
+		return iDAO.cartNo(sqlSession,mem_id);
+	}
+
+	@Override
+	public int insertCart(Cart_itemVO cvo) {
+		return iDAO.insertCart(sqlSession, cvo);
+	}
+
+	@Override
+	public int reviewImg(ImagesVO imageVO) {
+		return iDAO.reviewImg(sqlSession, imageVO);
+	}
+
+	@Override
+	public int reviewInsert(ReviewBoardVO rvo) {
+		return iDAO.reviewInsert(sqlSession, rvo);
+	}
+
+	@Override
+	public int selectSeq() {
+		return iDAO.selectSeq(sqlSession);
 	}
 	
 	

@@ -1,0 +1,85 @@
+body {
+  font-family: "Abril Fatface", cursive;
+}
+
+.main_header {
+  width: 100%;
+  position: fixed;
+  background-color: #ebf0ef;
+}
+
+.header_title_container {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header_title_title {
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+}
+
+.header_controller_container {
+  font-size: 17px;
+
+  width: 500px;
+  margin-top: 15px;
+  margin-right: 20px;
+
+  justify-content: flex-end;
+  display: flex;
+}
+
+.header_controller {
+  margin-right: 30px;
+}
+
+.collection_container {
+  position: fixed;
+  height: 100%;
+  width: 250px;
+  top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.collection_context {
+  margin-bottom: 70px;
+  margin-right: 25px;
+  width: 80%;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.collection_block {
+  width: 80%;
+  height: 110px;
+  margin-bottom: 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.collection_title {
+  margin: 10px 0px;
+  width: 80%;
+  height: 20px;
+  margin-right: 25px;
+  font-size: 18px;
+}
+
+.collecion_category {
+  width: 80%;
+  height: 60px;
+  margin-left: 25px;
+  font-size: 10px;
+}

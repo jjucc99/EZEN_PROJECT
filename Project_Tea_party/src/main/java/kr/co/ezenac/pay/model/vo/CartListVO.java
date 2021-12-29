@@ -2,8 +2,8 @@ package kr.co.ezenac.pay.model.vo;
 
 
 public class CartListVO {
-	private String imgPath;
 	private String item_name;
+	private String imgPath;
 	private int item_price;
 	private int cart_amount;
 	private int cart_item_no;

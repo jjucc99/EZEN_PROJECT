@@ -3,15 +3,18 @@
 <mapper namespace="adminMapper">
 
 	<!-- 아이템 추가 -->
-	<insert id="insertItem">
+	<insert id="insertItem" parameterType="kr.co.ezenac.admin.model.vo.ItemVO">
 		INSERT INTO ITEM
-		VALUES(#{item_code},#{item_name},#{item_price},#{item_information},#{cate_code},default)
+		VALUES(ITEM_CODE_SEQ.nextval,#{item_name},#{item_price},#{item_information},#{cate_code},default)
+		 <selectKey keyProperty="item_code" resultType="java.lang.Integer" order="AFTER">
+            SELECT ITEM_CODE_SEQ.CURRVAL FROM DUAL
+         </selectKey>
 	</insert>
 	
 	<!-- 상품 이미지 추가 -->
 	<insert id="insertImage">
 		INSERT INTO IMAGES
-		VALUES(test_item.nextval,#{img_name},#{img_save},#{img_ref},#{img_id})
+		VALUES(img_seq.nextval,#{img_name},#{img_save},#{img_ref},#{img_id})
 	</insert>
 	
 	<!-- 아이템 하나의 정보 -->
@@ -164,7 +167,7 @@
 	</update>
 	<!-- 배송상태 수정 -->
 	<update id="updateOrderStatus">
-    	UPDATE ORDER_LIST SET ORD_STATUS='교환/반품' where ord_no=#{ord_no}
+    	UPDATE ORDER_LIST SET ORD_STATUS='처리완료' where ord_no=#{ord_no}
 	</update>
 	<!-- 대표 상품용 조회 -->
 	<select id="selectOrderName" resultType="string">
@@ -186,6 +189,7 @@
 		<result column="ORD_STATUS" property="ord_status" />
 		<result column="MEM_ID" property="mem_id" />
 		<result column="PAY_NO" property="pay_no" />
+		<result column="ORDER_PRICE" property="ord_price" />
 	</resultMap>
 	<!-- 주문 상품 조회 -->
 	<select id="selectOrderDetail" resultMap="selectOrderDetail">
@@ -235,4 +239,20 @@
 		<result column="BOARD_BOARD" property="board_board" />
 		<result column="MEM_ID" property="mem_id" />
 	</resultMap>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard">
+		DELETE FROM Board where board_no=#{board_no}
+	</delete>
+	
+	<!-- 상품 수정 -->
+	<update id="updateBoard">
+    	UPDATE Board SET BOARD_SUB=#{board_sub},BOARD_CONTENT=#{board_content} where BOARD_NO = (#{board_no})
+	</update>
+	
+	<!-- 공지 추가 -->
+	<insert id="insertBoard">
+		INSERT INTO Board
+		VALUES(BOARD_NO_SEQ.nextval,#{board_sub},#{board_content},sysdate,#{board_board},#{mem_id})
+	</insert>
 </mapper>

@@ -51,13 +51,13 @@ public class AdminServiceImp implements AdminService {
 
 	@Override
 	public String getImg(int item_code) {
-		 return aDAO.getImg(sqlSession, item_code);
+		return aDAO.getImg(sqlSession, item_code);
 	}
 
 	@Override
 	public void updateMember(MemberVO mvo) {
-		aDAO.updateMember(sqlSession,mvo);
-		
+		aDAO.updateMember(sqlSession, mvo);
+
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class AdminServiceImp implements AdminService {
 
 	@Override
 	public List<ItemVO> selectItem(PagingVO vo) {
-		return aDAO.selectItem(sqlSession,vo);
+		return aDAO.selectItem(sqlSession, vo);
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class AdminServiceImp implements AdminService {
 
 	@Override
 	public List<MemberVO> selectMember(PagingVO vo) {
-		return aDAO.selectMember(sqlSession,vo);
+		return aDAO.selectMember(sqlSession, vo);
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class AdminServiceImp implements AdminService {
 
 	@Override
 	public List<MemberVO> selectOutMember(PagingVO vo) {
-		return aDAO.selectOutMember(sqlSession,vo);
+		return aDAO.selectOutMember(sqlSession, vo);
 	}
 
 	@Override
@@ -97,32 +97,32 @@ public class AdminServiceImp implements AdminService {
 
 	@Override
 	public List<OrderVO> selectOrder(PagingVO vo) {
-		return aDAO.selectOrder(sqlSession,vo);
+		return aDAO.selectOrder(sqlSession, vo);
 	}
 
 	@Override
 	public int updateDeliveryStatus(int ord_no) {
-		return aDAO.updateDeliveryStatus(sqlSession,ord_no);
+		return aDAO.updateDeliveryStatus(sqlSession, ord_no);
 	}
 
 	@Override
 	public int updateOrderStatus(int ord_no) {
-		return aDAO.updateOrderStatus(sqlSession,ord_no);
+		return aDAO.updateOrderStatus(sqlSession, ord_no);
 	}
 
 	@Override
 	public List<String> selectName(int ord_no) {
-		return aDAO.selectName(sqlSession,ord_no);
+		return aDAO.selectName(sqlSession, ord_no);
 	}
 
 	@Override
 	public Order_listVO selectOneOrder(int ord_no) {
-		return aDAO.selectOneOrder(sqlSession,ord_no);
+		return aDAO.selectOneOrder(sqlSession, ord_no);
 	}
 
 	@Override
 	public List<OrderVO> selectOrderDetail(int ord_no) {
-		return aDAO.selectOrderDetail(sqlSession,ord_no);
+		return aDAO.selectOrderDetail(sqlSession, ord_no);
 	}
 
 	@Override
@@ -139,6 +139,21 @@ public class AdminServiceImp implements AdminService {
 	public BoardVO selectOneBoard(int board_no) {
 		return aDAO.selectOneBoard(sqlSession, board_no);
 	}
-	
-	
+
+	@Override
+	public int deleteBoard(int board_no) {
+		return aDAO.deleteBoard(sqlSession, board_no);
+	}
+
+	@Override
+	public void updateBoard(BoardVO bvo) {
+		aDAO.updateBoard(sqlSession, bvo);
+	}
+
+	@Override
+	public void insertBoard(BoardVO bvo) {
+		aDAO.insertBoard(sqlSession, bvo);
+
+	}
+
 }

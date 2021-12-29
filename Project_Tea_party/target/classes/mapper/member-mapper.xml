@@ -13,7 +13,7 @@
 
     <insert id="insertMemberCart">
         INSERT INTO CART
-        VALUES (test_seq.nextval, #{mem_id})
+        VALUES (cart_no_seq.nextval, #{mem_id})
     </insert>
 
 

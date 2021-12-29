@@ -19,8 +19,24 @@ public class HomeController {
     @Autowired
     MemberService memberService;
 
+
     @GetMapping("/")
-    public String Home(@CookieValue(value = "REMEMBER", required = false) Cookie rememberCookie, Model model) throws Exception {
+    public String Home() throws Exception {
+        return "main/index";
+    }
+    @GetMapping("main")
+    public String main(){
+        return "main/main";
+    }
+    @GetMapping("/mypage")
+    public String myPage(){
+        return "main/myPage";
+    }
+
+
+
+    @GetMapping("/login")
+    public String login(@CookieValue(value = "REMEMBER", required = false) Cookie rememberCookie, Model model) throws Exception {
 
         //쿠키에 값이 있을 경우 값을 아이디에 값을 세팅
         if (rememberCookie != null) {
@@ -28,13 +44,13 @@ public class HomeController {
             model.addAttribute("rememberedId", rememberedId);
         }
 
-        return "main/mainHome";
+        return "main/login";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) throws Exception {
         session.invalidate();
-        return "redirect:/";
+        return "redirect:/main";
     }
 
     @PostMapping("/login")
@@ -87,19 +103,23 @@ public class HomeController {
                 }
                 response.addCookie(rememberCheck);
                 response.addCookie(rememberCookie);
+
+                return "redirect:/main";
             }
             // 로그인이 실패했을 때
             else {
                 session.setAttribute("checkLogin", "fail");
                 System.out.println("mem_id " + mem_id + "mem_pwd" + mem_pwd);
                 System.out.println("id " + id + "password" + pw);
+
+                return "/main/login";
             }
         } catch (Exception exception) {
             String message = exception.getMessage();
             System.out.println("오류가 났습니다.");
             System.out.println(message);
         }
-        return "redirect:/";
+        return "";
     }
 
     @GetMapping("/join")

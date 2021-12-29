@@ -109,5 +109,19 @@ public class AdminDAO {
 	public BoardVO selectOneBoard(SqlSessionTemplate sqlSession, int board_no) {
 		return sqlSession.selectOne("adminMapper.selectOneBoard", board_no);
 	}
+
+	public int deleteBoard(SqlSessionTemplate sqlSession, int board_no) {
+		return sqlSession.delete("adminMapper.deleteBoard", board_no);
+	}
+
+	public void updateBoard(SqlSessionTemplate sqlSession, BoardVO bvo) {
+		sqlSession.update("adminMapper.updateBoard", bvo);
+		
+	}
+
+	public void insertBoard(SqlSessionTemplate sqlSession, BoardVO bvo) {
+		sqlSession.insert("adminMapper.insertBoard", bvo);
+	}
+	
 	
 }
