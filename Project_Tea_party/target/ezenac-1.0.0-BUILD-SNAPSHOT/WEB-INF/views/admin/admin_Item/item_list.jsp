@@ -31,7 +31,15 @@
 	}
 </script>
 <body>
-<h2>상품 목록</h2>
+	<%
+		String checkLogin = (String) session.getAttribute("checkLogin");
+	%>
+	session
+	<%=checkLogin%><br>
+	<%
+		if (checkLogin == "success") {
+	%>
+	<h2>상품 목록</h2>
 
 <div id="outter">
 	<div style="float: right;">
@@ -88,5 +96,12 @@
 		</c:if>
 	</div>
 </div>
+	<%
+		} else {
+	%>
+	<a href="/">로그인 페이지로 이동 </a>
+	<%
+		}
+	%>
 </body>
 </html>

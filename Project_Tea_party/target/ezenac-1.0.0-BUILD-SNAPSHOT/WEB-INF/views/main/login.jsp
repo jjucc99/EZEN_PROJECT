@@ -19,7 +19,7 @@
     <div class="login_container">
         <form action="/login" method="post">
             <div class="login_title">
-                <a href="/main">TEA PARTY</a>
+                <a href="/">TEA PARTY</a>
             </div>
             <div class="login_context">
                 <div class="login_box">
@@ -47,7 +47,7 @@
             </div>
         </form>
     </div>
-    <a href="/join">
+    <a href="">
         <div class="login_join">
             <span>JOIN</span>
         </div>

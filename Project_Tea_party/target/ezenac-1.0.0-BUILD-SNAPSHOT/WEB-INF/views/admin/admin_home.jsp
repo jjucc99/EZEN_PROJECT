@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<%
 		String checkLogin = (String) session.getAttribute("checkLogin");
 		%>
@@ -33,6 +32,6 @@
             }
         %>
         
-    <a href="/">홈</a>
+    <a href="/main">홈</a>
 </body>
 </html>
