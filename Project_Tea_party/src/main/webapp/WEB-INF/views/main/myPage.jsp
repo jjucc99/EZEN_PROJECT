@@ -18,7 +18,6 @@
 <body>
 <%
     Character checkAdmin = (Character) session.getAttribute("checkAdmin");
-    String mem_id = (String) session.getAttribute("mem_id");
 %>
 <!-- $header -->
 <header class="main_header">
@@ -58,7 +57,7 @@
         <div class="mypage_btns">
             <div class="mypage_btn">
                 <div class="mypage_btn_text">
-                    <a href="/profile/${mem_id}"><span>PROFILE</span></a>
+                    <a href=""><span>PROFILE</span></a>
                 </div>
             </div>
             <div class="mypage_btn">

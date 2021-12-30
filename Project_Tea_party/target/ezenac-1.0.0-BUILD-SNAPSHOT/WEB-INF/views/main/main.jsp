@@ -26,7 +26,7 @@
 <header class="main_header">
     <div class="header_title_container">
         <div class="header_title_title">
-            <div class="header_title"><a href="/">TEA PARTY</a></div>
+            <div class="header_title"><a href="/main">TEA PARTY</a></div>
         </div>
         <div class="header_controller_container">
             <%

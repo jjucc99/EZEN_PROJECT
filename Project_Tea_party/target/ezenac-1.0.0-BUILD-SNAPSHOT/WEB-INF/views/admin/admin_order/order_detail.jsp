@@ -9,15 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		String checkLogin = (String) session.getAttribute("checkLogin");
-		%>
-	session
-	<%=checkLogin%><br>
-	<%
-		if (checkLogin == "success"){
-
-	    %>
 	<table border="1">
 		<tr>
 			<td>주문번호</td>
@@ -53,15 +44,6 @@
 		</tr>
 		</c:forEach>
 	</table>
-	합계 <fmt:formatNumber type="number" maxFractionDigits="3" value="${total}" /> 원
-	<br>
-	<button onclick="location.href='orderList.ad'">주문 목록</button>
-	<%
-		} else {
-	%>
-	<a href="/">로그인 페이지로 이동 </a>
-	<%
-		}
-	%>
+	총 합계 ${total}	
 </body>
 </html>

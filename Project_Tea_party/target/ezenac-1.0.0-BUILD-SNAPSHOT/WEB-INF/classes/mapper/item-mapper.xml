@@ -58,10 +58,20 @@ SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='item' AND IMG_ID=#{item_code}
 
 <!-- review이미지 -->
 <select id="reimg" resultType="String">
-SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='review' AND IMG_ID=#{r_board_no}
+SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='item' AND IMG_ID=#{r_board_no}
 </select>
 
-
+<!-- 총 게시글 갯수 출력 -->
+	<select id="countItem" resultType="int">
+		SELECT COUNT(*) FROM ITEM
+	</select>
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectItem" resultMap="selectTest">
+		SELECT * FROM CATEGORYS c 
+		JOIN Item i ON c.cate_code=i.cate_code
+    	WHERE c.cate_code = i.cate_code order by  item_code desc
+						
+	</select>
 
 	<resultMap type="CateList" id="selectTest">
 		<result column="ITEM_CODE" property="item_code" />
@@ -74,11 +84,11 @@ SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='review' AND IMG_ID=#{r_board_no}
 	</resultMap>
 	
 	<!-- 리뷰 -->
-	<!-- 총 리뷰 갯수 출력 -->
+	<!-- 총 게시글 갯수 출력 -->
 	 <select id="countRe" resultType="int">
 		SELECT COUNT(*) FROM REVIEWBOARD
 	</select> 
-	<!-- 리뷰 조회 -->
+	<!-- 게시글 조회 -->
 	<select id="selectRe" resultMap="selectRe">
 		SELECT * 
 			FROM (
@@ -105,31 +115,5 @@ SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='review' AND IMG_ID=#{r_board_no}
 	<select id="selectCartNo" resultType="int">
 	SELECT CART_NO FROM CART WHERE MEM_ID=#{mem_id}
 	</select>
-	
-	<insert id="insertCart">
-	INSERT INTO CART_ITEM VALUES(CART_ITEM_NO_SEQ.NEXTVAL,#{cart_amount},#{cart_no},#{item_code})
-	</insert>
-	
-	<!-- review이미지 insert -->
-	<insert id="insertReviewImg" >
-	  
-	 INSERT INTO IMAGES
-		VALUES(img_seq.nextval,#{img_name},#{img_save},#{img_ref},#{img_id}) 
-	</insert>
-	<!-- review insert -->
-	<insert id="reviewInsert" parameterType="kr.co.ezenac.item.model.vo.ReviewBoardVO">
-		INSERT INTO REVIEWBOARD
-        VALUES(R_BOARD_NO_SEQ.nextval,#{r_board_sub},#{r_board_content},sysdate,#{mem_id},#{item_code})
-         <selectKey keyProperty="r_board_no" resultType="java.lang.Integer" order="AFTER">
-            SELECT R_BOARD_NO_SEQ.CURRVAL FROM DUAL
-         </selectKey>
-		<!-- INSERT INTO REVIEWBOARD
-			VALUES(test_seq.nextval,#{r_board_sub},#{r_board_content},sysdate,#{mem_id},#{item_code}) -->
-	</insert>
-	
-	<select id="selectSeq" resultType="int">
-		SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'IMG_SEQ'
-	</select>
-	
 	
 </mapper>

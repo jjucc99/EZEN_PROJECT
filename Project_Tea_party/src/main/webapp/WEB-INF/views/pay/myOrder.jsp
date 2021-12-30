@@ -29,8 +29,8 @@
 <div>주문 정보</div>
 <div>결제 금액</div>
 <div>배송상태</div>
-<div>구매일자</div>
 <div>주문상태</div>
+<div>구매일자</div>
 </div>
 <br>
 
@@ -48,18 +48,13 @@
 	</div>
 	<div><fmt:formatNumber value="${ol.ord_price}"/>원</div>
 	<div>${ol.delivery_status}</div>
-	<div><fmt:formatDate value="${ol.ord_date}"/></div>
 	<div><c:choose>
 		<c:when test="${ol.ord_status =='처리완료'}">
 			<select>
 				<option selected disabled>처리완료</option></select>
 		</c:when>
-		<c:when test="${ol.ord_status =='구매확정'}">
-			<select>
-				<option selected disabled>구매확정</option></select>
-		</c:when>
 		<c:otherwise>
-			<select id="${ol.rep_name}" onchange="">
+			<select id="${ol.rep_name}" onchange="change('${ol.ord_no}','${ol.rep_name}')">
 				<option value=''>--주문 처리중--</option>
 				<option value='1'
 					<c:if test="${ol.ord_status == '구매확정'}">selected</c:if>>구매확정</option>
@@ -68,11 +63,10 @@
 				<option value='3'
 					<c:if test="${ol.ord_status == '교환/반품'}">selected</c:if>>교환/반품</option>
 			</select>
-			<input type="button" onclick="change('${ol.ord_no}','${ol.rep_name}')" value="선택">
 		</c:otherwise>
 		</c:choose>
 	</div>
-
+	<div><fmt:formatDate value="${ol.ord_date}"/></div>
 </div><br>
 </c:forEach>
 </div><br>

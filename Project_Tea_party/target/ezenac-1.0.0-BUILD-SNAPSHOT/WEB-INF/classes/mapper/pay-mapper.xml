@@ -2,14 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="payMapper">
 
-<!-- 장바구니에서 보여줄 내역 가져오기 -->
+<!-- <insert id="insertPay">
+insert into pay(pay_no,pay_method,pay_date)
+values(#{pay_no},#{pay_method}, sysdate)
+</insert>
+
+<select id="selectPay" resultMap="select_re">
+select * from pay order by pay_no desc
+</select>
+<resultMap type="Pay" id="select_re">
+<result column="PAY_NO" property="pay_no"/>
+<result column="PAY_METHOD" property="pay_method"/>
+<result column="PAY_DATE" property="pay_date"/>
+</resultMap>
+
+<update id="updatePay">
+update pay set pay_method=#{pay_method} where pay_no=#{pay_no}
+</update>
+
+<delete id="deletePay">
+delete from pay where pay_no=#{pay_no}
+</delete>
+
+<select id="selectOne" resultMap="select_re">
+select * from pay where pay_no=#{pay_no}
+</select> -->
+
+<!-- 새 코딩 시작 -->
+
 <select id="cartList" resultMap="cart_list">
 select item_name, item_price, cart_amount, cart_item_no, cart_item.item_code, item_count from item
 inner join cart_item
 on cart_item.item_code=item.item_code
 inner join cart
 on cart.cart_no=cart_item.cart_no
-where cart.mem_id=#{mem_id} order by (case when cart_amount > item_count then 2 else 1 end), cart_item.cart_item_no desc
+where cart.mem_id=#{mem_id} order by (cart_amount-item_count), cart_item.cart_item_no desc
 </select>
 <resultMap type="kr.co.ezenac.pay.model.vo.CartListVO" id="cart_list">
 <result column="ITEM_NAME" property="item_name"/>
@@ -20,22 +47,18 @@ where cart.mem_id=#{mem_id} order by (case when cart_amount > item_count then 2 
 <result column="ITEM_COUNT" property="item_count"/>
 </resultMap>
 
-<!-- 이미지 파일 이름 코드로 가져오기 -->
 <select id="img" resultType="string">
 select img_name from images where img_ref='item' and img_id=#{item_code}
 </select>
 
-<!-- 장바구니 수량 수정 -->
 <update id="cartUpdate">
 update cart_item set cart_amount=#{cart_amount} where cart_item_no=#{cart_item_no}
 </update>
 
-<!-- 장바구니 내역 삭제 -->
 <delete id="cartDelete">
 delete from cart_item where cart_item_no=#{cart_item_no}
 </delete>
 
-<!-- 선택상품 결제 페이지로 이동 -->
 <select id="selectCart" resultMap="cart_list">
 select item_name, item_price, cart_amount, cart_item_no, cart_item.item_code, item_count from item
 inner join cart_item
@@ -45,7 +68,6 @@ on cart.cart_no=cart_item.cart_no
 where cart_item_no=#{cart_item_no} order by cart_item.cart_item_no desc
 </select>
 
-<!-- 회원 기본 정보 가져오기 -->
 <select id="getMember" resultMap="member">
 select mem_name, mem_addr1, mem_addr2, mem_addr3, mem_phone from Members where mem_id=#{mem_id}
 </select>
@@ -57,125 +79,13 @@ select mem_name, mem_addr1, mem_addr2, mem_addr3, mem_phone from Members where m
 <result column="MEM_PHONE" property="mem_phone"/>
 </resultMap>
 
-<!-- 구매내역 저장하기 -->
 <insert id="insertOrderList">
-INSERT INTO ORDER_LIST (ORD_NO, ORD_RECEIVER, ORD_ADDR1, ORD_ADDR2, ORD_ADDR3, ORD_PHONE, DELIVERY_STATUS, ORD_STATUS,ORD_price, MEM_ID, PAY_NO)
-VALUES (ORD_NO_SEQ.nextval, #{ord_receiver}, #{ord_addr1}, #{ord_addr2}, #{ord_addr3}, #{ord_phone}, '배송중', '준비중',#{ord_price}, #{mem_id}, #{pay_no})
+INSERT INTO ORDER_LIST (ORD_NO, ORD_RECEIVER, ORD_ADDR1, ORD_ADDR2, ORD_ADDR3, ORD_PHONE, DELIVERY_STATUS, ORD_STATUS, MEM_ID, PAY_NO)
+VALUES (test_seq.nextval, #{ord_receiver}, #{ord_addr1}, #{ord_addr2}, #{ord_addr3}, #{ord_phone}, '배송중', '준비중', #{mem_id}, #{pay_no})
 </insert>
 
-<!-- 가장 최근 구매 번호 가져오기 (order_item에 저장하기 위함) -->
-<select id="getOrdNo" resultType="int">
+<select id="getOrdNo">
 SELECT ord_no FROM
-(SELECT *FROM order_list where mem_id=#{mem_id} ORDER BY ord_no DESC) WHERE ROWNUM= 1
-</select>
-
-<!-- cart_item에서 order_item에 저장할 내역 가져오기 -->
-<select id="getCartItem" resultMap="orderItem">
-select item_code, cart_amount, cart_item_no from cart_item where cart_item_no=#{cart_item_no}
-</select>
-<resultMap type="kr.co.ezenac.pay.model.vo.Order_itemVO" id="orderItem">
-<result column="CART_ITEM_NO" property="cart_item_no"/>
-<result column="ITEM_CODE" property="item_code"/>
-<result column="CART_AMOUNT" property="count"/>
-</resultMap>
-
-<!-- order_item에 저장한 후 cart_item 내역 삭제, 재고 처리 -->
-<insert id="insertOrderItem">
-insert into order_item values (ORD_ITEM_NO_SEQ.nextval, #{count}, #{item_code}, #{ord_no})
-</insert>
-<delete id="deleteCartItem">
-delete from cart_item where cart_item_no=#{cart_item_no}
-</delete>
-<update id="deleteItemCount">
-update item set item_count=item_count-#{count} where item_code=#{item_code}
-</update>
-
-<!-- 페이징 처리 후 구매내역 조회 -->
-<select id="countOrder" resultType="int">
- SELECT COUNT(*) FROM order_list where mem_id=#{mem_id}
-</select>
-
-<select id="selectOrder" resultMap="Order_list">
-SELECT * 
-		FROM (
-			SELECT ROWNUM RN, A.* 
-				FROM (
-						select ord_no, delivery_status, ord_status, ord_date, ord_price from order_List where mem_id=#{mem_id} order by ord_no desc
-					) A
-			)
-	WHERE RN BETWEEN #{start} AND #{end}
-</select>
-<!-- A.* :A의 모든 열을 선택
-Rownum:순서대로 번호를 매김
-order_List테이블을 order by ord_no desc 정렬한 테이블을 A라고 한다.
-이 A테이블의 열을 모두 select하여 열순서대로 번호 매기기(Rownum)을 하는데,
-Rownum인 RN이 지정된 start와 end 사이값인 경우에만 그 열들을 select해서 보여준다
-->한 페이지에 글 10개만 보여준다. -->
-
-<resultMap type="kr.co.ezenac.pay.model.vo.Order_listVO" id="Order_list">
-<result column="ord_no" property="ord_no"/>
-<result column="delivery_status" property="delivery_status"/>
-<result column="ord_status" property="ord_status"/>
-<result column="ord_date" property="ord_date"/>
-<result column="ord_price" property="ord_price"/>
-</resultMap>
-
-<select id="selectRep" resultMap="subOrder">
-select item_name, order_item.item_code from order_list
-inner join order_item
-on order_list.ord_no=order_item.ord_no
-inner join item
-on item.item_code=order_item.item_code
-where order_item.ord_no=#{ord_no}
-</select>
-<resultMap type="kr.co.ezenac.pay.model.vo.SubOrderVO" id="subOrder">
-<result column="item_name" property="str"/>
-<result column="item_code" property="number"/>
-</resultMap>
-
-<update id="changeStatus">
-update Order_List set ord_status=#{ord_status} where ord_no=#{ord_no}
-</update>
-
-<select id="orderItemList" resultMap="orderItemList">
-select ord_item_no, item_name, count, item_price, order_item.item_code from order_item
-inner join item
-on item.item_code=order_item.item_code
-where ord_no=#{ord_no}
-</select>
-<!-- CartListVO 이용: cart_item_no=상세주문번호, item_name=이름 cart_amount=수량, item_price=가격,
-item_code=상품코드(검색용), imgPath=이미지,sum=합계 
- ->Order_item, item을 join해서 ord_no으로 검색 -->
-		 
-<resultMap type="kr.co.ezenac.pay.model.vo.CartListVO" id="orderItemList">
-<result column="ord_item_no" property="cart_item_no"/>
-<result column="item_name" property="item_name"/>
-<result column="count" property="cart_amount"/>
-<result column="item_price" property="item_price"/>
-<result column="item_code" property="item_code"/>
-</resultMap>
-
-<select id="getOrdInfo" resultMap="ordInfo">
-select ord_price, ord_receiver, ord_addr1, ord_addr2, ord_addr3, ord_phone, pay_method, ord_status
-from order_list inner join pay
-on order_list.pay_no=pay.pay_no
-where ord_no=#{ord_no}
-</select>
-<!-- PayVO 이용: ord_price=총 금액, ord~=배송지 정보, pay_method=결제수단, ord_status=주문상태,
-->order_List를 Pay와 join해서 ord_no로 검색 -->
-<resultMap type="kr.co.ezenac.pay.model.vo.PayVO" id="ordInfo">
-<result column="ord_price" property="ord_price"/>
-<result column="ord_receiver" property="ord_receiver"/>
-<result column="ord_addr1" property="ord_addr1"/>
-<result column="ord_addr2" property="ord_addr2"/>
-<result column="ord_addr3" property="ord_addr3"/>
-<result column="ord_phone" property="ord_phone"/>
-<result column="pay_method" property="pay_method"/>
-<result column="ord_status" property="ord_status"/>
-</resultMap>
-
-<!-- 리뷰 있는지 확인 -->
-<select id="checkReview" resultType="int">
-SELECT COUNT(*) FROM REVIEWBOARD where mem_id=#{str} and item_code=#{number}
+(SELECT *FROM order_list where mem_id=#{mem_id} ORDER BY ord_no DESC) WHERE ROWNUM= 1;
 </select>
 </mapper>

@@ -41,7 +41,6 @@
 	}
 </script>
 <body>
-
 <h2>카테고리 리스트</h2>
 <div id="outter">
 
@@ -49,7 +48,7 @@
 	<table>
 		<c:forEach items="${catelist}" var="CateListVO">
 			<tr>
-				<th><a href="oneItem.item?item_code=${CateListVO.item_code}" style="color:black"><figure>	
+				<th><a href="oneItem.item/${CateListVO.item_code}" style="color:black"><figure>	
 				<img alt="" src="<c:url value='/image/${CateListVO.imgPath}'/>">
 				<figcaption>${CateListVO.item_name}<br><h6>${CateListVO.item_price}</h6></figcaption>
 				</figure></a></th>

@@ -29,9 +29,9 @@ width: 100px;
 }
 
 .msg{
-width: 300px;
+width: 360px;
 }
 
-.delete{
+.delete,.update{
 width: 50px;
 }

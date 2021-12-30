@@ -6,11 +6,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style type="text/css">
-a:visited {
-	color: blue;
-}
-</style>
 <title>주문 목록</title>
 </head>
 <style>
@@ -36,16 +31,7 @@ a:visited {
 	}
 </script>
 <body>
-	<%
-		String checkLogin = (String) session.getAttribute("checkLogin");
-		%>
-	session
-	<%=checkLogin%><br>
-	<%
-		if (checkLogin == "success"){
-
-	    %>
-	<h2>주문 목록</h2>
+<h2>주문 목록</h2>
 
 <div id="outter">
 	<div style="float: right;">
@@ -73,12 +59,12 @@ a:visited {
 		<c:forEach items="${viewAll}" var="order">
 			<tr>
 				<td>${order.ord_no}</td>
-				<td><a href="orderDetail.ad?ord_no=${order.ord_no}">${order.item_name}<c:choose>
+				<td><a href="orderDetail.ad?ord_no=${order.ord_no}">${order.item_name}</a>
+				<c:choose>
 				<c:when test="${order.order_item_count!=0}">
 				외 ${order.order_item_count}개</c:when>
 				<c:otherwise></c:otherwise>
-				</c:choose></a>
-				</td>
+				</c:choose></td>
 				<td>${order.mem_id}</td>
 				<td>${order.ord_date}</td>
 				<td>${order.delivery_status}</td>
@@ -90,7 +76,7 @@ a:visited {
 					</form>
 					<form action="orderStatus.ad" method="post">
 					<input type="hidden" name="ord_no" value="${order.ord_no}">
-					<input type="submit"  value="처리완료">
+					<input type="submit"  value="교환/반품 ">
 					</form>
 				</td>
 			</tr>
@@ -117,12 +103,5 @@ a:visited {
 		</c:if>
 	</div>
 </div>
-	<%
-		} else {
-	%>
-	<a href="/">로그인 페이지로 이동 </a>
-	<%
-		}
-	%>
 </body>
 </html>

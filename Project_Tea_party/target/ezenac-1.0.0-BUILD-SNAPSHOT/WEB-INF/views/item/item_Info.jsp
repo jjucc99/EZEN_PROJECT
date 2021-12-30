@@ -43,7 +43,7 @@ table {
 				</tr>
 				<tr>
 					<td>
-	<%
+					<%
 		String checkLogin = (String) session.getAttribute("checkLogin");
 	%>
 	session
@@ -51,15 +51,17 @@ table {
 	<%
 		if (checkLogin == "success") {
 	%>
-						<form action="insertCart.item" method="get">
-							<input type="hidden" value="${catelist.item_code}" name="item_code">							
-							<input type="number" value=1 name="cart_amount">
+						<form action="cartno.item">
+							<input type="hidden" value="${cartno.cart_no}">
+							<select>
+								<c:forEach begin="1" end="10" var="i">
+									<option value="${i}">${i}</option>
+								</c:forEach>
+							</select>&nbsp;&nbsp;개 
 							<input type="submit" value="장바구니에 담기">
 						</form><br>
-						<a href="cart.pay" style="text-decoration:none">장바구니 목록 보기</a><br>
-						<a href="javascript:history.back()">뒤로가기</a>&nbsp;&nbsp;
-						<a href="/main">홈으로가기</a>
-	<%
+						<a href="" style="text-decoration:none">장바구니 목록 보기</a>
+						<%
 		} else {
 	%>
 	<a href="/">주문하실려면 로그인하셔야합니다. </a>

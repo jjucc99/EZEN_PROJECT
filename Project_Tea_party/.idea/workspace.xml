@@ -10,117 +10,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c51ad18d-7ede-4b57-8a98-45957adb2144" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/profile.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/main.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/myPage.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/items_container.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/join.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/main_header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/my_page.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/reset.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/title_header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/img/in_bed.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/img/in_cafe.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/pay/controller/ControllerPay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/pay/controller/PayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/co/ezenac/pay/controller/PayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/myPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/myPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/cartList.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/myOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/myOrder.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/order.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/orderItemList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/orderItemList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/pay.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/pay.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/payCRUD/infoPay.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/payCRUD/insertForm.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/payCRUD/listPay.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/pay/pay변경사항.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/join.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/join.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/my_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/my_page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/pay/pay.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/member-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/member-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/join.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/join.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/mainHome.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/main_login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main/main_non.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/vo/BoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/vo/BoardVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/vo/OrderVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/vo/OrderVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/vo/Order_listVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/admin/model/vo/Order_listVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/controller/BoardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/controller/ReplyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/controller/ReplyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/dao/BoardDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/dao/BoardDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/dao/ReplyDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/dao/ReplyDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/service/BoardServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/service/BoardServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/service/ReplyServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/service/ReplyServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/PagingVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/PagingVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/ReplyVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/board/model/vo/ReplyVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/controller/ItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/controller/ItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/dao/ItemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/dao/ItemDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/service/ItemServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/service/ItemServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/vo/Cart_itemVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/vo/Cart_itemVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/vo/ImagesVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/vo/ImagesVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/vo/PagingVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/vo/PagingVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/vo/ReviewBoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/item/model/vo/ReviewBoardVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/controller/PayController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/dao/PayDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/dao/PayDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/service/PayServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/service/PayServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/CartListVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/CartListVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/Order_itemVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/Order_itemVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/Order_listVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/Order_listVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/PagingVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/PagingVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/PayVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/PayVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/SubOrderVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/kr/co/ezenac/pay/model/vo/SubOrderVO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/dao/AdminDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/service/AdminServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/ImagesVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/ImagesVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/ItemVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/ItemVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/MemberVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/MemberVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/Order_listVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/Order_listVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/PagingVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/admin/model/vo/PagingVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/board/model/vo/BoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/board/model/vo/BoardVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/image/model/vo/ImagesVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/image/model/vo/ImagesVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/controller/ItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/controller/ItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/dao/ItemDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/dao/ItemDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/service/ItemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/service/ItemService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/service/ItemServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/service/ItemServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/vo/CateListVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/vo/CateListVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/vo/CategoryVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/vo/CategoryVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/vo/ItemVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/vo/ItemVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/vo/ReviewBoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/item/model/vo/ReviewBoardVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/controller/MemberController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/controller/MemberController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/dao/MemberDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/dao/MemberDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/service/MemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/service/MemberServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/vo/LoginVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/vo/LoginVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/vo/MemberVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/members/model/vo/MemberVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/mypage/model/vo/BoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/mypage/model/vo/BoardVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/mypage/model/vo/ItemVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/mypage/model/vo/ItemVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/mypage/model/vo/MemberVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/mypage/model/vo/MemberVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/mypage/model/vo/Order_listVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/mypage/model/vo/Order_listVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/dao/PayDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/dao/PayDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/service/PayService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/service/PayService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/service/PayServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/service/PayServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/vo/CartListVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/vo/CartListVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/vo/CartUpdateVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/vo/CartUpdateVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/vo/PayVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/pay/model/vo/PayVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/review/model/vo/ReviewBoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/co/ezenac/review/model/vo/ReviewBoardVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/admin-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/admin-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/item-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/item-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/pay-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/mapper/pay-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_Item/item_add_admin_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_Item/item_add_admin_form.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_Item/item_info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_Item/item_info.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_Item/item_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_Item/item_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_board/board_info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_board/board_info.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_board/notice_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_board/notice_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_member/member_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_member/member_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_member/out_member_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_member/out_member_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_order/order_detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_order/order_detail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_order/order_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_order/order_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/item/item.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/item/item.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/item/item_Cate.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/item/item_Cate.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/item/item_Info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/item/item_Info.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main/myPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main/myPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/pay/cartList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/pay/cartList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/resources/css/join.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/resources/css/join.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/resources/css/my_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/resources/css/my_page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/resources/css/pay/pay.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/resources/css/pay/pay.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/resources/js/pay/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/resources/js/pay/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/resources/js/pay/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/resources/js/pay/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main/join.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main/join.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ezenac-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/main/mainHome.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,19 +102,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Project_Tea_party_12_30" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/resources/css" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\webapp\WEB-INF\views\main" />
       <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\webapp\resources\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\webapp\WEB-INF\views\pay" />
-      <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\java\kr\co\ezenac\pay\controller" />
       <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\webapp\resources\img" />
       <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\webapp\resources\css" />
       <recent name="C:\Users\jjucc\Desktop\GitHub\EZEN_PROJECT\Project_Tea_party\src\main\webapp\WEB-INF\views\main" />
@@ -315,10 +228,7 @@
       <workItem from="1640664022782" duration="3214000" />
       <workItem from="1640675081927" duration="1794000" />
       <workItem from="1640677555103" duration="3681000" />
-      <workItem from="1640738237862" duration="4415000" />
-      <workItem from="1640745230311" duration="181000" />
-      <workItem from="1640746186612" duration="2751000" />
-      <workItem from="1640844599207" duration="42000" />
+      <workItem from="1640738237862" duration="3769000" />
     </task>
     <servers />
   </component>
