@@ -8,6 +8,14 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="cord"/>
+			<item value="last"/>
+			<item value="border"/>
+			<item value="bo"/>
+			<item value="pg"/>
+			<item value="address"/>
+			<item value="addr"/>
+			<item value="border-bottom"/>
 			<item value="pay/"/>
 			<item value="/pay"/>
 			<item value="review"/>
@@ -15,23 +23,15 @@
 			<item value="and"/>
 			<item value="servlet-mapping"/>
 			<item value="servlet"/>
-			<item value="sub"/>
-			<item value="order_item"/>
-			<item value="next"/>
-			<item value="seq"/>
-			<item value="cart"/>
-			<item value="cart_seq"/>
-			<item value="set"/>
-			<item value="frm"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1182"/>
-		<item key="DIALOG_Y_ORIGIN" value="409"/>
+		<item key="DIALOG_X_ORIGIN" value="218"/>
+		<item key="DIALOG_Y_ORIGIN" value="267"/>
 		<item key="DIALOG_WIDTH" value="393"/>
-		<item key="DIALOG_HEIGHT" value="523"/>
+		<item key="DIALOG_HEIGHT" value="430"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>

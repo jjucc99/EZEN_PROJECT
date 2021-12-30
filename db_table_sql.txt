@@ -24,7 +24,7 @@ CREATE TABLE ORDER_item (
 
 CREATE TABLE MEMBERS (
 	mem_id varchar2(20) NOT NULL,
-	mem_pwd	 varchar2(20) NOT NULL,
+	mem_pwd	 varchar2(200) NOT NULL,
 	mem_name varchar2(20) NOT NULL,
 	mem_addr1 varchar2(50) NOT NULL,
 	mem_addr2 varchar2(300) NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE ITEM (
 	item_price number NOT NULL,
 	item_information varchar2(500) NOT NULL,
 	cate_code number NOT NULL,
-	item_count number	NOT NULL
+	item_count number	default 10 NOT NULL
 );
 
 CREATE TABLE REPLY (
@@ -260,6 +260,8 @@ insert into categorys VALUES(2,'허브차');
 insert into categorys VALUES(3,'전통차');
 insert into categorys VALUES(4,'커피');
 insert into categorys VALUES(5,'티웨어');
+insert into categorys VALUES(6,'신상품');
+insert into categorys VALUES(7,'삭제');
 
 ----------pay
 INSERT INTO PAY (PAY_NO, PAY_METHOD) VALUES ('1', '계좌이체');

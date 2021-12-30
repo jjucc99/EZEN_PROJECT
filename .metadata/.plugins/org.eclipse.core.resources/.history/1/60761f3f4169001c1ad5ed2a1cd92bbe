@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>TEA_PARTY_MYPAGE</title>
+  </head>
+  <body>
+    <!-- $header -->
+    <header class="main_header">
+      <div class="header_title_conteiner">
+        <div class="header_title_title">
+          <div class="header_title"><a href="index.html">TEA PARTY</a></div>
+        </div>
+        <div class="header_controller_conteiner">
+          <div class="header_controller">
+            <a href="my_page.html">MY PAGE</a>
+          </div>
+          <div class="header_controller">
+            <a href="">JOIN</a>
+          </div>
+          <div class="header_controller">
+            <a href="">LOGIN</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- $section -->
+    <section>
+      <div class="mypage_container">
+        <div class="mypage_title">
+          <span class="mypage_title_title">MYPAGE</span>
+        </div>
+        <div class="mypage_btns">
+          <div class="mypage_btn">
+            <div class="mypage_btn_text">
+              <a href=""><span>PROFILE</span></a>
+            </div>
+          </div>
+          <div class="mypage_btn">
+            <div class="mypage_btn_text">
+              <a href=""><span>MY_BOARD</span></a>
+            </div>
+          </div>
+          <div class="mypage_btn">
+            <div class="mypage_btn_text">
+              <a href=""><span>MY_ORDER</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    /
+    <main>
+      <div class="order_container">
+        <div class="order_container_title">ORDER</div>
+        <!-- 늘이는 거 -->
+        <div class="order_container_items">
+          <div class="order_container_items_item_cord">
+            <span>상품코드</span>
+            <span>10000</span>
+          </div>
+          <div class="order_container_items_item_box">
+            <div class="order_container_img"></div>
+            <div class="order_container_text">
+              <div class="order_container_text_name">일단 아무거나</div>
+              <div class="order_container_text_count">3000</div>
+              <div class="order_container_text_sum">3333</div>
+            </div>
+            <div class="order_container_context">
+              <div class="order_container_context_date">333/33</div>
+              <div class="order_container_context_delivery_status">완료</div>
+              <div class="order_container_context_btn">
+                <input type="submit" value="SELECT" />
+                <input type="submit" value="BTN" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 늘이는 거 끝 -->
+        <!-- 늘이는 거 -->
+        <div class="order_container_items">
+          <div class="order_container_items_item_cord">
+            <span>상품코드</span>
+            <span>10000</span>
+          </div>
+          <div class="order_container_items_item_box">
+            <div class="order_container_img"></div>
+            <div class="order_container_text">
+              <div class="order_container_text_name">일단 아무거나</div>
+              <div class="order_container_text_count">3000</div>
+              <div class="order_container_text_sum">3333</div>
+            </div>
+            <div class="order_container_context">
+              <div class="order_container_context_date">333/33</div>
+              <div class="order_container_context_delivery_status">완료</div>
+              <div class="order_container_context_btn">
+                <input type="submit" value="SELECT" />
+                <input type="submit" value="BTN" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 늘이는 거 끝 -->
+      </div>
+    </main>
+  </body>
+</html>

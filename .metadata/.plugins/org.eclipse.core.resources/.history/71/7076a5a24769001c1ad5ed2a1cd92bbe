@@ -1,0 +1,26 @@
+
+<%
+    String checkLogin = (String) session.getAttribute("checkLogin");
+    Character checkAdmin = (Character) session.getAttribute("checkAdmin");
+    Character checkMember = (Character) session.getAttribute("checkMember");
+
+                if (checkLogin == "success" && checkMember == 'N' && checkAdmin == 'N') {
+                }
+            %>
+<div class="header_title_container">
+        <div class="header_title_title">
+            <div class="header_title"><a href="/main">TEA PARTY</a></div>
+        </div>
+        <div class="header_controller_container">
+            
+            <div class="header_controller">
+                <a href="/mypage">MY PAGE</a>
+            </div>
+            <div class="header_controller">
+                <a href="/cart.pay">MY SHOPPING</a>
+            </div>
+            <div class="header_controller">
+                <a href="/logout">LOGOUT</a>
+            </div> 
+        </div>
+</div>

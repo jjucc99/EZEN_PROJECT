@@ -1,0 +1,247 @@
+body {
+  width: 100%;
+  height: auto;
+  overflow: auto;
+}
+
+section {
+  width: 100%;
+  height: auto;
+  overflow: auto;
+}
+
+.order_list_container {
+  width: 100%;
+  height: auto;
+  margin-top: 150px;
+  overflow: auto;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+
+  margin-bottom: 100px;
+}
+
+.order_list_box {
+  width: 50%;
+  height: auto;
+
+}
+
+.order_list_delivery_box {
+  width: 30%;
+  height: 500px;
+
+}
+.order_list_context_title_title {
+  width: 100%;
+  height: 50px;
+  font-size: 28px;
+
+ border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.order_list_context_title {
+  width: 100%;
+  height: auto;
+}
+
+.order_list_context_title_detial {
+  margin-bottom: 20px;
+}
+
+.order_list_context_title_detial_order_num {
+  width: 100%;
+  height: 25px;
+
+  font-size: 18px;
+}
+
+.order_list_context_title_detial_status {
+  width: 100%;
+  height: 25px;
+
+  font-size: 18px;
+}
+.order_list_context_title_detial_order_num span:last-child {
+  margin-left: 30px;
+}
+
+.order_list_context_title_detial_status span:last-child {
+  margin-left: 30px;
+}
+
+.order_list_context_context {
+  width: 30%;
+  height: 100%;
+
+}
+
+.order_list_context_items {
+  width: 100%;
+  height: auto;
+ 
+}
+
+.order_list_context_item {
+  width: 100%;
+  height: auto;
+ border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.order_list_context_item_num {
+  width: 100%;
+  height: 30px;
+  font-size: 18px;
+  
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+  margin-bottom: 10px;
+}
+.order_list_context_item_num span:last-child {
+  margin-left: 30px;
+}
+.order_list_context_item_context {
+  width: 100%;
+  height: 200px;
+
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order_list_context_item_context_img {
+  width: 120px;
+  height: 120px;
+}
+
+.order_list_context_item_context_detail {
+  width: 80%;
+  height: 120px;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.order_list_context_item_context_detail-box {
+  width: 180px;
+  height: 120px;
+
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.order_list_context_item_context_detail_name {
+  font-size: 18px;
+  height: auto;
+}
+.order_list_context_item_context_detail_price {
+  width: 100%;
+  height: 50%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.order_list_context_item_context_detail-box span {
+  margin-right: 10px;
+}
+
+.order_list_context_item_context_detail_sum {
+  width: 30%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.order_list_context_item_context_detail_sum_price {
+  text-align: center;
+}
+
+.order_list_context_item_context_detail_sum_price span:last-child {
+  margin-left: 10px;
+}
+
+.order_list_context_item_context_detail_sum input[type="button"] {
+  width: 120px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+}
+
+.order_list_delivery_box_title {
+  width: 100%;
+  height: 50px;
+  font-size: 28px;
+
+ border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+.order_list_delivery_box_delivery_title {
+  width: 100%;
+  height: 40px;
+  font-size: 20px;
+ border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.order_list_delivery_box_delivery_name {
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.order_list_delivery_box_delivery_phone {
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.order_list_delivery_box_address_title {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+
+ border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+.order_list_delivery_box_address_address1 {
+  margin-left: 30px;
+}
+.order_list_delivery_box_address_address2 {
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.order_list_delivery_box_address_address3 {
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.order_list_delivery_box_payment_title {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+
+ border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.order_list_delivery_box_payment_context {
+  font-size: 20px;
+}
+
+.order_list_delivery_box_payment_title_context {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.order_list_delivery_box_payment_sum span:first-child {
+  margin-right: 30px;
+}

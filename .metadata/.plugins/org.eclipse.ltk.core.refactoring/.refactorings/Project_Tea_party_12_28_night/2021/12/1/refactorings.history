@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;kr.co.ezenac.pay.controller.ControllerPay&apos; to &apos;PayController&apos;&#x0D;&#x0A;- Original project: &apos;Project_Tea_party_12_28_night&apos;&#x0D;&#x0A;- Original element: &apos;kr.co.ezenac.pay.controller.ControllerPay&apos;&#x0D;&#x0A;- Renamed element: &apos;kr.co.ezenac.pay.controller.PayController&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ControllerPay&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;kr.co.ezenac.pay.controller{ControllerPay.java[ControllerPay" matchStrategy="1" name="PayController" qualified="false" references="true" similarDeclarations="false" stamp="1640738299206" textual="false" version="1.0"/>
+</session>
