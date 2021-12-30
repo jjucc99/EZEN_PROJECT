@@ -12,9 +12,8 @@ section {
 
 .join_container {
   width: auto;
-  height: auto;
-  margin-top: 100px;
-  padding: 100px 300px;
+  margin-top: 150px;
+  padding: 0px 300px;
   overflow: auto;
 }
 
@@ -63,6 +62,8 @@ section {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  margin-bottom: 100px;
 }
 
 .join_container_btn input {

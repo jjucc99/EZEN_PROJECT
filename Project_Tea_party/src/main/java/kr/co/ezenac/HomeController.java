@@ -29,7 +29,10 @@ public class HomeController {
         return "main/main";
     }
     @GetMapping("/mypage")
-    public String myPage(){
+    public String myPage(HttpSession session, Model model){
+        String mem_id = (String)session.getAttribute("mem_id");
+        model.addAttribute("mem_id", mem_id);
+
         return "main/myPage";
     }
 
@@ -165,27 +168,17 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/checkMember")
-    public String checkMemberId(){
-        return "main/checkMember";
-    }
+    @GetMapping("/profile/{mem_id}")
+    public String profile(@PathVariable("mem_id")String mem_Id, Model model){
+        MemberVO memberVO = memberService.selectMember(mem_Id);
+        model.addAttribute("memberVO", memberVO);
 
-    @PostMapping("/checkMember")
-    public String checkMember(@RequestParam("mem_id") String mem_id, Model model){
-        System.out.println("checkMember" + mem_id);
-        MemberVO member = memberService.selectMember(mem_id);
-        if (member == null){
-            return "main/backToTheHome";
-        }else {
-            model.addAttribute("member", member);
-            return "main/checkUpdate";
-        }
+        return "main/profile";
     }
 
     @PostMapping("/update")
     public String updateMember(MemberVO memberVO){
-        //아이디는 리드 온리 해놓고 비밀번호만 2번 쓰게 만들기
         memberService.updateMember(memberVO);
-        return "redirect:/";
+        return "redirect:/main";
     }
 }

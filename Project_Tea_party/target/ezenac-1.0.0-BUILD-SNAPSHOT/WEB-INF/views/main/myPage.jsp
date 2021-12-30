@@ -18,12 +18,13 @@
 <body>
 <%
     Character checkAdmin = (Character) session.getAttribute("checkAdmin");
+    String mem_id = (String) session.getAttribute("mem_id");
 %>
 <!-- $header -->
 <header class="main_header">
     <div class="header_title_container">
         <div class="header_title_title">
-            <div class="header_title"><a href="/main">TEA PARTY</a></div>
+            <div class="header_title"><a href="/">TEA PARTY</a></div>
         </div>
         <div class="header_controller_container">
             <div class="header_controller">
@@ -57,7 +58,7 @@
         <div class="mypage_btns">
             <div class="mypage_btn">
                 <div class="mypage_btn_text">
-                    <a href=""><span>PROFILE</span></a>
+                    <a href="/profile/${mem_id}"><span>PROFILE</span></a>
                 </div>
             </div>
             <div class="mypage_btn">

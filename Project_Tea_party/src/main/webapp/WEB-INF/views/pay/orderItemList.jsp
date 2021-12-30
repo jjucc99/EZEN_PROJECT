@@ -21,7 +21,12 @@
 	<h4>MY ORDER</h4>
 	<h4>주문 상세</h4>
 	<h5>주문 번호: NO. ${ord_no}</h5>
-	<c:if test="${ordInfo.ord_status!='구매확정'}">취소/교환/반품 신청된 주문입니다.</c:if><br>
+	<c:choose>
+	<c:when test="${ordInfo.ord_status=='구매확정'}">구매가 확정된 주문입니다.</c:when>
+	<c:when test="${ordInfo.ord_status=='처리완료'}">취소/교환/반품 처리가 완료된 주문입니다.</c:when>
+	<c:when test="${ordInfo.ord_status=='주문취소'||ordInfo.ord_status=='교환/반품'}">취소/교환/반품 신청된 주문입니다.</c:when>
+	<c:otherwise></c:otherwise>
+	</c:choose><br>
 	<div class="head">
 		<div>상세주문번호</div>
 		<div>이미지</div>

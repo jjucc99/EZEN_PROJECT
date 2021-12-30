@@ -76,6 +76,12 @@
 		<input type="text" id="ord_addr1" placeholder="우편번호" name="ord_addr1" value="${mem_addr1}" size="10px"><br>
 		<input type="text" id="ord_addr2" placeholder="주소" name="ord_addr2" value="${mem_addr2}" size="25px"><br>
 		<input type="text" id="ord_addr3" placeholder="상세주소" name="ord_addr3" value="${mem_addr3}" size="25px"><br>
+		<input
+                                type="text"
+                                id="sample6_extraAddress"
+                                placeholder="참고항목"
+                                hidden
+                        />
 		</div>
 		<br>
 
@@ -142,7 +148,7 @@
                 document.getElementById('ord_addr1').value = data.zonecode;
                 document.getElementById("ord_addr2").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("ord_addr3").focus();
+                document.getElementById("sample6_extraAddress").focus();
             }
         }).open();
     }
