@@ -11,7 +11,6 @@ import kr.co.ezenac.pay.model.dao.PayDAO;
 import kr.co.ezenac.pay.model.vo.CartListVO;
 import kr.co.ezenac.pay.model.vo.CartUpdateVO;
 import kr.co.ezenac.pay.model.vo.Order_listVO;
-import kr.co.ezenac.pay.model.vo.PagingVO;
 import kr.co.ezenac.pay.model.vo.PayVO;
 import kr.co.ezenac.pay.model.vo.SubOrderVO;
 
@@ -62,15 +61,10 @@ public class PayServiceImp implements PayService{
  public int insertOrderItem(List<Integer> payList,int ord_no) {
 	 return pDAO.insertOrderItem(sqlSession, payList, ord_no);
  }
- 
+  
  @Override
- public int countOrder(String mem_id) {
-	 return pDAO.countOrder(sqlSession, mem_id);
- }
- 
- @Override
- public List<Order_listVO> selectOrder(PagingVO pgvo){
-	 return pDAO.selectOrder(sqlSession, pgvo);
+ public List<Order_listVO> selectOrder(String mem_id){
+	 return pDAO.selectOrder(sqlSession, mem_id);
  }
  
  @Override

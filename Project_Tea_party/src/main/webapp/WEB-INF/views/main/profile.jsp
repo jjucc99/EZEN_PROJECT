@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: jjucc
+  Date: 2021-12-28
+  Time: 오후 1:05
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -6,37 +13,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
-    <title>TEA_PARTY_JOIN</title>
-</head>
+    <title>TEA_PARTY_MYPAGE_PROFILE</title>
 </head>
 <body>
-
+<!-- $header -->
 <header class="main_header">
     <div class="header_title_conteiner">
         <div class="header_title_title">
             <div class="header_title"><a href="/main">TEA PARTY</a></div>
         </div>
         <div class="header_controller_conteiner">
-             <div class="header_controller">
-                <a href="/join">JOIN</a>
+            <div class="header_controller">
+                <a href="/mypage">MY PAGE</a>
             </div>
             <div class="header_controller">
-                <a href="/login">LOGIN</a>
+                <a href="/cart.pay">MY SHOPPING</a>
+            </div>
+            <div class="header_controller">
+                <a href="/logout">LOGOUT</a>
             </div>
         </div>
     </div>
 </header>
+<!-- $section -->
 <section>
-    <form action="/join" method="post" onsubmit="return handleCheckSubmit();">
-        <div class="join_container">
-            <div class="join_container_title">
-                <span>JOIN</span>
+    <div class="mypage_container">
+        <div class="mypage_title">
+            <span class="mypage_title_title">MY PAGE</span>
+        </div>
+        <div class="mypage_btns">
+            <div class="mypage_btn">
+                <div class="mypage_btn_text">
+                    <a href="/profile/${mem_id}"><span>PROFILE</span></a>
+                </div>
+            </div>
+            <div class="mypage_btn">
+                <div class="mypage_btn_text">
+                    <a href=""><span>MY_BOARD</span></a>
+                </div>
+            </div>
+            <div class="mypage_btn">
+                <div class="mypage_btn_text">
+                    <a href="/orderList.pay"><span>MY_ORDER</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- $main -->
+</section>
+<section>
+    <form action="/update" method="post" onsubmit="return handleCheckSubmit();">
+        <div class="join_container mypage_update">
+            <div class="join_container_title mypage_update">
+                <span>INFO</span>
             </div>
             <div class="join_container_context">
                 <div class="join_container_item">
                     <label for="mem_id">아이디</label>
-                    <input type="text" name="mem_id" id="mem_id" required/>
-                    <span class="responseResult"></span>
+                    <input type="text" name="mem_id" id="mem_id" required readonly value="${memberVO.mem_id}"/>
                 </div>
                 <div class="join_container_item">
                     <label for="mem_pwd">비밀번호</label>
@@ -45,6 +79,7 @@
                             name="mem_pwd"
                             id="mem_pwd"
                             required
+                            value=""
                     /><br/>
                 </div>
                 <div class="join_container_item">
@@ -54,7 +89,7 @@
                 </div>
                 <div class="join_container_item">
                     <label for="mem_name">이름</label>
-                    <input type="text" name="mem_name" id="mem_name" required/><br/>
+                    <input type="text" name="mem_name" id="mem_name" required value="${memberVO.mem_name}"/><br/>
                 </div>
                 <div class="address">
                     <label for="sample6_postcode">주소</label>
@@ -64,6 +99,7 @@
                                 id="sample6_postcode"
                                 placeholder="우편번호"
                                 name="mem_addr1"
+                                value="${memberVO.mem_addr1}"
                         />
                         <input
                                 type="button"
@@ -77,54 +113,45 @@
                                 id="sample6_address"
                                 placeholder="주소"
                                 name="mem_addr2"
+                                value="${memberVO.mem_addr2}"
                         />
-                        <input type="text"
-                               id="sample6_detailAddress"
-                               placeholder="상세주소"
-                               name="mem_addr3"
-                        >
                         <input
                                 type="text"
                                 id="sample6_extraAddress"
                                 placeholder="참고항목"
-                                hidden
+                                name="mem_addr3"
+                                value="${memberVO.mem_addr3}"
                         />
                     </div>
                 </div>
                 <div class="join_container_item">
                     <label for="mem_phone">휴대번호</label>
-                    <input type="text" name="mem_phone" id="mem_phone" required/>
+                    <input type="text" name="mem_phone" id="mem_phone" required value="${memberVO.mem_phone}"/>
                 </div>
                 <div class="join_container_item">
                     <label for="mem_email">메일</label>
-                    <input type="email" name="mem_email" id="mem_email" required/>
+                    <input type="email" name="mem_email" id="mem_email" required value="${memberVO.mem_email}">
                 </div>
                 <div class="check">
                     <div class="check_first">
                         <label for="YES">메일 수신 동의</label>
-                        <input
-                                type="radio"
-                                id="YES"
-                                name="mem_check"
-                                value="Y"
-                                checked
-                        />
+                        <input type="radio" id="YES" name="mem_check" value="Y" <c:if test="${memberVO.mem_check=='Y'.charAt(0)}">checked</c:if>/>
                     </div>
                     <div>
                         <label for="NO">메일 수신 거부</label>
-                        <input type="radio" id="NO" name="mem_check" value="N"/>
+                        <input type="radio" id="NO" name="mem_check" value="N"<c:if test="${memberVO.mem_check=='N'.charAt(0)}">checked</c:if>/>
                     </div>
                 </div>
             </div>
             <div class="join_container_btn">
-                <div><input type="submit" value="JOIN"/></div>
+                <div><input type="submit" value="UPDATE"/></div>
                 <div><input type="submit" value="CANCLE"/></div>
             </div>
         </div>
     </form>
 </section>
 </body>
-<script type="text/javascript" src="<c:url value="/resources/js/member/join.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/member/update.js"/>"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
@@ -175,4 +202,5 @@
         }).open();
     }
 </script>
+
 </html>

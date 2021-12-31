@@ -75,7 +75,7 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		int resultItem=adService.insertItem(ivo);
+		int resultItem = adService.insertItem(ivo);
 		imageVO.setImg_name(image_name);
 		imageVO.setImg_save(uploadPath + "/items");
 		imageVO.setImg_ref("item");
@@ -93,7 +93,6 @@ public class AdminController {
 		String img_path = getItemImage(item_code);
 		ivo.setImg_path(img_path);
 		mv.addObject("item", ivo);
-
 		return mv;
 	}
 
@@ -117,22 +116,75 @@ public class AdminController {
 	}
 
 	// 아이템 삭제 로직
-	@RequestMapping(value = "itemDelete.ad", method = RequestMethod.GET)
+	@RequestMapping(value = "itemDelete.ad", method = RequestMethod.POST)
 	public String deleteItem(int item_code) {
 		int result = adService.deleteItem(item_code);
 		return "redirect:itemList.ad";
 	}
-
+// 이미지 삭제 로직
+//	String fileName = adService.selectItemImgName(item_code);
+//	File file = new File(uploadPath + "/items/" + fileName);
+//	if (file.exists()) {
+//		if (file.delete()) {
+//			System.out.println("파일삭제 성공");
+//		} else {
+//			System.out.println("파일삭제 실패");
+//		}
+//	} else {
+//		System.out.println("파일이 존재하지 않습니다.");
+//	}
+	
 	// 아이템 업데이트 로직
 	@RequestMapping(value = "itemUpdate.ad", method = RequestMethod.POST)
-	public String updateItem(@ModelAttribute ItemVO ivo) {
-		System.out.println(ivo.getItem_code());
-		System.out.println(ivo.getItem_name());
+	public String updateItem(@ModelAttribute ItemVO ivo, MultipartFile image,String imgFlag) {
 		adService.updateItem(ivo);
-
+		
+		if(imgFlag.equals("N")) {
+			// 아이템 코드 가져오기
+			int item_code=ivo.getItem_code();
+			
+			// 기존에 있던 이미지 아이템 코드로 로컬 파일 삭제
+			String fileName = adService.selectItemImgName(item_code);
+			System.out.println(fileName+"파일 이름이에요");
+			File file = new File(uploadPath + "/items/" + fileName);
+			if (file.exists()) {
+				if (file.delete()) {
+					System.out.println("파일삭제 성공");
+				} else {
+					System.out.println("파일삭제 실패");
+				}
+			} else {
+				System.out.println("파일이 존재하지 않습니다.");
+			}
+			
+			// 테이블에서 기존 이미지 삭제
+			adService.deleteItemImg(item_code);
+			
+			// 삭제 후 새로운 이미지 삽입
+			ImagesVO imageVO = new ImagesVO();
+			String image_name = image.getOriginalFilename();
+			File target = new File(uploadPath + "/items", image_name);
+			
+			// 경로 생성
+			if (!new File(uploadPath + "/items").exists()) {
+				new File(uploadPath + "/items").mkdirs();
+			}
+			
+			// 파일 넣기
+			try {
+				FileCopyUtils.copy(image.getBytes(), target);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			imageVO.setImg_name(image_name);
+			imageVO.setImg_save(uploadPath + "/items");
+			imageVO.setImg_ref("item");
+			imageVO.setImg_id(ivo.getItem_code());
+			
+			int result = adService.insertImage(imageVO);
+		}
 		return "redirect:itemList.ad";
 	}
-
 	// -------관리자 회원 관리----------------
 	// 회원 리스트 페이징
 	@GetMapping("memberList.ad")

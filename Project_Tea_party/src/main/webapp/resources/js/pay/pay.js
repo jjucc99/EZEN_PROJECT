@@ -9,8 +9,6 @@ function getInfo(){
 	var addr3=document.frm.mem_addr3.value;
 	
 	if(chk[0].checked){
-		//ordInfo.slideDown();
-		
 		document.frm.ord_receiver.value=name;
 		document.frm.ord_phone.value=phone;
 		document.frm.ord_addr1.value=addr1;

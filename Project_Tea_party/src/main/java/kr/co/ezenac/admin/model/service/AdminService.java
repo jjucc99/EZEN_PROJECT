@@ -24,7 +24,7 @@ public interface AdminService {
 	int insertItem(ItemVO item);
 	// 상품 조회
 	ItemVO selectOneItem(int item_code);
-	//상품 삭제
+	//상품 삭제(카테고리 변경)
 	int deleteItem(int item_code);
 	//상품 수정
 	void updateItem(ItemVO ivo);
@@ -73,5 +73,10 @@ public interface AdminService {
 	void updateBoard(BoardVO bvo);
 
 	void insertBoard(BoardVO bvo);
+
+	String selectItemImgName(int item_code);
+	
+	// 이미지 삭제
+	void deleteItemImg(int item_code);
 	
 }

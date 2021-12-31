@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import kr.co.ezenac.admin.model.vo.BoardVO;
 import kr.co.ezenac.item.model.service.ItemService;
 import kr.co.ezenac.item.model.vo.Cart_itemVO;
 import kr.co.ezenac.item.model.vo.CateListVO;
@@ -80,6 +80,20 @@ public class ItemController {
 		return "item_Cate";
 	}
 
+	// 카테고리 신상
+		@RequestMapping(value = "cateNew.item", method = RequestMethod.GET)
+		public String categoryNew(String cate_code, Model model) {
+
+			List<CateListVO> list = itemService.cateNewList(cate_code);
+			for (CateListVO cvo : list) {
+				int item_code = cvo.getItem_code();
+				String path = getimg(item_code);
+				cvo.setImgPath(path);
+			}
+
+			model.addAttribute("catelist", list);
+			return "item_Cate";
+		}
 	
 	// 리뷰이미지 경로 가져오기
 		public String getReviewImg(int r_board_no) {
@@ -95,9 +109,7 @@ public class ItemController {
 		ItemVO ivo = itemService.infoItem(item_code);
 		String path = getimg(item_code);
 		ivo.setImgPath(path);
-
 		// 리뷰
-
 		List<ReviewBoardVO> rlist = itemService.rList(item_code);
 		for (ReviewBoardVO rvo : rlist) {
 			int reV = rvo.getR_board_no();
@@ -107,6 +119,7 @@ public class ItemController {
 			rvo.setImgPath(reviewPath);
 		}
 		
+		//페이징
 		int total = itemService.countReview();
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
@@ -117,7 +130,8 @@ public class ItemController {
 			cntPerPage = "5";
 		}
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-
+		
+		
 		model.addAttribute("catelist", ivo);
 		model.addAttribute("paging", vo);
 		model.addAttribute("viewAll", rlist);
@@ -125,7 +139,7 @@ public class ItemController {
 		return "item_Info";
 	}
 
-	
+	//장바구니에 넣기
 	@RequestMapping(value = "insertCart.item", method = RequestMethod.GET)
 	public String cart(HttpSession session, @ModelAttribute Cart_itemVO cvo) {
 		// 멤버 아이디 세션에서 가져오기
@@ -141,10 +155,9 @@ public class ItemController {
 
 		// 장바구니로 상품코드, 수량 넘기기(insert)
 		itemService.insertCart(cvo);
-
 		return "redirect:oneItem.item?item_code=" + item_code;
 	}
-
+	
 	@RequestMapping(value = "review.item", method = RequestMethod.POST)
 	public String reviewForm(int item_code, Model m) {
 		m.addAttribute("item_code", item_code);
@@ -188,5 +201,72 @@ public class ItemController {
 		
 		return "redirect:oneItem.item?item_code="+item_code;
 	}
+	
+	//review정보로직
+	@RequestMapping(value = "reviewUpdateForm.item", method = RequestMethod.GET)
+	public String updateReviewForm(@ModelAttribute ReviewBoardVO rvo, Model model, HttpSession session) {
+		ReviewBoardVO selectReview = itemService.selectReview(rvo);
+		//String mem_id = (String) session.getAttribute("mem_id");//세션은 모든것을 저장가능하게한다. setAttribu로 넣는다.Object
+		//System.out.println(selectReview);
+		
+		String img_path = getReviewImg(rvo.getR_board_no());
+		selectReview.setImg_path(img_path);
+		model.addAttribute("review",selectReview);
+		return "review_Update";
+		
+	}
+	
+	//review 수정
+	@RequestMapping(value = "reviewUpdate.item",method = RequestMethod.POST)
+	public String updateReview(@ModelAttribute ReviewBoardVO rvo,MultipartFile image,String imgFlag) {
+		int item_code=rvo.getItem_code();
+		itemService.updateReview(rvo);
+		if(imgFlag.equals("N")) {
+			int r_board_no=rvo.getR_board_no();
+			
+			String fileName=itemService.getReImgName(r_board_no);
+			//System.out.println(fileName+"이미지이름");
+			File file = new File(uploadPath + "/reviews"+fileName);
+			if(file.exists()) {
+				if(file.delete()) {
+					System.out.println("이미지 삭제 성공");
+				} else {
+					System.out.println("이미지 삭제 실패");
+				}
+			}else {
+				System.out.println("이미지가 존재하지 않습니다.");
+			}
+			itemService.deleteReviewImg(r_board_no);
 
+			ImagesVO imageVO = new ImagesVO();
+			String image_name = image.getOriginalFilename();
+			File target = new File(uploadPath + "/reviews", image_name);
+			// 경로 생성
+			if (!new File(uploadPath + "/reviews").exists()) {
+				new File(uploadPath + "/reviews").mkdirs();
+			}
+			// 파일 복사
+			try {
+				FileCopyUtils.copy(image.getBytes(), target);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			imageVO.setImg_name(image_name);
+			imageVO.setImg_save(uploadPath + "/reviews");
+			imageVO.setImg_ref("review");
+			imageVO.setImg_id(rvo.getR_board_no());
+			
+			itemService.reviewImg(imageVO);
+		}
+		
+		return "redirect:oneItem.item?item_code="+item_code;
+	}
+	
+	//review 삭제
+	@RequestMapping(value = "reviewDelete.item",method = RequestMethod.GET)
+	public String deleteReview(@ModelAttribute ReviewBoardVO rvo,int r_board_no) {
+		int item_code=rvo.getItem_code();
+		itemService.deleteReview(r_board_no);
+		return "redirect:oneItem.item?item_code="+item_code;
+	}
 }

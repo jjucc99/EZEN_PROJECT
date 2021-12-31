@@ -37,11 +37,7 @@ public class ItemServiceImp implements ItemService{
 		return iDAO.deleteItem(sqlSession, item);
 	}
 
-	@Override
-	public int update(ItemVO item) {
-		
-		return iDAO.updateItem(sqlSession, item);
-	}
+	
 	
 	@Override
 	public List<ItemVO> itemList() {
@@ -76,7 +72,6 @@ public class ItemServiceImp implements ItemService{
 
 	@Override
 	public ItemVO infoItem(int item_code) {
-	
 		return iDAO.infoItem(sqlSession,item_code);
 	}
 	
@@ -93,7 +88,7 @@ public class ItemServiceImp implements ItemService{
 	@Override
 	public List<ReviewBoardVO> rList(int item_code) {
 		
-		return iDAO.rList(sqlSession);
+		return iDAO.rList(sqlSession, item_code);
 	}
 
 	@Override
@@ -120,6 +115,37 @@ public class ItemServiceImp implements ItemService{
 	@Override
 	public int selectSeq() {
 		return iDAO.selectSeq(sqlSession);
+	}
+
+	@Override
+	public List<CateListVO> cateNewList(String cate_code) {
+		
+		return iDAO.cateNewList(sqlSession,cate_code);
+	}
+
+	@Override
+	public ReviewBoardVO selectReview(ReviewBoardVO rvo) {
+		return iDAO.selectReview(sqlSession,rvo);
+	}
+
+	@Override
+	public int deleteReview(int r_board_no) {
+		return iDAO.deleteReview(sqlSession,r_board_no);
+	}
+	@Override
+	public int updateReview(ReviewBoardVO rvo) {
+		
+		return iDAO.updateReview(sqlSession, rvo);
+	}
+
+	@Override
+	public int deleteReviewImg(int r_board_no) {
+		return iDAO.deleteReviewImg(sqlSession,r_board_no);
+	}
+
+	@Override
+	public String getReImgName(int r_board_no) {
+		return iDAO.getReImgName(sqlSession,r_board_no);
 	}
 	
 	

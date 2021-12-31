@@ -12,10 +12,9 @@ section {
 
 .join_container {
   width: auto;
-  height: auto;
   margin-top: 100px;
-  padding: 100px 300px;
   overflow: auto;
+  padding: 0px 300px;
 }
 
 .join_container_title {
@@ -100,6 +99,11 @@ section {
   border: 0.5px solid rgba(0, 0, 0, 0.3);
   margin: 10px 0px;
   margin-right: 20px;
+}
+
+.address input[type="button"] {
+  border: none;
+  border-radius: 10px;
 }
 
 .address_search_second input {

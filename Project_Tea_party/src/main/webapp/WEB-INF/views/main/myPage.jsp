@@ -16,16 +16,14 @@
     <title>TEA_PARTY_MYPAGE</title>
 </head>
 <body>
-<%
-    Character checkAdmin = (Character) session.getAttribute("checkAdmin");
-%>
+
 <!-- $header -->
 <header class="main_header">
-    <div class="header_title_container">
+    <div class="header_title_conteiner">
         <div class="header_title_title">
-            <div class="header_title"><a href="/">TEA PARTY</a></div>
+            <div class="header_title"><a href="/main">TEA PARTY</a></div>
         </div>
-        <div class="header_controller_container">
+        <div class="header_controller_conteiner">
             <div class="header_controller">
                 <a href="/mypage">MY PAGE</a>
             </div>
@@ -35,29 +33,21 @@
             <div class="header_controller">
                 <a href="/logout">LOGOUT</a>
             </div>
-            <%
-                if (checkAdmin != 'N') {
-            %>
-            <div class="header_controller">
-                <a href="/admin.ad">ADMIN</a>
-            </div>
-            <%
-                }
-            %>
         </div>
     </div>
-    </div>
 </header>
+<%  String checkLogin = (String) session.getAttribute("checkLogin");
+	if (checkLogin == "success") { %>
 <!-- $section -->
 <section>
     <div class="mypage_container">
         <div class="mypage_title">
-            <span class="mypage_title_title">MY_PAGE</span>
+            <span class="mypage_title_title">MY PAGE</span>
         </div>
         <div class="mypage_btns">
             <div class="mypage_btn">
                 <div class="mypage_btn_text">
-                    <a href=""><span>PROFILE</span></a>
+                    <a href="/profile/${mem_id}"><span>PROFILE</span></a>
                 </div>
             </div>
             <div class="mypage_btn">
@@ -78,5 +68,15 @@
         </div>
     </main>
 </section>
+<%
+		} else {
+%>
+	<script type="text/javascript">
+	alert("로그인 하셔야 합니다!");
+	location.href="/login";
+	</script>
+	<%
+		}
+	%>
 </body>
 </html>

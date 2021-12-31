@@ -70,10 +70,10 @@
 				<td>${member.mem_admin}</td>
 				<td>${member.mem_check}</td>
 				<td>
-					<form action="memberDelete.ad" method="post">
+					<form action="memberDelete.ad" method="post" id="restorefrm" name="restorefrm">
 					<input type="hidden" name="mem_id" value="${member.mem_id}">
 					<input type="hidden" name="mem_delete" value="${member.mem_delete}">
-					<input type="submit"  value="회원 복구 ">
+					<input type="button" onclick="restoreSubmit()" value="회원 복구">
 					</form>
 				</td>
 			</tr>
@@ -104,9 +104,19 @@
 	<%
 		} else {
 	%>
-	<a href="/">로그인 페이지로 이동 </a>
+	<a href="/login">로그인 페이지로 이동 </a>
 	<%
 		}
 	%>
+	<script type="text/javascript">
+	function restoreSubmit() {
+		 if (confirm("정말 복구 처리하시겠습니까?")){
+		     document.getElementById('restorefrm').submit();
+		 }else{
+			 console.log("ㄴㄴ");
+		     return false;
+		 }
+     }
+	</script>
 </body>
 </html>

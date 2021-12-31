@@ -1,7 +1,6 @@
 package kr.co.ezenac.pay.model.dao;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -12,7 +11,6 @@ import kr.co.ezenac.pay.model.vo.CartListVO;
 import kr.co.ezenac.pay.model.vo.CartUpdateVO;
 import kr.co.ezenac.pay.model.vo.Order_itemVO;
 import kr.co.ezenac.pay.model.vo.Order_listVO;
-import kr.co.ezenac.pay.model.vo.PagingVO;
 import kr.co.ezenac.pay.model.vo.PayVO;
 import kr.co.ezenac.pay.model.vo.SubOrderVO;
 
@@ -86,32 +84,24 @@ public int insertOrderItem(SqlSessionTemplate sqlSession, List<Integer> payList,
 	return Ok;
 }
 
-public int countOrder(SqlSessionTemplate sqlSession, String mem_id) {
-	return sqlSession.selectOne("payMapper.countOrder",mem_id);
-}
 
-public List<Order_listVO> selectOrder(SqlSessionTemplate sqlSession, PagingVO pgvo){
+public List<Order_listVO> selectOrder(SqlSessionTemplate sqlSession, String mem_id){
 	//구매내역 가져오기
 	List<Order_listVO> orderList=new ArrayList<Order_listVO>();
-	orderList=sqlSession.selectList("payMapper.selectOrder", pgvo);
+	orderList=sqlSession.selectList("payMapper.selectOrder", mem_id);
 	
 	for(Order_listVO ordvo : orderList) {
 		//대표 상품, 종류 개수, 이미지를 위한 아이템코드 가져오기
 		int ord_no=ordvo.getOrd_no();
-		
 		List<SubOrderVO> subList=sqlSession.selectList("payMapper.selectRep",ord_no);
 		
+		if (subList.size()!=0) {
 		SubOrderVO subvo=subList.get(0);
 		
 		ordvo.setRep_name(subvo.getStr());
 		ordvo.setOrd_count(subList.size()-1);
-		ordvo.setImgPath(String.valueOf(subvo.getNumber()));//아이템코드
-		
-		//날짜 저장
-			/*
-			 * String date=ordvo.getOrd_date(); String ord_date=date.substring(0,
-			 * date.lastIndexOf(" ")); ordvo.setOrd_date(ord_date);
-			 */
+		ordvo.setImgPath(String.valueOf(subvo.getNum()));//아이템코드
+		}
 	}
 	return orderList;
 }

@@ -16,7 +16,7 @@ public interface ItemService {
 	
 	int deleteItem(ItemVO item);
 	
-	int update(ItemVO item);
+	
 	
 	List<ItemVO> itemList();
 	
@@ -46,6 +46,19 @@ public interface ItemService {
 	int reviewInsert(ReviewBoardVO rvo);
 
 	int selectSeq();
+	
+	//카테고리 리스트 New
+	List<CateListVO> cateNewList(String cate_code);
+
+	ReviewBoardVO selectReview(ReviewBoardVO rvo);
+	
+	int updateReview(ReviewBoardVO rvo);
+
+	int deleteReview(int r_board_no);
+
+	int deleteReviewImg(int r_board_no);
+
+	String getReImgName(int r_board_no);
 	
 	
 }

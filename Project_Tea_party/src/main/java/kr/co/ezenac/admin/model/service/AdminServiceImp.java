@@ -156,4 +156,15 @@ public class AdminServiceImp implements AdminService {
 
 	}
 
+	@Override
+	public String selectItemImgName(int item_code) {
+		return aDAO.selectItemImgName(sqlSession, item_code);
+	}
+
+	@Override
+	public void deleteItemImg(int item_code) {
+		aDAO.deleteItemImg(sqlSession, item_code);
+		
+	}
+
 }

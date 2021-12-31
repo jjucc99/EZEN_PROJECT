@@ -1,12 +1,9 @@
 package kr.co.ezenac.pay.controller;
 
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ezenac.members.model.vo.MemberVO;
 import kr.co.ezenac.pay.model.service.PayService;
 import kr.co.ezenac.pay.model.vo.CartListVO;
 import kr.co.ezenac.pay.model.vo.CartUpdateVO;
 import kr.co.ezenac.pay.model.vo.Order_listVO;
-import kr.co.ezenac.pay.model.vo.PagingVO;
 import kr.co.ezenac.pay.model.vo.PayVO;
 import kr.co.ezenac.pay.model.vo.SubOrderVO;
 
@@ -38,6 +33,15 @@ public class PayController {
 	@Resource(name="uploadPath")
 		String uploadPath;
 	
+	private int i=0;
+	public int getI() {
+		return i;
+	}
+
+	public void setI(int i) {
+		this.i = i;
+	}
+
 	//이미지 경로 가져오기
 	public String getimage(int item_code) {
 		String fileName=service.getImg(item_code);
@@ -46,7 +50,14 @@ public class PayController {
 		
 	//장바구니 리스트 보기
 	@RequestMapping(value="cart.pay", method=RequestMethod.GET)
-	public String listPay(HttpSession session, Model model) {
+	public String listPay(HttpSession session, Model model){
+		
+		//결제 실패 시 장바구니로 돌아옴
+		if(getI()==2) {
+			model.addAttribute("checkI", getI());
+			setI(0);
+		}
+		
 		String mem_id= (String)session.getAttribute("mem_id");
 				
 		List<CartListVO> list=service.cartList(mem_id);
@@ -103,7 +114,6 @@ public class PayController {
 		
 		//체크된 상품만 리스트 등록
 		List<CartListVO> list=service.orderList(orderList);
-		
 		int total=0;
 		
 		 for(CartListVO vo: list) {
@@ -136,7 +146,7 @@ public class PayController {
 	
 	//결제 주문 처리
 	@RequestMapping(value = "pay.pay", method = RequestMethod.POST)
-	public String payment(HttpSession session, @RequestParam List<Integer> payList, @ModelAttribute PayVO pvo, HttpServletResponse response, Model model)throws Exception {
+	public String payment(HttpSession session, @RequestParam List<Integer> payList, @ModelAttribute PayVO pvo){
 		
 		String mem_id= (String)session.getAttribute("mem_id");
 		pvo.setMem_id(mem_id);
@@ -148,41 +158,29 @@ public class PayController {
 		int Ok=service.insertOrderItem(payList,ord_no);
 		
 		//성공 여부에 따라 페이지 이동
-		response.setContentType("text/html; charset=euc-kr");
-		PrintWriter out = response.getWriter();
-		
-		String msg=null;
-		
+		String url="redirect:cart.pay";
 		if(Ok==1) {
-		out.println("<script>alert('결제 성공!'); </script>");
-		out.flush();
-		msg="주문해주셔서 감사합니다.";
+		url="redirect:orderList.pay";
+		setI(1);
 		}else {
-			out.println("<script>alert('결제 실패!'); </script>");
-			out.flush();
-			msg="불편을 끼쳐드려 죄송합니다.";
+			setI(2);
 		}
-		
-		model.addAttribute("message", msg);
-		return "orderSuccess";
+		return url;
 	}
 	
 	//주문내역 가져오기
 	@RequestMapping(value = "orderList.pay", method=RequestMethod.GET)
-	public String orderList(HttpSession session, PagingVO pgvo,Model model, @RequestParam(value = "nowPage", required = false) String nowPage) {
-		String mem_id= (String)session.getAttribute("mem_id");
+	public String orderList(HttpSession session, Model model) {
 		
-		//페이징
-		int countOrder=service.countOrder(mem_id);
-		if (nowPage == null) {
-			nowPage = "1";
+		//결제페이지에서 성공적으로 넘어왔을 때
+		if(getI()==1) {
+			model.addAttribute("checkI", getI());
+		setI(0);
 		}
-		pgvo = new PagingVO(countOrder, Integer.parseInt(nowPage));
-		pgvo.setMem_id(mem_id);
-		model.addAttribute("paging", pgvo);	
 		
+		String mem_id= (String)session.getAttribute("mem_id");		
 		//구매내역 가져오기
-		List<Order_listVO> orderList=service.selectOrder(pgvo);
+		List<Order_listVO> orderList=service.selectOrder(mem_id);
 		
 		//대표 이미지 저장하기
 		for(Order_listVO ordvo: orderList) {
@@ -249,7 +247,7 @@ public class PayController {
 		int item_code=Integer.parseInt(map.get("item_code"));
 		
 		SubOrderVO subvo=new SubOrderVO();
-		subvo.setStr(mem_id); subvo.setNumber(item_code);
+		subvo.setStr(mem_id); subvo.setNum(item_code);
 		
 		int reviewCount=service.checkReview(subvo);
 		

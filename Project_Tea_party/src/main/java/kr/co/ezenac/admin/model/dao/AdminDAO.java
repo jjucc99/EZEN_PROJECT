@@ -34,7 +34,7 @@ public class AdminDAO {
 	}
 
 	public int deleteItem(SqlSessionTemplate sqlSession, int item_code) {
-		return sqlSession.delete("adminMapper.deleteItem", item_code);
+		return sqlSession.update("adminMapper.deleteItem", item_code);
 	}
 
 	public void updateItem(SqlSessionTemplate sqlSession, ItemVO ivo) {
@@ -121,6 +121,15 @@ public class AdminDAO {
 
 	public void insertBoard(SqlSessionTemplate sqlSession, BoardVO bvo) {
 		sqlSession.insert("adminMapper.insertBoard", bvo);
+	}
+
+	public String selectItemImgName(SqlSessionTemplate sqlSession, int item_code) {
+		return sqlSession.selectOne("adminMapper.selectItemImgName", item_code);
+	}
+
+	public void deleteItemImg(SqlSessionTemplate sqlSession, int item_code) {
+		sqlSession.delete("adminMapper.deleteItemImg", item_code);
+		
 	}
 	
 	

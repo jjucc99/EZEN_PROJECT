@@ -4,6 +4,7 @@ import kr.co.ezenac.members.model.service.MemberService;
 import kr.co.ezenac.members.model.vo.LoginVO;
 import kr.co.ezenac.members.model.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -75,9 +76,12 @@ public class HomeController {
             String mem_pwd = member.getMem_pwd();
             char mem_admin = member.getMem_admin();
             char mem_delete = member.getMem_delete();
-
+            // 복호화 비교
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            
+            
             // 로그인이 성공했을 때.
-            if (mem_pwd.equals(pw) && mem_id.equals(id)) {
+            if (encoder.matches(pw, mem_pwd) && mem_id.equals(id)) {
                 session.setAttribute("checkLogin", "success");
                 session.setAttribute("mem_id", mem_id);
                 session.setAttribute("checkAdmin", mem_admin);
@@ -181,11 +185,19 @@ public class HomeController {
             return "main/checkUpdate";
         }
     }
+    
+    @GetMapping("/profile/{mem_id}")
+    public String profile(@PathVariable("mem_id")String mem_Id, Model model){
+        MemberVO memberVO = memberService.selectMember(mem_Id);
+        model.addAttribute("memberVO", memberVO);
 
+        return "main/profile";
+    }
+    
     @PostMapping("/update")
     public String updateMember(MemberVO memberVO){
         //아이디는 리드 온리 해놓고 비밀번호만 2번 쓰게 만들기
         memberService.updateMember(memberVO);
-        return "redirect:/";
+        return "redirect:/mypage";
     }
 }

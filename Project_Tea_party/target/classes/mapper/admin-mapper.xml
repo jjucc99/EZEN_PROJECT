@@ -62,9 +62,20 @@
 	
 	
 	<!-- 상품 삭제 -->
-	<delete id="deleteItem">
-		DELETE FROM item where item_code=#{item_code}
+	<update id="deleteItem">
+		UPDATE ITEM SET CATE_CODE = 6 where ITEM_CODE = #{item_code}
+	</update>
+	
+	<!-- 상품 이미지 이름 조회 -->
+	<select id="selectItemImgName" resultType="string">
+		SELECT img_name FROM images where img_ref='item' and img_id=#{item_code}
+	</select>
+	
+	<!-- 상품 이미지 삭제 -->
+	<delete id="deleteItemImg">
+		DELETE FROM images where img_ref='item' and img_id=#{item_code}
 	</delete>
+	
 	<!-- 상품 수정 -->
 	<update id="updateItem">
     	UPDATE ITEM SET ITEM_NAME = #{item_name}, ITEM_PRICE = #{item_price}, ITEM_INFORMATION = #{item_information}, CATE_CODE = #{cate_code},ITEM_COUNT = #{item_count} where ITEM_CODE = (#{item_code})
@@ -161,18 +172,22 @@
 		<result column="ORD_STATUS" property="ord_status" />
 		<result column="MEM_ID" property="mem_id" />
 	</resultMap>
+	
 	<!-- 배송상태 수정 -->
 	<update id="updateDeliveryStatus">
     	UPDATE ORDER_LIST SET DELIVERY_STATUS='배송완료' where ord_no=#{ord_no}
 	</update>
+	
 	<!-- 배송상태 수정 -->
 	<update id="updateOrderStatus">
     	UPDATE ORDER_LIST SET ORD_STATUS='처리완료' where ord_no=#{ord_no}
 	</update>
+	
 	<!-- 대표 상품용 조회 -->
 	<select id="selectOrderName" resultType="string">
 	select i.item_name from order_item o join item i on o.item_code=i.item_code where ord_no = #{ord_no} order by i.item_code
 	</select>
+	
 	<!-- 주문 하나 정보 조회 -->
 	<select id="selectOneOrder" resultMap="selectOneOrder">
 	select * from order_list where ord_no=#{ord_no}
@@ -191,6 +206,7 @@
 		<result column="PAY_NO" property="pay_no" />
 		<result column="ORDER_PRICE" property="ord_price" />
 	</resultMap>
+	
 	<!-- 주문 상품 조회 -->
 	<select id="selectOrderDetail" resultMap="selectOrderDetail">
 	select * from order_item o join item i on o.item_code=i.item_code where ord_no = #{ord_no} order by i.item_code
@@ -200,12 +216,11 @@
 		<result column="ITEM_PRICE" property="item_price" />
 		<result column="COUNT" property="order_item_count" />
 	</resultMap>
-	
+
 	<!-- 총 공지 수 출력 -->
 	<select id="countNotice" resultType="int">
 		SELECT COUNT(*) FROM board where board_board='notice'
 	</select>
-	
 	
 	<!-- 페이징 처리 후 공지 조회 -->
 	<select id="selectNotice" resultMap="selectNotice">
@@ -245,7 +260,7 @@
 		DELETE FROM Board where board_no=#{board_no}
 	</delete>
 	
-	<!-- 상품 수정 -->
+	<!-- 게시글 수정 -->
 	<update id="updateBoard">
     	UPDATE Board SET BOARD_SUB=#{board_sub},BOARD_CONTENT=#{board_content} where BOARD_NO = (#{board_no})
 	</update>

@@ -9,6 +9,7 @@ public class ReviewBoardVO {
 	private String mem_id;
 	private int item_code;
 	private int img_id;
+	private String img_path;
 	
 
 	
@@ -60,12 +61,14 @@ public class ReviewBoardVO {
 	public void setImg_id(int img_id) {
 		this.img_id = img_id;
 	}
-	
-	@Override
-	public String toString() {
-		return "ReviewBoardVO [imgPath=" + imgPath + ", r_board_no=" + r_board_no + ", r_board_sub=" + r_board_sub
-				+ ", r_board_content=" + r_board_content + ", r_board_date=" + r_board_date + ", mem_id=" + mem_id
-				+ ", item_code=" + item_code + ", img_id=" + img_id + "]";
+	public String getImg_path() {
+		return img_path;
 	}
+	public void setImg_path(String img_path) {
+		this.img_path = img_path;
+	}
+	
+	
+	
 
 }

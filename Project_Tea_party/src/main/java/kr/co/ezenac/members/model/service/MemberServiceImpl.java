@@ -4,6 +4,7 @@ import kr.co.ezenac.members.model.dao.MemberDAO;
 import kr.co.ezenac.members.model.vo.MemberVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service("memberService")
@@ -16,9 +17,14 @@ public class MemberServiceImpl implements MemberService{
     private MemberDAO mDAO;
 
     @Override
-    public int insertMember(MemberVO Mem_id) {
-        System.out.println("MemberServiceImpl.insertMember" + Mem_id);
-        return mDAO.insertMember(sqlSession, Mem_id);
+    public int insertMember(MemberVO mvo) {
+        System.out.println("MemberServiceImpl.insertMember" + mvo);
+        BCryptPasswordEncoder encoder =new BCryptPasswordEncoder();
+        String pwd = mvo.getMem_pwd();
+        System.out.println(pwd);
+        String securePwd=encoder.encode(pwd);
+        mvo.setMem_pwd(securePwd);
+        return mDAO.insertMember(sqlSession, mvo);
     }
 
     @Override

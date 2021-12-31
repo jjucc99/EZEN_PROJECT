@@ -20,6 +20,10 @@
 			alias="CateList" />
 		<typeAlias type="kr.co.ezenac.item.model.vo.ReviewBoardVO"
             alias="rList" />
+        <typeAlias type="kr.co.ezenac.item.model.vo.CateListVO"
+            alias="CateNewList" />
+		<typeAlias type="kr.co.ezenac.item.model.vo.ReviewBoardVO"
+            alias="review" />
 		</typeAliases>
 	
 	<!-- 개별매퍼 : 현재 사용하는 것만 남김 -->

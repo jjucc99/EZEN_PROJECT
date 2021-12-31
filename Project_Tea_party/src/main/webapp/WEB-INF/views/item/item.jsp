@@ -30,6 +30,7 @@
 <br>
 <a href="cate.item?cate_code=5">티웨어</a>
 <br>
+<a href="cateNew.item?cate_code=6">NEW</a>
 <form action="review.item" method="post">
 	<input type="number" name="item_code">
 	<input type="submit" value="전송">	

@@ -47,7 +47,7 @@
             </div>
         </form>
     </div>
-    <a href="">
+    <a href="/join">
         <div class="login_join">
             <span>JOIN</span>
         </div>

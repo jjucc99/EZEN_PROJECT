@@ -90,20 +90,11 @@ delete from cart_item where cart_item_no=#{cart_item_no}
 update item set item_count=item_count-#{count} where item_code=#{item_code}
 </update>
 
-<!-- 페이징 처리 후 구매내역 조회 -->
-<select id="countOrder" resultType="int">
- SELECT COUNT(*) FROM order_list where mem_id=#{mem_id}
-</select>
-
+<!--구매내역 조회 -->
 <select id="selectOrder" resultMap="Order_list">
-SELECT * 
-		FROM (
-			SELECT ROWNUM RN, A.* 
-				FROM (
-						select ord_no, delivery_status, ord_status, ord_date, ord_price from order_List where mem_id=#{mem_id} order by ord_no desc
-					) A
-			)
-	WHERE RN BETWEEN #{start} AND #{end}
+select ord_no, delivery_status, ord_status, ord_date, ord_price
+from order_List
+where mem_id=#{mem_id} order by ord_no desc
 </select>
 <!-- A.* :A의 모든 열을 선택
 Rownum:순서대로 번호를 매김
@@ -129,8 +120,8 @@ on item.item_code=order_item.item_code
 where order_item.ord_no=#{ord_no}
 </select>
 <resultMap type="kr.co.ezenac.pay.model.vo.SubOrderVO" id="subOrder">
-<result column="item_name" property="str"/>
-<result column="item_code" property="number"/>
+<result column="ITEM_NAME" property="str"/>
+<result column="ITEM_CODE" property="num"/>
 </resultMap>
 
 <update id="changeStatus">
@@ -176,6 +167,6 @@ where ord_no=#{ord_no}
 
 <!-- 리뷰 있는지 확인 -->
 <select id="checkReview" resultType="int">
-SELECT COUNT(*) FROM REVIEWBOARD where mem_id=#{str} and item_code=#{number}
+SELECT COUNT(*) FROM REVIEWBOARD where mem_id=#{str} and item_code=#{num}
 </select>
 </mapper>

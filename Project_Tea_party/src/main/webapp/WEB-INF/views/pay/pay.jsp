@@ -1,64 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/resources/css/pay/pay.css">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+<style type="text/css">
+img {
+	width: 90px;
+	height: 90px;
+	object-fit: cover;
+}
+</style>
+<title>TEA_PART_PAY</title>
 </head>
-<body>
-	<%
-		String checkLogin = (String) session.getAttribute("checkLogin");
-	%>
-	session
-	<%=checkLogin%>
-	<%
-		if (checkLogin == "success") {
-	%>
-<a href="/">홈</a>
-	<h4>ORDER</h4>
-	<h4>상품</h4>
 
-		<div class="cart">
-		<div class="head">
-			<div class="img">이미지</div>
-			<div class="iname">상품명</div>
-			<div class="price">판매가</div>
-			<div class="amount">수량</div>
-			<div class="sum">합계</div>
-		</div>
-		<br>
-		<div class="data">
-		<c:forEach items="${orderList}" var="ol">
-					<div class="img">
-							<img src="<c:url value='/image/${ol.imgPath}'/>" alt="${ol.imgPath}">
-					</div>
-					<div class="iname">${ol.item_name}</div>
-					<div class="price"><fmt:formatNumber value="${ol.item_price}"/> 원</div>
-					<div class="amount">${ol.cart_amount}</div>
-					<div class="sum">
-						<fmt:formatNumber pattern="###,###,###" value="${ol.item_price * ol.cart_amount}"/> 원
-					</div><br>
-					<input type="hidden" name="cart_item_no" value="${ol.cart_item_no}">
-			</c:forEach>
-			</div>
-		</div>
-<br>
-	<div class="box" id="totalPrice">
-		합계금액: <fmt:formatNumber value="${total}"/> 원</div>
-	<br>
-	<br>
+<body>
+
+<header class="main_header">
+    <div class="header_title_conteiner">
+        <div class="header_title_title">
+            <div class="header_title"><a href="/main">TEA PARTY</a></div>
+        </div>
+        <div class="header_controller_conteiner">
+            <div class="header_controller">
+                <a href="/mypage">MY PAGE</a>
+            </div>
+            <div class="header_controller">
+                <a href="/cart.pay">MY SHOPPING</a>
+            </div>
+            <div class="header_controller">
+                <a href="/logout">LOGOUT</a>
+            </div>
+        </div>
+    </div>
+</header>
+	<%  String checkLogin = (String) session.getAttribute("checkLogin");
+	if (checkLogin == "success") { %>
 	
+	<section>
 	<form name="frm" action="pay.pay" method="post">
 	<input type="hidden" name="ord_price" value="${total}">
 	<input type="hidden" name="payList">
-	<h4>배송 정보</h4>	
-		<input type="checkbox" name="check" onclick="getInfo()" checked>&nbsp;<b>기본정보로 배송</b><br>
-
-<!-- 주문자 정보. 안 보이는 부분 -->
+	<!-- 주문자 정보. 안 보이는 부분 -->
 		<div id="memInfo" style="display:none">
 		주문자: &nbsp;<input type="text" id="mem_name" value="${mem_name}" readonly><br>
 		전화번호: &nbsp;<input type="text" id="mem_phone" value="${mem_phone}" readonly><br>
@@ -68,30 +56,94 @@
 		<input type="text" id="mem_addr3" value="${mem_addr3}" readonly size="25px"><br>
 		</div>
 		
-		<div id="ordInfo">
-		<b>수취인 정보</b><br>
-		수취인: <input type="text"id="ord_receiver" name="ord_receiver" value="${mem_name}"><br>
-		전화번호: <input type="text" id="ord_phone" name="ord_phone" value="${mem_phone}"><br>
-		주소 <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-		<input type="text" id="ord_addr1" placeholder="우편번호" name="ord_addr1" value="${mem_addr1}" size="10px"><br>
-		<input type="text" id="ord_addr2" placeholder="주소" name="ord_addr2" value="${mem_addr2}" size="25px"><br>
-		<input type="text" id="ord_addr3" placeholder="상세주소" name="ord_addr3" value="${mem_addr3}" size="25px"><br>
+		<div class="pay_container">
+			<div class="text_container">
+				<div class="text_container_title">ORDER</div>
+				<div class="text_container_delivery">
+					<div class="text_container_delivery_title">DELIVERY</div>
+					<div class="text_container_delivery_delivery_context">
+						<label for="delivery_check">기존 정보로 배송</label>
+						<input type="checkbox" id="delivery_check" name="check" onclick="getInfo()" checked />
+						<div class="text_container_delivery_header">
+							<label for="ord_receiver">수취인</label> <input type="text"
+								id="ord_receiver" name="ord_receiver" value="${mem_name}"/> <label for="ord_phone">
+								전화번호</label> <input type="text" id="ord_phone" name="ord_phone"value="${mem_phone}" />
+						</div>			
+						<div class="address">
+							<label for="ord_addr1">주소</label>
+							<div class="address_search">
+								<input type="text" id="ord_addr1" placeholder="우편번호" name="ord_addr1" value="${mem_addr1}" /> <input type="button"
+									onclick="sample6_execDaumPostcode()" value="우편번호 찾기" />
+							</div>
+							<div class="address_search_second">
+								<input type="text" id="ord_addr2" placeholder="주소" name="ord_addr2" value="${mem_addr2}" />
+								<input type="text" id="ord_addr3" placeholder="상세주소" name="ord_addr3" value="${mem_addr3}" />
+								<input type="hidden" id="sample6_extraAddress" placeholder="참고항목"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="text_container_paymemt">
+					<div class="text_container_paymemt_title">PATMEMT</div>
+					<div class="text_container_paymemt_title_radio">
+						<div class="text_container_paymemt_title_radio_deposit">
+							<label for="deposit">계좌 이체</label> <input type="radio" name="pay_no"
+								id="deposit" value="1" checked/>
+						</div>
+						<div class="text_container_paymemt_title_radio_credit_card">
+							<label for="credit_card">신용 카드</label> <input type="radio"
+								name="pay_no" id="credit_card" value="2"/>
+						</div>
+					</div>
+				</div>
+				<div class="text_container_btn">
+					<input type="button" value="ORDER" onclick="OrderCheck()"/>
+				</div>
+			</div>
+			<div class="bill_container">
+				<div class="bill_title">
+					<div class="bill_title_text">PAPER</div>
+					<div class="bill_title_btn">
+						<input type="button" value="CANCLE" onclick="history.back(-1);"/>
+					</div>
+				</div>
+			
+				<div class="bill_context">
+				<c:forEach items="${orderList}" var="ol">
+				
+					<div class="bill_context_item">
+						<div class="bill_item">
+							<div class="bill_item_img"><img src="<c:url value='/image/${ol.imgPath}'/>" alt="${ol.imgPath}"></div>
+							<div class="bill_item_text">
+								<div class="bill_item_text_title">${ol.item_name}</div>
+								<div class="bill_item_text_detail"><fmt:formatNumber value="${ol.item_price}"/> 원</div>
+							</div>
+						</div>
+						<div class="bill_price">
+							<div class="bill_price_price_count">${ol.cart_amount} 개</div>
+							<div class="bill_price_price"><fmt:formatNumber value="${ol.item_price * ol.cart_amount}"/> 원</div>
+							<input type="hidden" name="cart_item_no" value="${ol.cart_item_no}">
+						</div>
+					</div>
+					
+				</c:forEach>	
+					
+				</div>
+				<div class="bill_sum_price">
+					<div class="bill_sum_price_text">TOTAL</div>
+					<div class="bill_sum_price_money"><fmt:formatNumber value="${total}"/> 원</div>
+				</div>
+			</div>
 		</div>
-		<br>
-
-		<div class="payment">
-		<h4>결제 수단</h4>
-		<input type="radio" name="pay_no" value="1" checked>계좌이체
-		<input type="radio" name="pay_no" value="2">카드
-		</div>
-		
-		<hr>
-		<input type="button" value="주문하기" onclick="OrderCheck()"> &nbsp; <input type="button" value="주문취소" onclick="history.back(-1);">
-	</form>
-	<%
+		</form>
+	</section>
+<%
 		} else {
-	%>
-	<a href="/">로그인을 하세요! </a>
+%>
+	<script type="text/javascript">
+	alert("로그인 하셔야 합니다!");
+	location.href="/login";
+	</script>
 	<%
 		}
 	%>
@@ -142,10 +194,10 @@
                 document.getElementById('ord_addr1').value = data.zonecode;
                 document.getElementById("ord_addr2").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("ord_addr3").focus();
+                document.getElementById("sample6_extraAddress").focus();
             }
         }).open();
     }
-</script>
+</script>		
 </body>
 </html>

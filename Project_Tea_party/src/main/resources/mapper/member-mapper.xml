@@ -51,7 +51,8 @@
             MEM_ADDR2 = #{mem_addr2},
             MEM_ADDR3 = #{mem_addr3},
             MEM_PHONE = #{mem_phone},
-            MEM_EMAIL = #{mem_email}
+            MEM_EMAIL = #{mem_email},
+            MEM_CHECK = #{mem_check}
         WHERE mem_id = #{mem_id}
     </update>
 

@@ -7,7 +7,6 @@ import kr.co.ezenac.members.model.vo.MemberVO;
 import kr.co.ezenac.pay.model.vo.CartListVO;
 import kr.co.ezenac.pay.model.vo.CartUpdateVO;
 import kr.co.ezenac.pay.model.vo.Order_listVO;
-import kr.co.ezenac.pay.model.vo.PagingVO;
 import kr.co.ezenac.pay.model.vo.PayVO;
 import kr.co.ezenac.pay.model.vo.SubOrderVO;
 
@@ -29,9 +28,7 @@ public interface PayService {
 	
 	public int insertOrderItem(List<Integer> payList,int ord_no);
 	
-	public int countOrder(String mem_id);
-	
-	public List<Order_listVO> selectOrder(PagingVO pgvo);
+	public List<Order_listVO> selectOrder(String mem_id);
 	
 	public void changeStatus(Order_listVO ovo);
 	

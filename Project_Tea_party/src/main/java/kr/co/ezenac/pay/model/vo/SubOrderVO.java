@@ -2,17 +2,17 @@ package kr.co.ezenac.pay.model.vo;
 
 public class SubOrderVO {
 String str;
-int number;
+int num;
 public String getStr() {
 	return str;
 }
 public void setStr(String str) {
 	this.str = str;
 }
-public int getNumber() {
-	return number;
+public int getNum() {
+	return num;
 }
-public void setNumber(int number) {
-	this.number = number;
+public void setNum(int number) {
+	this.num = number;
 }
 }
