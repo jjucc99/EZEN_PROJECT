@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memberMapper">
+
+    <!-- parameterMap,Type은 지정해주지 않아 오류발생할 때만 -->
+    <!-- resultMap= 리절트맵 아이디 -->
+    <!-- 쿼리문 -->
+    <insert id="insertMember">
+        INSERT INTO MEMBERS
+        VALUES (#{mem_id}, #{mem_pwd}, #{mem_name}, #{mem_addr1}, #{mem_addr2}, #{mem_addr3}, #{mem_phone},
+                #{mem_email}, #{mem_check}, #{mem_delete}, #{mem_admin})
+    </insert>
+
+    <insert id="insertMemberCart">
+        INSERT INTO CART
+        VALUES (cart_no_seq.nextval, #{mem_id})
+    </insert>
+
+
+    <!-- type: mybatis typeAlias의  alias    -->
+    <!-- column:DB칼럼명   -->
+    <!-- property:VO변수명   -->
+
+    <select id="selectOneMembers" resultMap="selectMember">
+        SELECT *
+        FROM MEMBERS
+        where MEM_ID = #{mem_id}
+    </select>
+    <resultMap type="Member" id="selectMember">
+        <result column="mem_id" property="mem_id"/>
+        <result column="mem_pwd" property="mem_pwd"/>
+        <result column="mem_name" property="mem_name"/>
+        <result column="mem_addr1" property="mem_addr1"/>
+        <result column="mem_addr2" property="mem_addr2"/>
+        <result column="mem_addr3" property="mem_addr3"/>
+        <result column="mem_phone" property="mem_phone"/>
+        <result column="mem_email" property="mem_email"/>
+        <result column="mem_check" property="mem_check"/>
+        <result column="mem_delete" property="mem_delete"/>
+        <result column="mem_admin" property="mem_admin"/>
+    </resultMap>
+
+    <delete id="deleteOneMember">
+        DELETE FROM MEMBERS WHERE MEM_ID = #{mem_id}
+    </delete>
+
+    <update id="updateOneMember">
+        UPDATE MEMBERS
+        SET MEM_NAME = #{mem_name},
+            MEM_ADDR1= #{mem_addr1},
+            MEM_ADDR2 = #{mem_addr2},
+            MEM_ADDR3 = #{mem_addr3},
+            MEM_PHONE = #{mem_phone},
+            MEM_EMAIL = #{mem_email},
+            MEM_CHECK = #{mem_check}
+        WHERE mem_id = #{mem_id}
+    </update>
+
+
+</mapper>

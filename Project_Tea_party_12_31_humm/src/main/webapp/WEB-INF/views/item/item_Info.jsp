@@ -95,14 +95,6 @@ img.review {
               </c:choose>&nbsp;&nbsp;&nbsp;&nbsp;/</span></a>
               <span>${catelist.item_name}</span>
             </div>
-            <div class="goods_container_context_title_btn">
-              <a href="">
-                <div>◀<span>HOME</span></div>
-              </a>
-              <a href="">
-                <div><span>NEXT</span>▶</div>
-              </a>
-            </div>
           </div>
           <div class="goods_container_context_text">
             <div class="goods_container_context_text_img"><img class="item" src="<c:url value='/image/${catelist.imgPath}'/>"></div>
@@ -138,22 +130,21 @@ img.review {
           <c:forEach items="${viewAll}" var="rlist">
           <div class="goods_review_container_context">
             <!--  여기 헤더 -->
-            <a style="cursor:pointer" onclick="reviewToggle(${rlist.r_board_no});">
               <div class="goods_review_container_context_header">
                 <div class="goods_review_container_context_header_title">
-                  ${rlist.r_board_sub}
+                  제목: ${rlist.r_board_sub}
                 </div>
                 <div class="goods_review_container_context_header_id">
-                  ${rlist.mem_id}
+                 작성자: ${rlist.mem_id}
                 </div>
                 <div class="goods_review_container_context_header_people">
-                  <fmt:formatDate value="${rlist.r_board_date}"/>
+                 작성일: <fmt:formatDate value="${rlist.r_board_date}"/>
                 </div>
               </div>
-            </a>
             <!-- 여긴 자바스크립트로 없애는 부분 -->
-            <div class="goods_review_container_context_text" id="${rlist.r_board_no}">
-              <div class="goods_review_container_context_text_img"><img class="review" src="<c:url value='/image/${rlist.imgPath}'/>"></div>
+            <div class="goods_review_container_context_text">
+            <div class="goods_review_container_context_title">REVIEW</div>
+              <div class="goods_review_container_context_text_img"><img class="review" src="<c:url value='/image/${rlist.imgPath}'/>" alt="none"></div>
               <div class="goods_review_container_context_text_context">
                 ${rlist.r_board_content}</div>
              
@@ -216,8 +207,8 @@ function deleteReview() {
 	 }
  }
 
-
-function reviewToggle(r_board_no){
+//토글 기능 삭제 22.01.01
+/* function reviewToggle(r_board_no){
 	var no=document.getElementById(r_board_no)
 	
 	if(no.style.display=='none'){
@@ -225,7 +216,7 @@ function reviewToggle(r_board_no){
 	}else{
 		no.style.display = 'none';
 	}
-}
+} */
 </script>
 </body>
 </html>

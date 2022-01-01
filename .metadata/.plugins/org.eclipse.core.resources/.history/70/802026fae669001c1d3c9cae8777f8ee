@@ -1,7 +1,0 @@
-package kr.co.ezenac.board.model.service;
-
-
-
-public interface BoardService {
-int countQna();
-}
