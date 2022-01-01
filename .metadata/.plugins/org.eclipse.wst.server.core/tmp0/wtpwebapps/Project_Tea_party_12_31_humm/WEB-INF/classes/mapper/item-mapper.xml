@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="itemMapper">
+<!-- <insert id="insertItem">
+	INSERT INTO ITEM VALUES(#{item_code},#{item_name},#{item_price},#{item_information},#{cate_code},#{item_count})
+</insert>
+
+
+ -->
+
+
+
+<select id="selectList" resultMap="itemList">
+	SELECT * FROM item
+</select>
+<resultMap type="Item" id="itemList">
+	<result column="ITEM_CODE" property="item_code" />
+    <result column="ITEM_NAME" property="item_name" />
+   	<result column="ITEM_PRICE" property="item_price" />
+    <result column="ITEM_INFORMATION" property="item_information" />
+    <result column="CATE_CODE" property="cate_code" />
+</resultMap>
+
+<select id="infoItem" resultMap="infoItems">
+	SELECT * FROM item where ITEM_CODE = #{item_code}
+</select>
+<resultMap type="Item" id="infoItems">
+	<result column="ITEM_CODE" property="item_code" />
+    <result column="ITEM_NAME" property="item_name" />
+   	<result column="ITEM_PRICE" property="item_price" />
+    <result column="ITEM_INFORMATION" property="item_information" />
+    <result column="CATE_CODE" property="cate_code"/>
+</resultMap>
+<!-- 카테고리 리스트 -->
+<select id="CateInfo"  resultMap="cateitem"> <!-- parameterType="String" -->
+	SELECT
+	ITEM_CODE,ITEM_NAME,ITEM_INFORMATION,ITEM_PRICE
+	FROM CATEGORYS c JOIN Item i
+	ON c.cate_code=i.cate_code
+	WHERE c.cate_code = #{categoryId} order by item_name
+</select>
+
+<resultMap type="CateList" id="cateitem">
+	<result column="ITEM_CODE" property="item_code"/>
+    <result column="ITEM_NAME" property="item_name" />
+   	<result column="ITEM_PRICE" property="item_price" />
+    <result column="ITEM_INFORMATION" property="item_information" />
+</resultMap>
+
+<!-- 카테고리 뉴 리스트 -->
+<select id="CateNewInfo" resultMap="cateNewitem">
+	<![CDATA[
+	SELECT * from ITEM where ROWNUM<=10 order by item_code desc
+	]]>
+</select>
+
+<resultMap type="CateNewList" id="cateNewitem">
+	<result column="ITEM_CODE" property="item_code"/>
+    <result column="ITEM_NAME" property="item_name" />
+   	<result column="ITEM_PRICE" property="item_price" />
+    <result column="ITEM_INFORMATION" property="item_information" />
+
+</resultMap>
+<!-- 이미지 -->
+<select id="img" resultType="String">
+SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='item' AND IMG_ID=#{item_code}
+</select>
+
+<!-- review이미지 -->
+<select id="reimg" resultType="String">
+SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='review' AND IMG_ID=#{r_board_no}
+</select>
+
+
+
+	<resultMap type="CateList" id="selectTest">
+		<result column="ITEM_CODE" property="item_code" />
+		<result column="ITEM_NAME" property="item_name" />
+		<result column="ITEM_PRICE" property="item_price" />
+		<result column="ITEM_INFORMATION" property="item_information" />
+		<result column="ITEM_COUNT" property="item_count" />
+		<result column="CATE_CODE" property="cate_code" />
+		<result column="CATE_NAME" property="cate_name" />
+	</resultMap>
+	
+	<!-- 리뷰 -->
+	<!-- 총 리뷰 갯수 출력 -->
+	 <select id="countRe" resultType="Integer">
+		SELECT COUNT(*) FROM REVIEWBOARD
+	</select> 
+	<!-- 리뷰 조회 -->
+	<select id="selectRe" resultMap="selectRe">
+		SELECT * 
+			FROM (
+				SELECT ROWNUM RN, A.* 
+					FROM (
+							SELECT * FROM 
+							REVIEWBOARD 
+							WHERE item_code=${item_code}
+    						order by  item_code desc
+						) A
+				)
+		WHERE RN BETWEEN 1 AND 5
+	</select>
+	<resultMap type="rList" id="selectRe">
+		<result column="R_BOARD_NO" property="r_board_no" />
+		<result column="R_BOARD_SUB" property="r_board_sub" />
+		<result column="R_BOARD_CONTENT" property="r_board_content" />
+		<result column="R_BOARD_DATE" property="r_board_date" />
+		<result column="MEM_ID" property="mem_id" />
+		<result column="ITEM_CODE" property="item_code" />
+	</resultMap>
+	
+	<select id="selectCartNo" resultType="int">
+	SELECT CART_NO FROM CART WHERE MEM_ID=#{mem_id}
+	</select>
+	
+	<insert id="insertCart">
+	INSERT INTO CART_ITEM VALUES(CART_ITEM_NO_SEQ.NEXTVAL,#{cart_amount},#{cart_no},#{item_code})
+	</insert>
+	
+	<!-- review이미지 insert -->
+	<insert id="insertReviewImg" >
+	  
+	 INSERT INTO IMAGES
+		VALUES(img_seq.nextval,#{img_name},#{img_save},#{img_ref},#{img_id}) 
+	</insert>
+	<!-- review insert -->
+	<insert id="reviewInsert" parameterType="kr.co.ezenac.item.model.vo.ReviewBoardVO">
+		INSERT INTO REVIEWBOARD
+        VALUES(R_BOARD_NO_SEQ.nextval,#{r_board_sub},#{r_board_content},sysdate,#{mem_id},#{item_code})
+         <selectKey keyProperty="r_board_no" resultType="java.lang.Integer" order="AFTER">
+            SELECT R_BOARD_NO_SEQ.CURRVAL FROM DUAL
+         </selectKey>
+		<!-- INSERT INTO REVIEWBOARD
+			VALUES(test_seq.nextval,#{r_board_sub},#{r_board_content},sysdate,#{mem_id},#{item_code}) -->
+	</insert>
+	
+	<select id="selectSeq" resultType="int">
+		SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'IMG_SEQ'
+	</select>
+	
+	<select id="selectReview" resultMap="selectReview">
+		SELECT * FROM REVIEWBOARD WHERE R_BOARD_NO=#{r_board_no}
+	</select>
+	<resultMap type="review" id="selectReview">
+		<result column="R_BOARD_NO" property="r_board_no" />
+		<result column="R_BOARD_SUB" property="r_board_sub" />
+		<result column="R_BOARD_CONTENT" property="r_board_content" />
+		<result column="R_BOARD_DATE" property="r_board_date" />
+		<result column="MEM_ID" property="mem_id" />
+		<result column="ITEM_CODE" property="item_code" />
+	</resultMap>
+	
+	<!-- 리뷰 업데이트 -->
+	<update id="updateReview">
+		UPDATE REVIEWBOARD SET R_BOARD_SUB = #{r_board_sub}, R_BOARD_CONTENT = #{r_board_content} where R_BOARD_NO = #{r_board_no}
+	</update>
+	<select id="getReImgName" resultType="string">
+		SELECT IMG_NAME FROM IMAGES WHERE IMG_REF='review' AND IMG_ID=#{r_board_no} 
+	</select>
+	
+	<!-- 리뷰 이미지 삭제 -->
+	<delete id="deleteReviewImg">
+		DELETE FROM IMAGES where IMG_ID = #{r_board_no}
+	</delete>
+	
+	<!-- 리뷰 삭제 -->
+	<delete id="deleteReview">
+		DELETE FROM REVIEWBOARD where R_BOARD_NO = #{r_board_no}
+	</delete>
+	
+	
+	
+</mapper>
