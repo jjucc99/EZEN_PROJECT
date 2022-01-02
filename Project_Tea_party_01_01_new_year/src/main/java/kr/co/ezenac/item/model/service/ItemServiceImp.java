@@ -118,9 +118,9 @@ public class ItemServiceImp implements ItemService{
 	}
 
 	@Override
-	public List<CateListVO> cateNewList(int cate_code) {
+	public List<CateListVO> cateNewList() {
 		
-		return iDAO.cateNewList(sqlSession,cate_code);
+		return iDAO.cateNewList(sqlSession);
 	}
 
 	@Override
@@ -147,6 +147,18 @@ public class ItemServiceImp implements ItemService{
 	public String getReImgName(int r_board_no) {
 		return iDAO.getReImgName(sqlSession,r_board_no);
 	}
+
+	@Override
+	public int countMyReview(String mem_id) {
+		return iDAO.getMyReview(sqlSession, mem_id);
+	}
+
+	@Override
+	public List<ReviewBoardVO> myRList(PagingVO vo) {
+		return iDAO.myRList(sqlSession,vo);
+	}
+
+	
 	
 	
 

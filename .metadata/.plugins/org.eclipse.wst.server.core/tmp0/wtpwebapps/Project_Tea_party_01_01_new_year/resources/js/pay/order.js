@@ -17,7 +17,7 @@ function change(ord_no,rep_name){
 				url : "changeStatus.pay",
 				type : 'post',
 				data : JSON.stringify({
-					ord_no : ord_no,
+					no : ord_no,
 					ord_status : status
 				}),
 				contentType : 'application/json', // 전송타입 json으로 변경

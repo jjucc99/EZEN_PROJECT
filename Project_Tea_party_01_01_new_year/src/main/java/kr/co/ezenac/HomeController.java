@@ -25,16 +25,13 @@ public class HomeController {
     public String Home() throws Exception {
         return "main/index";
     }
-    @GetMapping("main")
-    public String main(){
-        return "main/main";
-    }
+   
     @GetMapping("/mypage")
     public String myPage(){
         return "main/myPage";
     }
 
-
+    
 
     @GetMapping("/login")
     public String login(@CookieValue(value = "REMEMBER", required = false) Cookie rememberCookie, Model model) throws Exception {
@@ -51,7 +48,7 @@ public class HomeController {
     @GetMapping("/logout")
     public String logout(HttpSession session) throws Exception {
         session.invalidate();
-        return "redirect:/main";
+        return "redirect:/";
     }
 
     @PostMapping("/login")

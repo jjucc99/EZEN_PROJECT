@@ -3,9 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>REVIEW</title>
 <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
 <style type="text/css">
@@ -16,10 +18,13 @@ img {
 }
 
 textarea{
-	width:70%; 
+	width:100%; 
 	height:200px; 
     resize:none;/* 크기고정 */
     }
+    
+input{width:80%}    
+
 </style>
 <body>
 <header class="main_header">
@@ -50,9 +55,8 @@ textarea{
         <form action="reviewInsert.item" method="post" enctype="multipart/form-data" name="frm">
           <div class="review_container_header">
             <div class="review_container_header_num">New!</div>
-            <div class="review_container_header_name">아이템 명: ${item_name}</div>
-            <div class="review_container_header_title">제목: <input type="text" name="r_board_sub"><br></div>
-            <div class="review_container_header_day">작성일자: <fmt:formatDate value="${now}" pattern="yyyy-MM-dd hh:mm:ss"/></div>
+            <div class="review_container_header_name">${item_name}</div>
+            <div class="review_container_header_title">제목: <input type="text" name="r_board_sub" ><br></div>
           </div>
           <div class="review_container_context">
             <div class="review_container_context_img"><img src="resources/IMG/NO_IMAGE.png" alt="없음" id="original">

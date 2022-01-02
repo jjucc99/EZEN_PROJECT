@@ -81,20 +81,20 @@ public class ItemController {
         return "item_Cate";
     }
 
-	// 카테고리 신상
-    @RequestMapping(value = "cateNew", method = RequestMethod.GET)
-    public String categoryNew(int cate_code, Model model) {
+	// 카테고리 신상(메인)
+		@RequestMapping(value = "main", method = RequestMethod.GET)
+		public String main(Model model) {
 
-        List<CateListVO> list = itemService.cateNewList(cate_code);
-        for (CateListVO cvo : list) {
-            int item_code = cvo.getItem_code();
-            String path = getimg(item_code);
-            cvo.setImgPath(path);
-        }
+			List<CateListVO> list = itemService.cateNewList();
+			for (CateListVO cvo : list) {
+				int item_code = cvo.getItem_code();
+				String path = getimg(item_code);
+				cvo.setImgPath(path);
+			}
 
-        model.addAttribute("cateNewList", list);
-        return "main/main";
-    }
+			model.addAttribute("cateNewList", list);
+			return "main/main";
+		}
 	
 	// 리뷰이미지 경로 가져오기
 		public String getReviewImg(int r_board_no) {
@@ -136,6 +136,28 @@ public class ItemController {
 		return "item_Info";
 	}
 
+	// 나의 review
+		@RequestMapping(value = "myReview.item", method = RequestMethod.GET)
+		public String myReview(Model model, PagingVO vo, @RequestParam(value = "nowPage", required = false) String nowPage,
+				HttpSession session) {
+			String mem_id = (String) session.getAttribute("mem_id");
+			
+			int total = itemService.countMyReview(mem_id);
+			// 페이징
+			if (nowPage == null) {
+				nowPage = "1";
+			}
+			vo = new PagingVO(total, Integer.parseInt(nowPage), 5);
+			
+			// 리뷰		
+			model.addAttribute("paging", vo);
+			vo.setMem_id(mem_id);
+			model.addAttribute("viewAll", itemService.myRList(vo));
+
+			return "myReviewList";
+		}
+	
+	
 	//장바구니에 넣기
 	@RequestMapping(value = "insertCart.item", method = RequestMethod.GET)
 	public String cart(HttpSession session, @ModelAttribute Cart_itemVO cvo) {
@@ -156,9 +178,13 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "review.item", method = RequestMethod.POST)
-	public String reviewForm(int item_code, String item_name, Model m) {
+	public String reviewForm(@RequestParam int item_code, Model m) {
 		m.addAttribute("item_code", item_code);
+		
+		ItemVO ivo = itemService.infoItem(item_code);
+		String item_name=ivo.getItem_name();
 		m.addAttribute("item_name", item_name);
+		
 		return "review_Form";
 	}
 	//review insert
@@ -210,6 +236,11 @@ public class ItemController {
 		String img_path = getReviewImg(rvo.getR_board_no());
 		selectReview.setImg_path(img_path);
 		model.addAttribute("review",selectReview);
+		
+		ItemVO ivo = itemService.infoItem(selectReview.getItem_code());
+		String item_name=ivo.getItem_name();
+		model.addAttribute("item_name", item_name);
+		
 		return "review_Update";
 		
 	}

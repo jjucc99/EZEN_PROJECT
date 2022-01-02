@@ -198,7 +198,7 @@ public class PayController {
 	@RequestMapping(value="changeStatus.pay", method=RequestMethod.POST)
 	@ResponseBody
 	public String changeStatus(@RequestBody Map<String, String> map) {
-		int ord_no = Integer.parseInt(map.get("ord_no"));
+		int ord_no = Integer.parseInt(map.get("no"));
 		String ord_status=map.get("ord_status");
 		
 		Order_listVO ovo=new Order_listVO();
@@ -245,7 +245,7 @@ public class PayController {
 	@ResponseBody
 	public String checkReview(HttpSession session,@RequestBody Map<String, String> map) {
 		String mem_id= (String)session.getAttribute("mem_id");
-		int item_code=Integer.parseInt(map.get("item_code"));
+		int item_code=Integer.parseInt(map.get("code"));
 		
 		SubOrderVO subvo=new SubOrderVO();
 		subvo.setStr(mem_id); subvo.setNum(item_code);

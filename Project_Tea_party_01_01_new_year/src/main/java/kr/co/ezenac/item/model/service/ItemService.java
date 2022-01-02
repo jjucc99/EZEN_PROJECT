@@ -48,7 +48,7 @@ public interface ItemService {
 	int selectSeq();
 	
 	//카테고리 리스트 New
-	List<CateListVO> cateNewList(int cate_code);
+	List<CateListVO> cateNewList();
 
 	ReviewBoardVO selectReview(ReviewBoardVO rvo);
 	
@@ -59,6 +59,10 @@ public interface ItemService {
 	int deleteReviewImg(int r_board_no);
 
 	String getReImgName(int r_board_no);
+
+	int countMyReview(String mem_id);
+
+	List<ReviewBoardVO> myRList(PagingVO vo);
 	
 	
 }

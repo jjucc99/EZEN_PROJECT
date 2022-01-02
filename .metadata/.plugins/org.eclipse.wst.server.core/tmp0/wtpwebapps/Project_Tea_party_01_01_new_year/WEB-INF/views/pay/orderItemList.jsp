@@ -22,6 +22,7 @@ a {
 	color: inherit; /* 링크의 색상 제거 */
 }
 </style>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 <header class="main_header">
@@ -100,13 +101,13 @@ if (checkLogin == "success") { %>
                       <span>총 가격: </span><span><fmt:formatNumber value="${ol.sum}"/>원</span>
                     </div>
                     <c:if test="${ordInfo.ord_status=='구매확정'}">
-                    <input type="button" onclick="review(${ol.item_code},${ol.item_name})" value="리뷰작성">
-                    </c:if>
+                    <input type="button" onclick="goReview(${ol.item_code})" value="리뷰작성">
+                    
 					<!-- 리뷰작성으로 넘어가는 폼. 실제로 보이지 않음-->
-					<form name="gofrm" action="review.item">
+					<form name="gofrm" action="/review.item">
 						<input type="hidden" name="item_code">
-						<input type="hidden" name="item_name">
 					</form>
+					</c:if>
 				 </div>
                 </div>
               </div>
@@ -154,17 +155,21 @@ if (checkLogin == "success") { %>
 <%
 	}
 %>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <script type="text/javascript">
-	function review(item_code, item_name){
+/* if(typeof jQuery=='undefined'){
+	alert("없음");
+}else{
+	alert("있음");
+} */
+	function goReview(item_code){
 		gofrm.item_code.value = item_code;
-		gofrm.item_name.value = item_name;
 		
 		$.ajax({
 			url : "checkReview.pay",
 			type : 'post',
 			data : JSON.stringify({
-				item_code : item_code
+				code : item_code
 			}),
 			contentType : 'application/json', // 전송타입 json으로 변경
 			success : function(data) { // data= return 값 받음

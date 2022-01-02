@@ -105,17 +105,16 @@ if(value=1){
                 <c:choose>
 				<c:when test="${ol.ord_status =='처리완료'}">
 					<select>
-					<option selected disabled>처리완료</option></select>
+					<option selected>처리완료</option></select>
 				</c:when>
 				<c:when test="${ol.ord_status =='구매확정'}">
 					<select>
-					<option selected disabled>구매확정</option></select>
+					<option selected>구매확정</option></select>
 				</c:when>
 				<c:otherwise>
 					<select id="${ol.rep_name}">
 						<option value=''>--주문 처리중--</option>
-						<option value='1'
-							<c:if test="${ol.ord_status == '구매확정'}">selected</c:if>>구매확정</option>
+						<option value='1'>구매확정</option>
 						<option value='2'
 							<c:if test="${ol.ord_status == '주문취소'}">selected</c:if>>주문취소</option>
 						<option value='3'

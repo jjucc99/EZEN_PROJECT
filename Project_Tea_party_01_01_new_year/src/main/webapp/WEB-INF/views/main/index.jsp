@@ -21,7 +21,7 @@
     <div class="header_container">
         <h1>TEA PARTY</h1>
         <div>
-            <a class="header_in_door" href="cateNew?cate_code=6">OPEN THE DOOR</a>
+            <a class="header_in_door" href="/main">OPEN THE DOOR</a>
         </div>
     </div>
 </header>

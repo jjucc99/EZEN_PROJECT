@@ -90,8 +90,8 @@ public class ItemDAO {
 		return sqlSession.selectOne("itemMapper.selectSeq");
 	}
 
-	public List<CateListVO> cateNewList(SqlSessionTemplate sqlSession, int cate_code) {
-		return sqlSession.selectList("itemMapper.CateNewInfo", cate_code);
+	public List<CateListVO> cateNewList(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectList("itemMapper.CateNewInfo");
 	}
 
 	public ReviewBoardVO selectReview(SqlSessionTemplate sqlSession, ReviewBoardVO rvo) {
@@ -114,5 +114,13 @@ public class ItemDAO {
 
 	public String getReImgName(SqlSessionTemplate sqlSession, int r_board_no) {
 		return sqlSession.selectOne("itemMapper.getReImgName", r_board_no);
+	}
+
+	public int getMyReview(SqlSessionTemplate sqlSession,String mem_id) {
+		return sqlSession.selectOne("itemMapper.getmyReview", mem_id);
+	}
+
+	public List<ReviewBoardVO> myRList(SqlSessionTemplate sqlSession, PagingVO vo) {
+		return sqlSession.selectList("itemMapper.myRList", vo);
 	}
 }
