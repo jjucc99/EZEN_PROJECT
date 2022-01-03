@@ -1,0 +1,26 @@
+main {
+  margin-top: 150px;
+}
+
+.admin_order_list_container_context {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 20px;
+
+  margin-bottom: 20px;
+}
+
+.admin_order_list_container_context_btn {
+  width: 10%;
+}
+.admin_order_list_container_context_btn input {
+  width: 50px;
+  height: 25px;
+}
+
+.admin_order_list_container_context_btn_update input {
+  margin-bottom: 10px;
+}

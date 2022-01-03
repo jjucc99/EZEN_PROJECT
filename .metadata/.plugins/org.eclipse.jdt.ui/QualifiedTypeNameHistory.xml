@@ -38,11 +38,12 @@
 <fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionTemplate"/>
 <fullyQualifiedTypeName name="kr.co.ezenac.board.model.vo.PagingVO"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="kr.co.ezenac.board.model.vo.BoardVO"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="kr.co.ezenac.board.model.vo.BoardVO"/>
+<fullyQualifiedTypeName name="kr.co.ezenac.board.model.vo.ReplyVO"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>

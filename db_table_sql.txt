@@ -260,8 +260,7 @@ insert into categorys VALUES(2,'허브차');
 insert into categorys VALUES(3,'전통차');
 insert into categorys VALUES(4,'커피');
 insert into categorys VALUES(5,'티웨어');
-insert into categorys VALUES(6,'신상품');
-insert into categorys VALUES(7,'삭제');
+insert into categorys VALUES(6,'삭제');
 
 ----------pay
 INSERT INTO PAY (PAY_NO, PAY_METHOD) VALUES ('1', '계좌이체');
