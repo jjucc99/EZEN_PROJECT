@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+@import "reset.css";
+@import "main_header.css";
+@import "title_header.css";
+@import "items_container.css";
+@import "login.css";
+@import "my_page.css";
+@import "join.css";
+@import "my_shopping.css";
+@import "pay.css";
+@import "order.css";
+@import "order_list.css";
+@import "goods.css";
+@import "my_board.css";
+@import "review.css";
+@import "review_list.css";
+@import "qna.css";
+@import "member_list.css";
+@import "admin_item_list.css";
+@import "admin_order_list.css";
+@import "item_info_container.css";
+
+@font-face {
+    font-family: '국립박물관문화재단클래식B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식B.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: '국립박물관문화재단클래식B';
+}
+
+body {
+    overflow: auto;
+    font-family: '국립박물관문화재단클래식B';
+    width: 100%;
+    height: auto;
+}
+
+main {
+    margin-top: 150px;
+}
+
+input[type="button"],
+input[type="submit"],
+button{
+    background-color: #5e4540;
+    color: wheat;
+    border-radius: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+}
+section {
+    width: 100%;
+    height: auto;
+    overflow: auto;
+}
+a {
+    text-decoration: none; /* 링크의 밑줄 제거 */
+    color: inherit; /* 링크의 색상 제거 */
+}
+
+img{
+	border-radius: 20px;
+	
+}
