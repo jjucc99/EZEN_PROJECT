@@ -6,7 +6,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ADMIN</title>
+<title>ADMIN MEMBER</title>
 <style type="text/css">
 
 	a 	{
@@ -77,7 +77,7 @@
     <main>
       <div class="my_board_container">
         <div class="my_board_container_title">
-          <span>MEMBER_LIST</span>
+          <span>OUT MEMBER LIST</span>
           <input type="button" onclick="location.href='memberList.ad'" value="일반회원 관리" />
         </div>
         <div class="my_board_container_context">

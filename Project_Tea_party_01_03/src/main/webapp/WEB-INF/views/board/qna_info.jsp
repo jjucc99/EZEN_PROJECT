@@ -107,7 +107,10 @@
           <div class="qna_container_context_review_context">${reply.reply_content}</div>
           <div class="qna_container_context_review_day">${reply.reply_date}</div>
           <div class="qna_container_context_review_input">
-            <input type="button" value="DELETE" />
+          <c:if test="${!(mem_id eq reply.reply_sub)}">
+            <input type="button" value="DELETE" onclick="deleteSubmit()"/>
+            </c:if>
+          </div>
           </div>
         </div>
           </c:forEach>

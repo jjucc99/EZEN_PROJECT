@@ -55,7 +55,7 @@ textarea{
         <div class="qna_container_context">
           <div class="qna_container_context_title">
             <div class="qna_container_context_title_name">작성자: <%=mem_id%></div>
-            <div class="qna_container_context_title_title">제목: <input type="text" name="board_sub"></div>
+            <div class="qna_container_context_title_title">제목: <input type="text" name="board_sub" placeholder="제목을 입력하세요"></div>
             <!-- <div class="qna_container_context_title_day">날짜</div> -->
           </div>
           <div class="qna_container_context_context"><textarea name="board_content"></textarea></div>

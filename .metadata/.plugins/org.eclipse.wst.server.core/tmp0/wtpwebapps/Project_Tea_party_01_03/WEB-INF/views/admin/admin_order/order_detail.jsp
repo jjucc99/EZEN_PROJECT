@@ -2,14 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ADMIN</title>
+<title>ADMIN ORDER</title>
 <style type="text/css">
 
 	a 	{
@@ -81,7 +80,7 @@
       <div class="order_list_container">
         <div class="order_list_box">
           <div class="order_list_context_title">
-            <div class="order_list_context_title_title">ORDER_LIST</div>
+            <div class="order_list_context_title_title">ORDER DETAIL</div>
             <div class="order_list_context_title_detial">
               <div class="order_list_context_title_detial_order_num">
                 <span>주문번호</span><span>${orderList.ord_no}</span>

@@ -1,124 +1,130 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>공지 목록</title>
-</head>
-<style>
-h2 {
-	text-align: center;
-}
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ADMIN BOARD</title>
+<style type="text/css">
 
-table {
-	width: 100%;
-}
-
-#outter {
-	display: block;
-	width: 60%;
-	margin: auto;
-}
-
-a {
-	text-decoration: none;
-}
-</style>
-<script>
-	function selChange() {
-		var sel = document.getElementById('cntPerPage').value;
-		location.href = "boardList.ad?nowPage=${paging.nowPage}&cntPerPage="
-				+ sel;//!!!!
+	a 	{
+    	text-decoration: none; /* 링크의 밑줄 제거 /
+   		color: inherit; / 링크의 색상 제거 */
 	}
-</script>
+</style>
+<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
+</head>
 <body>
 	<%
-		String checkLogin = (String) session.getAttribute("checkLogin");
-	%>
-	session
-	<%=checkLogin%><br>
-	<%
-		if (checkLogin == "success") {
-	%>
-	<h2>공지 목록</h2>
+    String checkLogin = (String) session.getAttribute("checkLogin");
+    Character checkAdmin = (Character) session.getAttribute("checkAdmin");
+    Character checkMember = (Character) session.getAttribute("checkMember");
+%>
+	<!-- $header -->
+	<header class="main_header">
+		<div class="header_title_conteiner">
+			<div class="header_title_title">
+				<div class="header_title">
+					<a href="/main">TEA PARTY</a>
+				</div>
+			</div>
+			<div class="header_controller_conteiner">
+				<%
+                if (checkLogin == "success" && checkMember == 'N') {
+            %>
+				<div class="header_controller">
+					<a href="/mypage">MY PAGE</a>
+				</div>
+				<div class="header_controller">
+					<a href="/cart.pay">MY SHOPPING</a>
+				</div>
+				<div class="header_controller">
+					<a href="/logout">LOGOUT</a>
+				</div>
+				<%
+                if (checkAdmin != 'N') {
+            %>
+				<div class="header_controller">
+					<a href="/admin.ad">ADMIN</a>
+				</div>
+				<%
+                }
+            %>
+				<%
+            } else {
+            %>
+				<div class="header_controller">
+					<a href="/join">JOIN</a>
+				</div>
+				<div class="header_controller">
+					<a href="/login">LOGIN</a>
+				</div>
+				<%
+                }
+            %>
 
-	<div id="outter">
-		<div style="float: right;">
-			<select id="cntPerPage" name="sel" onchange="selChange()">
-				<option value="5"
-					<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄
-					보기</option>
-				<option value="10"
-					<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄
-					보기</option>
-				<option value="15"
-					<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄
-					보기</option>
-				<option value="20"
-					<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄
-					보기</option>
-			</select>
+			</div>
 		</div>
-		<!-- 옵션선택 끝 -->
-		<table border="1">
-			<tr>
-				<td>글번호</td>
-				<td>제목</td>
-				<td>작성일자</td>
-				<td>작성자</td>
-				<td>수정</td>
-			</tr>
-			<c:forEach items="${viewAll}" var="board">
-				<tr>
-					<td>${board.board_no}</td>
-					<td>${board.board_sub}</td>
-					<td><fmt:formatDate value="${board.board_date}"/></td>
-					<td>${board.mem_id}</td>
-					<td><button
-							onclick="location.href='boardInfo.ad?board_no=${board.board_no}'">UPDATE</button></td>
-					<!-- !!!!!! -->
-				</tr>
-			</c:forEach>
-		</table>
-		<button onclick="location.href='addBoardForm.ad'">공지 작성</button>
-		<br>
-		<button onclick="location.href='admin.ad'">관리자 홈으로</button>
-		<!-- !!!!!! -->
-		<div style="display: block; text-align: center;">
-			<c:if test="${paging.startPage != 1 }">
-				<a
-					href="/boardList.ad?nowPage=${paging.startPage - 1}&cntPerPage=${paging.cntPerPage}">&lt;</a>
-				<!-- !!!!!! -->
-			</c:if>
-			<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
-				var="p">
-				<c:choose>
-					<c:when test="${p == paging.nowPage }">
-						<b>${p}</b>
-					</c:when>
-					<c:when test="${p != paging.nowPage }">
-						<a
-							href="/boardList.ad?nowPage=${p}&cntPerPage=${paging.cntPerPage}">${p}</a>
-						<!-- !!!!!! -->
-					</c:when>
-				</c:choose>
-			</c:forEach>
-			<c:if test="${paging.endPage != paging.lastPage}">
-				<a
-					href="/boardList.ad?nowPage=${paging.endPage+1}&cntPerPage=${paging.cntPerPage}">&gt;</a>
-				<!-- !!!!!! -->
-			</c:if>
 		</div>
-	</div>
+	</header>
+		<!-- $section -->
+	<%  
+	if (checkLogin == "success") { %>
+<section>
+  <main>
+      <div class="my_board_container">
+        <div class="my_board_container_title">
+          <span>NOTICE LIST</span>
+          <input type="button" onclick="location.href='addBoardForm.ad'" value="공지작성"/>
+        </div>
+        <div class="my_board_container_context">
+            <div class="my_board_container_context_box">
+              <div class="my_board_container_context_num">글번호</div>
+              <div class="my_board_container_context_title">제목</div>
+              <div class="my_board_container_context_day">작성일자</div>
+            </div>
+          <!-- 늘어나기 -->
+          <c:forEach items="${viewAll}" var="board">
+          <a href="boardInfo.ad?board_no=${board.board_no}">
+          <div class="my_board_container_context_box">
+            <div class="my_board_container_context_num">${board.board_no}</div>
+            <div class="my_board_container_context_title">${board.board_sub}</div>
+            <div class="my_board_container_context_day"><fmt:formatDate value="${board.board_date}"/></div>
+          </div>
+          </a>
+          </c:forEach>
+          <!-- 여기까지 -->
+          
+          <div class="my_board_container_context_btn">
+            <div class="my_board_container_context_btn_box">
+            	<c:if test="${paging.nowPage != 1 }">
+              <input type="button" value="◀" onclick="location.href='boardList.ad?nowPage=${paging.nowPage - 1}'" />
+              </c:if>
+              <div>
+              ${paging.nowPage}
+              </div>
+              <c:if test="${paging.nowPage != paging.lastPage}">
+              <input type="button" value="▶" onclick="location.href='boardList.ad?nowPage=${paging.nowPage+1}'"/>
+              </c:if>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+</section>	
+<%
+		}else {
+%>
+	<script type="text/javascript">
+	alert("로그인 하셔야 합니다!");
+	location.href="/login";
+	</script>
 	<%
-            }else{
-        %>
-	<a href="/login">로그인 페이지로 이동 </a>
-	<%
-            }
-    %>
+		}
+	%>
 </body>
 </html>

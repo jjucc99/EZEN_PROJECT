@@ -18,6 +18,7 @@
 @import "member_list.css";
 @import "admin_item_list.css";
 @import "admin_order_list.css";
+@import "item_info_container.css";
 
 * {
   box-sizing: border-box;

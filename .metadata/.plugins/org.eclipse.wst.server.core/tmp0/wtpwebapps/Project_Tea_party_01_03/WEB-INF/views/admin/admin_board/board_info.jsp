@@ -1,57 +1,133 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ADMIN BOARD</title>
+<style type="text/css">
+
+	a 	{
+    	text-decoration: none; /* 링크의 밑줄 제거 /
+   		color: inherit; / 링크의 색상 제거 */
+	}
+</style>
+<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
 </head>
 <body>
 	<%
-		String checkLogin = (String) session.getAttribute("checkLogin");
-	%>
-	session
-	<%=checkLogin%><br>
-	<%
-		if (checkLogin == "success") {
-	%>
-	<form action="boardUpdate.ad" method="post" name="frm">
-		글번호 ${board.board_no}<br>
-		글제목<input type="text" name="board_sub" value="${board.board_sub}"><br>
-		작성일자 <fmt:formatDate value="${board.board_date}"/><br>
-		작성자${board.mem_id}<br>
-		글 내용<br><textarea rows="5" cols="50" style="resize: none;" name="board_content">${board.board_content}</textarea><br>
-		<input type="hidden" name="board_no" value="${board.board_no}">
-		<input type="button" value="수정" onclick="checkSubmit()"><br>
-		<input type="button" value="게시글 리스트로 이동" onclick="location.href='boardList.ad'">
-	</form>
-	<form action="boardDelete.ad" method="post" name="deletefrm">
-		<input type="hidden" value="${board.board_no}" name="board_no">
-		<input type="button" onclick="deleteSubmit()" value="삭제">
-	</form>
-	<%
-		} else {
-	%>
-	<a href="/login">로그인 페이지로 이동 </a>
+    String checkLogin = (String) session.getAttribute("checkLogin");
+    Character checkAdmin = (Character) session.getAttribute("checkAdmin");
+    Character checkMember = (Character) session.getAttribute("checkMember");
+%>
+	<!-- $header -->
+	<header class="main_header">
+		<div class="header_title_conteiner">
+			<div class="header_title_title">
+				<div class="header_title">
+					<a href="/main">TEA PARTY</a>
+				</div>
+			</div>
+			<div class="header_controller_conteiner">
+				<%
+                if (checkLogin == "success" && checkMember == 'N') {
+            %>
+				<div class="header_controller">
+					<a href="/mypage">MY PAGE</a>
+				</div>
+				<div class="header_controller">
+					<a href="/cart.pay">MY SHOPPING</a>
+				</div>
+				<div class="header_controller">
+					<a href="/logout">LOGOUT</a>
+				</div>
+				<%
+                if (checkAdmin != 'N') {
+            %>
+				<div class="header_controller">
+					<a href="/admin.ad">ADMIN</a>
+				</div>
+				<%
+                }
+            %>
+				<%
+            } else {
+            %>
+				<div class="header_controller">
+					<a href="/join">JOIN</a>
+				</div>
+				<div class="header_controller">
+					<a href="/login">LOGIN</a>
+				</div>
+				<%
+                }
+            %>
+
+			</div>
+		</div>
+		</div>
+	</header>
+		<!-- $section -->
+	<%  
+	if (checkLogin == "success") { %>
+<section>
+      <div class="qna_container">
+        <div class="qna_container_title">MY NOTICE</div>
+        <div class="qna_container_context">
+          <div class="qna_container_context_title">
+            <div class="qna_container_context_title_name">NO.${board.board_no}</div>
+            <div class="qna_container_context_title_title">제목:<input type="text" name="sub" value="${board.board_sub}"></div>
+            <div class="qna_container_context_title_day">작성일자 <fmt:formatDate value="${board.board_date}"/></div>
+          </div>
+          <div class="qna_container_context_context"><textarea name="content">${board.board_content}</textarea></div>
+          <div class="qna_container_context_btn">
+            
+            <form action="boardUpdate.ad" method="post" name="frm">
+            <input type="hidden" name="board_no" value="${board.board_no}">
+            <input type="hidden" name="board_sub">
+            <input type="hidden" name="board_content">
+            </form>
+            <input type="button" value="수정" onclick="checkSubmit()"/>
+            
+            <form action="boardDelete.ad" method="post" name="deletefrm">
+			<input type="hidden" value="${board.board_no}" name="board_no">
+			 <input type="button" value="삭제" onclick="deleteSubmit()"/>
+			</form>
+          </div>
+        </div>
+      </div>
+    </section>
+<%
+		}else {
+%>
+	<script type="text/javascript">
+	alert("로그인 하셔야 합니다!");
+	location.href="/login";
+	</script>
 	<%
 		}
 	%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
 	function checkSubmit() {
-        var board_sub = document.getElementsByName('board_sub')[0].value;
-        var board_content = document.getElementsByName('board_content')[0].value;
-        if(!board_sub){
+        var sub = document.getElementsByName('sub')[0].value;
+        var content = document.getElementsByName('content')[0].value;
+        if(!sub){
         	alert("제목을 입력하세요");
-        	board_sub.focus();
+        	sub.focus();
         	return false;
         }
-        if(!board_content){
+        if(!content){
         	alert("내용을 입력하세요");
-        	board_content.focus();
+        	content.focus();
         	return false;
         }
+        frm.board_sub.value=sub;
+        frm.board_content.value=content;
         frm.method = 'post';
         frm.submit();
       }
@@ -62,6 +138,6 @@
 		     return false;
 		 }
       }
-	</script>
+	</script>	
 </body>
 </html>

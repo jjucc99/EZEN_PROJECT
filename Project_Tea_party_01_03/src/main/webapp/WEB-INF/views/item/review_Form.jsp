@@ -53,7 +53,7 @@ input{width:80%}
             <div class="review_container_header_title">제목: <input type="text" name="r_board_sub" ><br></div>
           </div>
           <div class="review_container_context">
-            <div class="review_container_context_img"><img src="resources/IMG/NO_IMAGE.png" alt="이미지 없음" id="original">
+            <div class="review_container_context_img"><img src="resources/img/NO_IMAGE.png" alt="이미지 없음" id="original">
             <br><input type="file" name="image" id="img" onchange="fileChange(this)"/>
             </div>
             <div class="review_container_context_text"><textarea name="r_board_content" placeholder="리뷰를 작성해주세요.상품의 내용과 관련 없는 내용은 삭제될 수 있습니다."></textarea></div>
