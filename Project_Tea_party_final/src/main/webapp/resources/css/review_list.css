@@ -1,0 +1,26 @@
+.review_list_container_context {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 20px;
+
+    margin-bottom: 20px;
+}
+
+.review_list_container_context_num {
+    width: 15%;
+}
+
+.review_list_container_context_title {
+    width: 15%;
+}
+
+.review_list_container_context_text {
+    width: 60%;
+}
+
+.review_list_container_context_day {
+    width: 10%;
+}
