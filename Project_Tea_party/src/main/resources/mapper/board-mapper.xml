@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="boardMapper">
+
+<!-- Qna 게시글 수 출력 -->
+<select id="countQna" resultType="int">
+select count(*) from board where board_board='qna'
+</select>
+
+<!-- 페이징 처리 후 QNA 조회 -->
+<select id="selectQna" resultMap="BoardVO">
+SELECT * 
+			FROM (
+				SELECT ROWNUM RN, A.* 
+					FROM (
+							select * from board where board_board='qna' order by board_no desc
+						) A
+				)
+		WHERE RN BETWEEN #{start} AND #{end}	
+</select>
+<resultMap type="Board" id="BoardVO">
+<result column="board_no" property="board_no"/>
+<result column="board_sub" property="board_sub"/>
+<result column="board_content" property="board_content"/>
+<result column="board_date" property="board_date"/>
+<result column="board_board" property="board_board"/>
+<result column="mem_id" property="mem_id"/>
+</resultMap>
+
+<select id="countReply" resultType="int">
+select count(*) from reply where board_no=#{board_no}
+</select>
+
+<!-- 총 공지 수 출력 -->
+<select resultType="int" id="countNotice">SELECT COUNT(*) FROM board where board_board='notice' </select>
+
+<!-- 페이징 처리 후 공지 조회 -->
+<select id="selectNotice" resultMap="selectNotice">
+SELECT *FROM (SELECT ROWNUM RN, A.*FROM 
+(SELECT * FROM BOARD where board_board='notice' order by board_no desc) A)
+WHERE RN BETWEEN #{start} AND #{end} </select>
+<resultMap id="selectNotice" type="kr.co.ezenac.board.model.vo.BoardVO">
+<result property="board_no" column="BOARD_NO"/>
+<result property="board_sub" column="BOARD_SUB"/>
+<result property="board_content" column="BOARD_CONTENT"/>
+<result property="board_date" column="BOARD_DATE"/>
+<result property="board_board" column="BOARD_BOARD"/>
+<result property="mem_id" column="MEM_ID"/>
+</resultMap>
+
+<!-- 게시글 하나의 정보 -->
+<select id="selectOneBoard" resultMap="selectOneBoard">SELECT * FROM BOARD where board_no=#{board_no} </select>
+
+<resultMap id="selectOneBoard" type="kr.co.ezenac.board.model.vo.BoardVO">
+<result property="board_no" column="BOARD_NO"/>
+<result property="board_sub" column="BOARD_SUB"/>
+<result property="board_content" column="BOARD_CONTENT"/>
+<result property="board_date" column="BOARD_DATE"/>
+<result property="board_board" column="BOARD_BOARD"/>
+<result property="mem_id" column="MEM_ID"/>
+</resultMap>
+
+<!-- qna 추가 -->
+<insert id="insertQna">
+	INSERT INTO Board
+	VALUES(BOARD_NO_SEQ.nextval,#{board_sub},#{board_content},sysdate,#{board_board},#{mem_id})
+</insert>
+
+<!-- 게시글 삭제 -->
+<update id="deleteQnA">
+    UPDATE Board SET BOARD_BOARD='delete' where BOARD_NO = #{board_no}
+</update>
+
+<!-- 게시글 수정 -->
+<update id="updateBoard">
+    UPDATE Board SET BOARD_SUB=#{board_sub},BOARD_CONTENT=#{board_content} where BOARD_NO = #{board_no}
+</update>
+
+<!-- qna 추가 -->
+<insert id="insertComment">
+	INSERT INTO REPLY
+	VALUES(REPLY_NO_SEQ.nextval,#{reply_sub},#{reply_content},sysdate,1,#{board_no})
+</insert>
+
+<!-- 댓글의 정보 -->
+<select id="selectComment" resultMap="selectComment">
+SELECT * FROM reply where board_no=#{board_no} order by reply_no asc
+</select>
+
+<resultMap id="selectComment" type="kr.co.ezenac.board.model.vo.ReplyVO">
+<result property="reply_no" column="REPLY_NO"/>
+<result property="reply_sub" column="REPLY_SUB"/>
+<result property="reply_content" column="REPLY_CONTENT"/>
+<result property="reply_date" column="REPLY_DATE"/>
+<result property="reply_board" column="REPLY_BOARD"/>
+<result property="board_no" column="BOARD_NO"/>
+</resultMap>
+
+<delete id="deleteReply">
+	DELETE FROM reply where reply_no=#{reply_no} 
+</delete>
+
+<!-- 페이징 처리 후 공지 조회 -->
+<select id="selectMyBoardList" resultMap="selectMyBoardList">
+SELECT *FROM (SELECT ROWNUM RN, A.*FROM 
+(SELECT * FROM BOARD where board_board='qna' and mem_id=#{mem_id} order by board_no desc) A)
+WHERE RN BETWEEN #{start} AND #{end} </select>
+<resultMap id="selectMyBoardList" type="kr.co.ezenac.board.model.vo.BoardVO">
+<result property="board_no" column="BOARD_NO"/>
+<result property="board_sub" column="BOARD_SUB"/>
+<result property="board_content" column="BOARD_CONTENT"/>
+<result property="board_date" column="BOARD_DATE"/>
+<result property="board_board" column="BOARD_BOARD"/>
+<result property="mem_id" column="MEM_ID"/>
+</resultMap>
+
+<select id="countMyQnA" resultType="int">
+select count(*) from BOARD where board_board='qna' and mem_id=#{mem_id}
+</select>
+</mapper>
